@@ -1,5 +1,6 @@
 :root {
-	--font-googleFont: "googleFont";
+	--font-googleGugi: "googleGugi";
+	--font-googleSingleDay: "googleSingleDay";
 }
 body {
 	margin: 0;
@@ -13,6 +14,11 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 @font-face {
-	font-family: "googleFont";
+	font-family: "googleGugi";
 	src: url(./assets/fonts/Gugi/Gugi-Regular.ttf);
+}
+
+@font-face {
+	font-family: "googleSingleDay";
+	src: url(./assets/fonts/Single_Day/SingleDay-Regular.ttf);
 }
