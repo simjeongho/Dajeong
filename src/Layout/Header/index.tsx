@@ -1,12 +1,16 @@
 import React from "react";
-import { LayoutHeader, LayoutNavbar, LayoutNavItem, LayoutNavLists } from "./styled";
+import { LayoutHeader, LayoutHeaderTitle, LayoutNavbar, LayoutNavItem, LayoutNavLists } from "./styled";
 
 const Header = () => {
 	return (
 		<LayoutHeader>
+			<LayoutHeaderTitle>Da Jeong Blog</LayoutHeaderTitle>
 			<LayoutNavbar>
 				<LayoutNavLists>
-					<LayoutNavItem>글쓰기</LayoutNavItem>
+					<LayoutNavItem>Home</LayoutNavItem>
+					<LayoutNavItem>Log in</LayoutNavItem>
+					<LayoutNavItem>Blog</LayoutNavItem>
+					<LayoutNavItem>Instagram</LayoutNavItem>
 				</LayoutNavLists>
 			</LayoutNavbar>
 		</LayoutHeader>
