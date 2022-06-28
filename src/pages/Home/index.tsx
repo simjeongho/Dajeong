@@ -12,7 +12,6 @@ const Home = () => {
 	return (
 		<HomeContainer>
 			<HomeImageCard />
-			<div>왜 안돼</div>
 		</HomeContainer>
 	);
 };
