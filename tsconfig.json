@@ -1,17 +1,21 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist/",
-    "target": "ESNext",
-    "lib": ["ES2020", "DOM"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "strict": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "jsx": "react",
-    "baseUrl": "."
-  },
-  "exclude": ["**/*.spec.ts"]
+	"extends": "./tsconfig.paths.json",
+	"compilerOptions": {
+		"outDir": "./dist/",
+		"target": "ES5",
+		"lib": ["ES2020", "dom", "DOM.Iterable"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"strict": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"jsx": "react-jsx",
+		"noFallthroughCasesInSwitch": true,
+		"noEmit": true,
+		"typeRoots": ["./@types", "./node_modules/@types"]
+	},
+	"exclude": ["**/*.spec.ts"],
+	"include": ["src", "craco.config.js"]
 }
