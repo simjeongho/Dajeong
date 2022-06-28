@@ -1,10 +1,21 @@
-import React from "react";
-import { LayoutHeader, LayoutHeaderTitle, LayoutNavbar, LayoutNavItem, LayoutNavLists } from "./styled";
-
+import {
+	LayoutHeader,
+	LayoutHeaderImg,
+	LayoutHeaderTitle,
+	LayoutNavbar,
+	LayoutNavItem,
+	LayoutNavLists,
+	LayoutTitlediv,
+} from "./styled";
+import GinsenTitle from "@assets/image/ginsen.svg";
 const Header = () => {
 	return (
 		<LayoutHeader>
-			<LayoutHeaderTitle>Da Jeong Blog</LayoutHeaderTitle>
+			<LayoutTitlediv>
+				<LayoutHeaderTitle>심 봤 다 Blog</LayoutHeaderTitle>
+				<LayoutHeaderImg src={GinsenTitle} alt="ginsen" />
+			</LayoutTitlediv>
+
 			<LayoutNavbar>
 				<LayoutNavLists>
 					<LayoutNavItem>Home</LayoutNavItem>
