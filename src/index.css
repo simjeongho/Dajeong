@@ -1,6 +1,11 @@
 :root {
 	--font-googleGugi: "googleGugi";
 	--font-googleSingleDay: "googleSingleDay";
+	--color-text-white: #fffff0;
+	--color-lightgray: #778899;
+	--color-mainpurple: #8a2be2;
+	--color-magentapurple: #ff00ff;
+	--color-deeppurple: #4b0082;
 }
 body {
 	margin: 0;
