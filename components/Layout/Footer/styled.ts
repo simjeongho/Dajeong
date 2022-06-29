@@ -13,7 +13,6 @@ export const LayoutFooter = styled.footer`
 export const LayoutFooterList = styled.ul`
 	align-items: center;
 	justify-content: center;
-	margin: 1.5rem;
 	height: 100%;
 `;
 
