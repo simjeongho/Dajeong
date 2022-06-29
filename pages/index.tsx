@@ -1,10 +1,15 @@
-import HomeImageCard from "components/HomeImageCard";
+import StaticSlider from "components/StaticCarousel";
+import styled from "styled-components";
+
+const HomeContainer = styled.div`
+	width: 100%;
+	height: 100%;
+`;
 const Index = () => {
 	return (
-		<>
-			<h1>hi next</h1>
-			<HomeImageCard />
-		</>
+		<HomeContainer>
+			<StaticSlider />
+		</HomeContainer>
 	);
 };
 

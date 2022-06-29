@@ -5,11 +5,13 @@ import { LayoutContainer } from "components/Layout/styled";
 import type { AppProps } from "next/app";
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
-		<LayoutContainer>
-			<Header />
-			<Component {...pageProps} />
-			<Footer />
-		</LayoutContainer>
+		<>
+			<LayoutContainer>
+				<Header />
+				<Component {...pageProps} />
+				<Footer />
+			</LayoutContainer>
+		</>
 	);
 }
 
