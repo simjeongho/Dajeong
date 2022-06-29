@@ -4,6 +4,7 @@
 - Express.js
 - MongoDB
 - Node.js
+- Next.js
 
 ## 이슈 해결
 ### 2022-06-23
@@ -15,3 +16,7 @@
 - CRA+TypeScript 절대 경로
 - 레이아웃 컴포넌트 제작
 - 파일 정리 및 구글 폰트 적용
+
+### 2022-06-29
+- CRA+TypeScript에서 Next.js로 이사
+- 기본적인 Nextjs 세팅 
