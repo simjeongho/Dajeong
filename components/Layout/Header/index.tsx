@@ -7,7 +7,7 @@ import {
 	LayoutNavLists,
 	LayoutTitlediv,
 } from "./styled";
-import GinsenTitle from "@assets/image/ginsen.svg";
+import GinsenTitle from "assets/image/ginsen.svg";
 const Header = () => {
 	return (
 		<LayoutHeader>

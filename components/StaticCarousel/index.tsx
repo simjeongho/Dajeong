@@ -14,7 +14,6 @@ import construct from "assets/image/construct.jpg";
 import daebudo from "assets/image/daebudo.jpg";
 import moouido from "assets/image/moouido.jpg";
 import prettydaeun from "assets/image/prettydaeun.jpg";
-import Image from "next/image";
 
 interface Props {
 	settings?: Settings;
