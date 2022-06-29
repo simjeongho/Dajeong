@@ -74,15 +74,15 @@ const DEFAULT_SETTINGS: Settings = {
 
 const StaticSlider: React.FC<Props> = ({ settings = DEFAULT_SETTINGS }) => (
 	<ReactSlick {...settings}>
-		<Image src={mangWon} alt="망원" />
-		<Image src={hanRiver} alt="망원" />
-		<Image src={gangneungdaeun} alt="망원" />
-		<Image src={incheonpark} alt="망원" />
-		<Image src={construct} alt="망원" />
-		<Image src={inhoo} alt="망원" />
-		<Image src={daebudo} alt="망원" />
-		<Image src={moouido} alt="망원" />
-		<Image src={prettydaeun} alt="망원" />
+		<Card src={mangWon} alt="망원" title="망원에서" year="2022" />
+		<Card src={hanRiver} alt="한강" title="한강 피크닉" year="2022" />
+		<Card src={gangneungdaeun} alt="강릉에서 드라이브" title="강릉에서 드라이브" year="2021" />
+		<Card src={incheonpark} alt="인천대공원" title="인천대공원" year="2022" />
+		<Card src={inhoo} alt="인하대 후문" title="인하대 후문" year="2022" />
+		<Card src={construct} alt="집 풍경" title="집 풍경" year="2022" />
+		<Card src={daebudo} alt="첫 대부도" title="첫 대부도" year="2022" />
+		<Card src={moouido} alt="무의도" title="무의도" year="2022" />
+		<Card src={prettydaeun} alt="예쁜 다은" title="이태원 나들이" year="2022" />
 	</ReactSlick>
 );
 

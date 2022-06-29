@@ -1,6 +1,7 @@
-import { CardContainer, CardImage, CardImageWrapper, CardInfo, CardKeyWord, CardTitle } from "./styeld";
+import Image, { StaticImageData } from "next/image";
+import { CardContainer, CardImageWrapper, CardInfo, CardKeyWord, CardTitle } from "./styeld";
 type ImageProps = {
-	src: string;
+	src: StaticImageData;
 	title: string;
 	alt: string;
 	year: string;
@@ -10,7 +11,7 @@ const Card: React.FC<ImageProps> = ({ src, title, alt, year }) => {
 	return (
 		<CardContainer>
 			<CardImageWrapper>
-				<CardImage src={src} alt={`${alt}의 포스터`} />
+				<Image src={src} alt={alt} />
 			</CardImageWrapper>
 			<CardInfo>
 				<CardTitle>{title}</CardTitle>
