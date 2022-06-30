@@ -1,3 +1,4 @@
+import { moveUptop } from "./../../../shared/style/styled";
 import styled from "styled-components";
 
 export const LayoutHeader = styled.header`
@@ -19,6 +20,7 @@ export const LayoutHeaderTitle = styled.h1`
 	color: white;
 	font-size: 3rem;
 	margin: 1rem;
+	cursor: pointer;
 `;
 
 export const LayoutHeaderImg = styled.img`
@@ -39,7 +41,9 @@ export const LayoutNavLists = styled.ul`
 `;
 
 export const LayoutNavItem = styled.li`
-	margin: 1rem;
+	position: relative;
+	top: 1rem;
+	margin-bottom: 2rem;
 	list-style: none;
 	font-size: 1.5rem;
 	color: white;
@@ -47,4 +51,10 @@ export const LayoutNavItem = styled.li`
 	border: 2px solid transparent;
 	background-origin: border-box;
 	background-clip: content-box, border-box;
+	cursor: pointer;
+	&:hover {
+		animation: ${moveUptop} 0.5s linear;
+		animation-iteration-count: 1;
+		animation-fill-mode: forwards;
+	}
 `;

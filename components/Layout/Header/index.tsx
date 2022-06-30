@@ -1,20 +1,42 @@
 import { LayoutHeader, LayoutHeaderTitle, LayoutNavbar, LayoutNavItem, LayoutNavLists, LayoutTitlediv } from "./styled";
 import GinsenTitle from "assets/images/ginsen.svg";
+import { IoImagesOutline, IoFileTrayStackedOutline, IoLogoInstagram, IoDesktopOutline } from "react-icons/io5";
 import Image from "next/image";
+import Link from "next/link";
 const Header = () => {
 	return (
 		<LayoutHeader>
 			<LayoutTitlediv>
-				<LayoutHeaderTitle>심 봤 다 Blog</LayoutHeaderTitle>
+				<Link href="/">
+					<LayoutHeaderTitle>Sim Bwat Da Blog</LayoutHeaderTitle>
+				</Link>
 				<Image src={GinsenTitle} alt="Ginsen" height={100} />
 			</LayoutTitlediv>
 
 			<LayoutNavbar>
 				<LayoutNavLists>
-					<LayoutNavItem>Home</LayoutNavItem>
-					<LayoutNavItem>Log in</LayoutNavItem>
-					<LayoutNavItem>Blog</LayoutNavItem>
-					<LayoutNavItem>Instagram</LayoutNavItem>
+					<a target="_blank" href="https://hojung-testbench.tistory.com/" rel="noreferrer">
+						<LayoutNavItem>
+							<IoDesktopOutline />
+							Blog
+						</LayoutNavItem>
+					</a>
+
+					<LayoutNavItem>
+						<IoLogoInstagram />
+						Instagram
+					</LayoutNavItem>
+					<Link href="/Posts">
+						<LayoutNavItem>
+							<IoFileTrayStackedOutline />
+							posts
+						</LayoutNavItem>
+					</Link>
+
+					<LayoutNavItem>
+						<IoImagesOutline />
+						Album
+					</LayoutNavItem>
 				</LayoutNavLists>
 			</LayoutNavbar>
 		</LayoutHeader>
