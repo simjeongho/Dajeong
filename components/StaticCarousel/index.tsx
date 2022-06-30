@@ -14,6 +14,7 @@ import moouido from "assets/images/moouido.jpg";
 
 interface Props {
 	settings?: Settings;
+	children: React.ReactNode[];
 }
 
 const ArrowButton = styled.button<{ pos?: "left" | "right" }>`
@@ -68,15 +69,16 @@ const DEFAULT_SETTINGS: Settings = {
 	),
 };
 
-const StaticSlider: React.FC<Props> = ({ settings = DEFAULT_SETTINGS }) => (
-	<ReactSlick {...settings}>
-		<Card src={mangWon} alt="망원" title="망원에서" year="2022" />
-		<Card src={hanRiver} alt="한강" title="한강 피크닉" year="2022" />
-		<Card src={incheonpark} alt="인천대공원" title="인천대공원" year="2022" />
-		<Card src={inhoo} alt="인하대 후문" title="인하대 후문" year="2022" />
-		<Card src={daebudo} alt="첫 대부도" title="첫 대부도" year="2022" />
-		<Card src={moouido} alt="무의도" title="무의도" year="2022" />
-	</ReactSlick>
+const SliderTitle = styled.h1`
+	font-size: 3rem;
+	color: white;
+`;
+
+const StaticSlider: React.FC<Props> = ({ settings = DEFAULT_SETTINGS, children }) => (
+	<>
+		<SliderTitle>LandScape</SliderTitle>
+		<ReactSlick {...settings}>{children}</ReactSlick>
+	</>
 );
 
 export default StaticSlider;
