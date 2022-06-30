@@ -1,4 +1,6 @@
-import styled, { keyframes } from "styled-components";
+import Image from "next/image";
+import styled, { keyframes, css } from "styled-components";
+
 export const HomeContainer = styled.div`
 	width: 100%;
 	height: 100%;
@@ -90,8 +92,51 @@ export const BestAlbumShowButton = styled.button`
 	background-color: var(--color-middlepurple);
 	margin-top: 5rem;
 	border-radius: 10px 10px 10px 10px;
-
+	cursor: pointer;
 	&:hover {
-		animation: ${moveUp} 1s linear infinite;
+		animation: ${moveUp} 1s linear;
+		animation-iteration-count: 1;
+		animation-fill-mode: forwards;
 	}
 `;
+const Appear = keyframes`
+    0%{
+        opacity: 0%;
+    }
+    50% {
+        opacity: 50%;
+    }
+    100% {
+        opacity: 100%;
+    }
+`;
+
+const Disappear = keyframes`
+    0% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 50%;
+    }
+    100% {
+        opacity:0% ;
+    }
+`;
+
+export const ImageContainer = styled.div<{ show?: boolean }>`
+	position: relative;
+	left: 20rem;
+	/* visibility: ${({ show }) => (show ? "visible" : "hidden")}; */
+	${({ show }) =>
+		show
+			? css`
+					animation: ${Appear} 1s linear;
+					animation-fill-mode: forwards;
+			  `
+			: css`
+					animation: ${Disappear} 1s linear;
+					animation-fill-mode: forwards;
+			  `}
+`;
+
+export const BestAlbum = styled(Image)``;
