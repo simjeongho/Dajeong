@@ -1,20 +1,13 @@
 import React from "react";
 import ReactSlick, { Settings } from "react-slick";
 import styled, { css } from "styled-components";
-import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Card from "components/card";
-import mangWon from "assets/images/mangwon.jpg";
-import hanRiver from "assets/images/hanriver.jpg";
-import incheonpark from "assets/images/incheonpark.jpg";
-import inhoo from "assets/images/inhoo.jpg";
-import daebudo from "assets/images/daebudo.jpg";
-import moouido from "assets/images/moouido.jpg";
-
 interface Props {
 	settings?: Settings;
 	children: React.ReactNode[];
+	title: string;
 }
 
 const ArrowButton = styled.button<{ pos?: "left" | "right" }>`
@@ -59,25 +52,33 @@ const DEFAULT_SETTINGS: Settings = {
 	autoplay: true,
 	prevArrow: (
 		<ArrowButton pos="left">
-			<MdArrowBackIos />
+			<IoChevronBack />
 		</ArrowButton>
 	),
 	nextArrow: (
 		<ArrowButton pos="right">
-			<MdArrowForwardIos />
+			<IoChevronForward />
 		</ArrowButton>
 	),
 };
+
+const SliderContainer = styled.div`
+	padding: 1rem;
+	border: 0.8rem solid white;
+	margin-bottom: 1rem;
+`;
 
 const SliderTitle = styled.h1`
 	font-size: 3rem;
 	color: white;
 `;
 
-const StaticSlider: React.FC<Props> = ({ settings = DEFAULT_SETTINGS, children }) => (
+const StaticSlider: React.FC<Props> = ({ settings = DEFAULT_SETTINGS, children, title }) => (
 	<>
-		<SliderTitle>LandScape</SliderTitle>
-		<ReactSlick {...settings}>{children}</ReactSlick>
+		<SliderContainer>
+			<SliderTitle>{title}</SliderTitle>
+			<ReactSlick {...settings}>{children}</ReactSlick>
+		</SliderContainer>
 	</>
 );
 
