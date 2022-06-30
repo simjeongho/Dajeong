@@ -11,7 +11,7 @@ const Card: React.FC<ImageProps> = ({ src, title, alt, year }) => {
 	return (
 		<CardContainer>
 			<CardImageWrapper>
-				<Image src={src} alt={alt} />
+				<Image src={src} alt={alt} layout="responsive" quality={90} />
 			</CardImageWrapper>
 			<CardInfo>
 				<CardTitle>{title}</CardTitle>

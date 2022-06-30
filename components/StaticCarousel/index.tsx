@@ -7,12 +7,10 @@ import "slick-carousel/slick/slick-theme.css";
 import Card from "components/card";
 import mangWon from "assets/images/mangwon.jpg";
 import hanRiver from "assets/images/hanriver.jpg";
-import gangneungdaeun from "assets/images/gangneungdaeun.jpg";
 import incheonpark from "assets/images/incheonpark.jpg";
 import inhoo from "assets/images/inhoo.jpg";
 import daebudo from "assets/images/daebudo.jpg";
 import moouido from "assets/images/moouido.jpg";
-import prettydaeun from "assets/images/prettydaeun.jpg";
 
 interface Props {
 	settings?: Settings;
