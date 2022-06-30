@@ -1,5 +1,6 @@
+import { moveUp, Appear, Disappear } from "./../shared/style/styled";
 import Image from "next/image";
-import styled, { keyframes, css } from "styled-components";
+import styled, { css } from "styled-components";
 
 export const HomeContainer = styled.div`
 	width: 100%;
@@ -71,19 +72,6 @@ export const BestAlbumIntroduceContainer = styled.div`
 		color: var(--color-lightgray);
 	}
 `;
-
-const moveUp = keyframes`
-    0%{
-        margin-top: 5rem;
-    }
-    50% {
-        margin-top: 4rem;
-    }
-    100% {
-        margin-top: 3rem;
-    }
-`;
-
 export const BestAlbumShowButton = styled.button`
 	width: 40%;
 	height: auto;
@@ -98,29 +86,6 @@ export const BestAlbumShowButton = styled.button`
 		animation-iteration-count: 1;
 		animation-fill-mode: forwards;
 	}
-`;
-const Appear = keyframes`
-    0%{
-        opacity: 0%;
-    }
-    50% {
-        opacity: 50%;
-    }
-    100% {
-        opacity: 100%;
-    }
-`;
-
-const Disappear = keyframes`
-    0% {
-        opacity: 100%;
-    }
-    50% {
-        opacity: 50%;
-    }
-    100% {
-        opacity:0% ;
-    }
 `;
 
 export const ImageContainer = styled.div<{ show?: boolean }>`
