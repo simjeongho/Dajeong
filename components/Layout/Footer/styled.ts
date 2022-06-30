@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const LayoutFooter = styled.footer`
 	width: 100%;
-	height: 10rem;
+	height: auto;
 	background: black;
 	border-radius: 8px;
 	position: relative;

@@ -1,8 +1,9 @@
 import { DateContainer, NowDate } from "./styled";
-import useDate from "hooks/useDate";
 
-const GetDate = () => {
-	const Date = useDate();
+type Props = {
+	Date: String;
+};
+const GetDate = ({ Date }: Props) => {
 	return (
 		<DateContainer>
 			<NowDate>{Date}</NowDate>
