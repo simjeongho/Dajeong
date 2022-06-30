@@ -3,6 +3,7 @@ import Header from "components/Layout/Header";
 import "../styles/globals.css";
 import { LayoutContainer } from "components/Layout/styled";
 import type { AppProps } from "next/app";
+import "react-quill/dist/quill.snow.css";
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<>
