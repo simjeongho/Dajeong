@@ -1,11 +1,16 @@
+import GetDate from "components/getDate";
 import React from "react";
 import { LayoutFooter, LayoutFooterList, LayoutFooterListItem } from "./styled";
 
 const Footer = () => {
+	const now = new Date();
+
 	return (
 		<LayoutFooter>
 			<LayoutFooterList>
-				<LayoutFooterListItem>박다은</LayoutFooterListItem>
+				<LayoutFooterListItem>
+					<GetDate />
+				</LayoutFooterListItem>
 			</LayoutFooterList>
 		</LayoutFooter>
 	);
