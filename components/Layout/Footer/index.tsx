@@ -11,15 +11,9 @@ const Footer = () => {
 		<LayoutFooter>
 			<LayoutFooterList>
 				<LayoutFooterListItem>
-					<li>
-						<GetDate Date={`현재 날짜 : ${now}`} />
-					</li>
-					<li>
-						<GetDate Date={`다은 생일까지 ${daeunBirthday}일 남았습니다.`} />
-					</li>
-					<li>
-						<GetDate Date={`정호 생일까지 ${jeonghoBirthday}일 남았습니다.`} />
-					</li>
+					<GetDate Date={`현재 날짜 : ${now}`} />
+					<GetDate Date={`다은 생일까지 ${daeunBirthday}일 남았습니다.`} />
+					<GetDate Date={`정호 생일까지 ${jeonghoBirthday}일 남았습니다.`} />
 				</LayoutFooterListItem>
 			</LayoutFooterList>
 		</LayoutFooter>
