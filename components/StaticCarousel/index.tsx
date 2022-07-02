@@ -66,6 +66,8 @@ const SliderContainer = styled.div`
 	padding: 1rem;
 	border: 0.8rem solid white;
 	margin-bottom: 1rem;
+	width: 70%;
+	height: auto;
 `;
 
 const SliderTitle = styled.h1`
@@ -74,12 +76,10 @@ const SliderTitle = styled.h1`
 `;
 
 const StaticSlider: React.FC<Props> = ({ settings = DEFAULT_SETTINGS, children, title }) => (
-	<>
-		<SliderContainer>
-			<SliderTitle>{title}</SliderTitle>
-			<ReactSlick {...settings}>{children}</ReactSlick>
-		</SliderContainer>
-	</>
+	<SliderContainer>
+		<SliderTitle>{title}</SliderTitle>
+		<ReactSlick {...settings}>{children}</ReactSlick>
+	</SliderContainer>
 );
 
 export default StaticSlider;
