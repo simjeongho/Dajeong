@@ -1,10 +1,12 @@
-import BestSingleAlbum from "components/singleAlbum";
-import { AlbumListContainer } from "./styled";
+import Link from "next/link";
+import { AlbumListContainer, SingleAlbumWritesButton } from "./styled";
 
 const Albums = () => {
 	return (
 		<AlbumListContainer>
-			<BestSingleAlbum />
+			<Link href="Album/SingleAlbumWrites">
+				<SingleAlbumWritesButton>싱글 앨범 작성</SingleAlbumWritesButton>
+			</Link>
 		</AlbumListContainer>
 	);
 };
