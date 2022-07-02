@@ -47,3 +47,16 @@ export const Disappear = keyframes`
         opacity:0% ;
     }
 `;
+
+export const ring = keyframes`
+    0% {
+        width: 1rem;
+        height: 1rem;
+        opacity: 1;
+    }
+    100% {
+        width: 10rem;
+        height: 10rem;
+        opacity: 0;
+    }
+`;
