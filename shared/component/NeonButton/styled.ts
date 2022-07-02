@@ -6,9 +6,9 @@ export const NeonRoundButton = styled.button`
 	border: none;
 	min-width: 200px;
 	min-height: 50px;
-	background: linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
+	background: var(--color-neon);
 	border-radius: 1000px;
-	color: darkslategray;
+	color: white;
 	font-size: 1.5rem;
 	cursor: pointer;
 	box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);

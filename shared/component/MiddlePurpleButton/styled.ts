@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const MiddelPurpleButton = styled.button`
+export const MiddlePurpleButton = styled.button`
 	width: 40%;
 	height: auto;
 	font-size: 1.5rem;
