@@ -6,6 +6,9 @@ import {
 	BestSingleAlbumSubmitButton,
 	BestSingleAlbumTitle,
 	BestSingleAlbumYear,
+	WritingSingleAlbumContainer,
+	ShowImageContainer,
+	BestSingleAlbumDescriptionInput,
 } from "./styled";
 import axios from "axios";
 type SingleImage = {
@@ -14,7 +17,7 @@ type SingleImage = {
 	type: string;
 };
 
-const BestSingleAlbum = () => {
+const SingleAlbumWrites = () => {
 	const [BestSuriImage, setBestSuriImage] = useState<SingleImage | null>();
 	const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -39,13 +42,16 @@ const BestSingleAlbum = () => {
 			return <button>비어있음</button>;
 		}
 		return (
-			<BestSingleAlbumImage
-				width={100}
-				height={100}
-				src={BestSuriImage.thumbnail}
-				alt={BestSuriImage.type}
-				onClick={handleClickFileInput}
-			/>
+			<ShowImageContainer>
+				<BestSingleAlbumImage
+					width={300}
+					height={400}
+					objectFit="cover"
+					src={BestSuriImage.thumbnail}
+					alt={BestSuriImage.type}
+					onClick={handleClickFileInput}
+				/>
+			</ShowImageContainer>
 		);
 	}, [BestSuriImage]);
 	const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
@@ -54,7 +60,7 @@ const BestSingleAlbum = () => {
 		if (BestSuriImage) {
 			formdata.append("bestSingleAlbum", BestSuriImage.file);
 			axios
-				.post("/api/suri", formdata)
+				.post("/test/singleImageTest", formdata)
 				.then((response) => {
 					alert("요청 성공");
 					console.log(response);
@@ -69,8 +75,9 @@ const BestSingleAlbum = () => {
 	useEffect(() => {});
 
 	return (
-		<>
+		<WritingSingleAlbumContainer>
 			{showImage}
+
 			<BestSingleAlbumForm onSubmit={handleSubmitForm} encType="multipart/form-data">
 				<BestSingleAlbumInput
 					type="file"
@@ -82,12 +89,19 @@ const BestSingleAlbum = () => {
 				/>
 				<BestSingleAlbumTitle></BestSingleAlbumTitle>
 				<BestSingleAlbumYear></BestSingleAlbumYear>
+				<BestSingleAlbumDescriptionInput
+					type="text"
+					id="bestalbumdescription"
+					name="bestalbumdescription"
+					placeholder="추억에 대해 설명해주세요"
+					autoFocus
+				></BestSingleAlbumDescriptionInput>
 				<BestSingleAlbumSubmitButton type="submit" value="submit">
-					제출
+					Upload
 				</BestSingleAlbumSubmitButton>
 			</BestSingleAlbumForm>
-		</>
+		</WritingSingleAlbumContainer>
 	);
 };
 
-export default BestSingleAlbum;
+export default SingleAlbumWrites;
