@@ -9,6 +9,7 @@ import {
 	WritingSingleAlbumContainer,
 	ShowImageContainer,
 	BestSingleAlbumDescriptionInput,
+	EmptyImage,
 } from "./styled";
 import axios from "axios";
 type SingleImage = {
@@ -20,6 +21,7 @@ type SingleImage = {
 const SingleAlbumWrites = () => {
 	const [BestSuriImage, setBestSuriImage] = useState<SingleImage | null>();
 	const fileInputRef = useRef<HTMLInputElement>(null);
+	const [title, setTitle] = useState<string>("");
 
 	const handleClickFileInput = () => {
 		fileInputRef.current?.click();
@@ -39,7 +41,7 @@ const SingleAlbumWrites = () => {
 
 	const showImage = useMemo(() => {
 		if (!BestSuriImage && BestSuriImage == null) {
-			return <button>비어있음</button>;
+			return <EmptyImage onClick={handleClickFileInput}>이미지를 업로드하려면 클릭하세요</EmptyImage>;
 		}
 		return (
 			<ShowImageContainer>
@@ -76,9 +78,8 @@ const SingleAlbumWrites = () => {
 
 	return (
 		<WritingSingleAlbumContainer>
-			{showImage}
-
 			<BestSingleAlbumForm onSubmit={handleSubmitForm} encType="multipart/form-data">
+				{showImage}
 				<BestSingleAlbumInput
 					type="file"
 					id="bestsingle"
@@ -86,7 +87,7 @@ const SingleAlbumWrites = () => {
 					accept="image/*"
 					ref={fileInputRef}
 					onChange={uploadProfile}
-				/>
+				></BestSingleAlbumInput>
 				<BestSingleAlbumTitle></BestSingleAlbumTitle>
 				<BestSingleAlbumYear></BestSingleAlbumYear>
 				<BestSingleAlbumDescriptionInput
