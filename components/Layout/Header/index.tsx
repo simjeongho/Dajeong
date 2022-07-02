@@ -10,7 +10,7 @@ const Header = () => {
 				<Link href="/">
 					<LayoutHeaderTitle>Sim Bwat Da Blog</LayoutHeaderTitle>
 				</Link>
-				<Image src={GinsenTitle} alt="Ginsen" height={100} />
+				<Image src={GinsenTitle} alt="Ginsen" height={60} />
 			</LayoutTitlediv>
 
 			<LayoutNavbar>
@@ -32,11 +32,12 @@ const Header = () => {
 							posts
 						</LayoutNavItem>
 					</Link>
-
-					<LayoutNavItem>
-						<IoImagesOutline />
-						Album
-					</LayoutNavItem>
+					<Link href="/Album">
+						<LayoutNavItem>
+							<IoImagesOutline />
+							Album
+						</LayoutNavItem>
+					</Link>
 				</LayoutNavLists>
 			</LayoutNavbar>
 		</LayoutHeader>

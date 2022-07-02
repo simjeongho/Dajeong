@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const LayoutHeader = styled.header`
 	width: 100%;
-	height: auto;
+	height: 10%;
 	background-color: black;
 	border-radius: 10px;
 `;
@@ -18,13 +18,9 @@ export const LayoutHeaderTitle = styled.h1`
 	height: 100%;
 	font-family: "googlGugi";
 	color: white;
-	font-size: 3rem;
+	font-size: 2rem;
 	margin: 1rem;
 	cursor: pointer;
-`;
-
-export const LayoutHeaderImg = styled.img`
-	height: 8vh;
 `;
 
 export const LayoutNavbar = styled.nav`
@@ -36,7 +32,7 @@ export const LayoutNavbar = styled.nav`
 export const LayoutNavLists = styled.ul`
 	display: flex;
 	justify-content: space-evenly;
-	width: 100vw;
+	width: 60vw;
 	background-color: black;
 `;
 
@@ -45,7 +41,7 @@ export const LayoutNavItem = styled.li`
 	top: 1rem;
 	margin-bottom: 2rem;
 	list-style: none;
-	font-size: 1.5rem;
+	font-size: 1rem;
 	color: white;
 	font-family: var(--font-lnkLi);
 	border: 2px solid transparent;
@@ -53,7 +49,7 @@ export const LayoutNavItem = styled.li`
 	background-clip: content-box, border-box;
 	cursor: pointer;
 	&:hover {
-		animation: ${moveUptop} 0.5s linear;
+		animation: ${moveUptop} 0.2s linear;
 		animation-iteration-count: 1;
 		animation-fill-mode: forwards;
 	}
