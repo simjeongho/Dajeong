@@ -41,7 +41,7 @@ export const BestAlbumShowButton = styled.button`
 	border-radius: 10px 10px 10px 10px;
 	cursor: pointer;
 	&:hover {
-		animation: ${moveUp} 1s linear;
+		animation: ${moveUp} 0.5s linear;
 		animation-iteration-count: 1;
 		animation-fill-mode: forwards;
 	}

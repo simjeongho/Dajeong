@@ -1,3 +1,4 @@
+import { Appear } from "./../../shared/style/styled";
 import { NeonRoundButton } from "shared/component/NeonButton/styled";
 import Image from "next/image";
 import styled from "styled-components";
@@ -34,6 +35,17 @@ export const BestSingleAlbumForm = styled.form`
 
 export const BestSingleAlbumInput = styled.input`
 	display: none;
+`;
+export const BestSingleAlbumTitleInput = styled.input`
+	width: 60%;
+	height: 10%;
+	font-size: 1rem;
+	background-color: black;
+	border: 0.2rem solid var(--color-lightgray);
+	border-radius: 10px;
+	color: white;
+	margin-top: 1%;
+	margin-bottom: 1%;
 `;
 
 export const BestSingleAlbumDescriptionInput = styled.input`

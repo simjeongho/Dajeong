@@ -4,7 +4,7 @@ export const LayoutFooter = styled.footer`
 	width: 100%;
 	height: auto;
 	background: black;
-	border-radius: 8px;
+	border-radius: 0.8rem;
 	position: relative;
 	align-items: center;
 	justify-content: center;

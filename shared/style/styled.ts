@@ -14,13 +14,13 @@ export const moveUptop = keyframes`
 
 export const moveUp = keyframes`
     0%{
-        margin-top: 5rem;
+        margin-top: 3rem;
     }
     50% {
-        margin-top: 4rem;
+        margin-top: 2.5rem;
     }
     100% {
-        margin-top: 3rem;
+        margin-top: 2rem;
     }
 `;
 
