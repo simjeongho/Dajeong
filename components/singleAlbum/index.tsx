@@ -64,24 +64,10 @@ const SingleAlbumWrites = () => {
 		if (title === "" || description === "") {
 			return alert("제목과 내용 모두 채워주세요");
 		}
-
-		const data = {
-			title: title,
-			content: description,
-		};
-
-		axios
-			.post("/singleAlbum/uploadText", data)
-			.then((response) => {
-				console.log("text", response);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
 		const formdata = new FormData();
 		if (singleImage) {
-			//formdata.append("title", title);
-			//formdata.append("description", description);
+			formdata.append("title", title);
+			formdata.append("content", description);
 			formdata.append("singleImage", singleImage.file);
 			axios
 				.post("/singleAlbum/uploadImage", formdata)
