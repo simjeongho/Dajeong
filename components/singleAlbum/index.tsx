@@ -10,8 +10,10 @@ import {
 	ShowImageContainer,
 	BestSingleAlbumDescriptionInput,
 	EmptyImage,
+	BestSingleAlbumTitleInput,
 } from "./styled";
 import axios from "axios";
+import { useRouter } from "next/router";
 type SingleImage = {
 	file: File;
 	thumbnail: string;
@@ -19,19 +21,20 @@ type SingleImage = {
 };
 
 const SingleAlbumWrites = () => {
-	const [BestSuriImage, setBestSuriImage] = useState<SingleImage | null>();
+	const [singleImage, setSingleImage] = useState<SingleImage | null>();
 	const fileInputRef = useRef<HTMLInputElement>(null);
 	const [title, setTitle] = useState<string>("");
+	const [description, setDescription] = useState<string>("");
+	const router = useRouter();
 
 	const handleClickFileInput = () => {
 		fileInputRef.current?.click();
 	};
-	const uploadProfile = (e: ChangeEvent<HTMLInputElement>) => {
+	const uploadSingleImage = (e: ChangeEvent<HTMLInputElement>) => {
 		const fileList = e.target.files;
-		const length = fileList?.length;
 		if (fileList && fileList[0]) {
 			const url = URL.createObjectURL(fileList[0]);
-			setBestSuriImage({
+			setSingleImage({
 				file: fileList[0],
 				thumbnail: url,
 				type: fileList[0].type.slice(0, 5),
@@ -40,7 +43,7 @@ const SingleAlbumWrites = () => {
 	};
 
 	const showImage = useMemo(() => {
-		if (!BestSuriImage && BestSuriImage == null) {
+		if (!singleImage && singleImage == null) {
 			return <EmptyImage onClick={handleClickFileInput}>이미지를 업로드하려면 클릭하세요</EmptyImage>;
 		}
 		return (
@@ -49,26 +52,46 @@ const SingleAlbumWrites = () => {
 					width={300}
 					height={400}
 					objectFit="cover"
-					src={BestSuriImage.thumbnail}
-					alt={BestSuriImage.type}
+					src={singleImage.thumbnail}
+					alt={singleImage.type}
 					onClick={handleClickFileInput}
 				/>
 			</ShowImageContainer>
 		);
-	}, [BestSuriImage]);
+	}, [singleImage]);
 	const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		if (title === "" || description === "") {
+			return alert("제목과 내용 모두 채워주세요");
+		}
+
+		const data = {
+			title: title,
+			content: description,
+		};
+
+		// axios
+		// 	.post("/singleAlbum/uploadText", data)
+		// 	.then((response) => {
+		// 		console.log(response);
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 	});
 		const formdata = new FormData();
-		if (BestSuriImage) {
-			formdata.append("bestSingleAlbum", BestSuriImage.file);
+		if (singleImage) {
+			//formdata.append("title", title);
+			//formdata.append("description", description);
+			formdata.append("singleImage", singleImage.file);
 			axios
-				.post("/test/singleImageTest", formdata)
+				.post("/singleAlbum/uploadImage", formdata)
 				.then((response) => {
-					alert("요청 성공");
+					alert("글 작성이 완료되었습니다.");
 					console.log(response);
+					router.push("/Album");
 				})
 				.catch((error) => {
-					alert("요청 실패");
+					alert("글 작성에 실패하였습니다.");
 					console.log(error);
 				})
 				.then(function () {});
@@ -82,20 +105,30 @@ const SingleAlbumWrites = () => {
 				{showImage}
 				<BestSingleAlbumInput
 					type="file"
-					id="bestsingle"
-					name="bestsingle"
+					id="singleImage"
+					name="singleImage"
 					accept="image/*"
 					ref={fileInputRef}
-					onChange={uploadProfile}
+					onChange={uploadSingleImage}
 				></BestSingleAlbumInput>
-				<BestSingleAlbumTitle></BestSingleAlbumTitle>
-				<BestSingleAlbumYear></BestSingleAlbumYear>
+				<BestSingleAlbumTitleInput
+					placeholder="사진의 제목이 무엇인가요?"
+					value={title}
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+						setTitle(e.target.value);
+					}}
+				></BestSingleAlbumTitleInput>
+
 				<BestSingleAlbumDescriptionInput
 					type="text"
 					id="bestalbumdescription"
 					name="bestalbumdescription"
 					placeholder="추억에 대해 설명해주세요"
+					value={description}
 					autoFocus
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+						setDescription(e.target.value);
+					}}
 				></BestSingleAlbumDescriptionInput>
 				<BestSingleAlbumSubmitButton type="submit" value="submit">
 					Upload
