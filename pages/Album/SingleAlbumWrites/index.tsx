@@ -1,4 +1,4 @@
-import SingleAlbumWrites from "components/singleAlbum";
+import SingleAlbumWrites from "components/singleAlbumWritingForm";
 
 const singleAlbumWrites = () => {
 	return (

@@ -1,5 +1,8 @@
 const withImages = require("next-images");
 module.exports = {
+	images: {
+		domains: ["localhost"],
+	},
 	async rewrites() {
 		return [
 			{
@@ -7,8 +10,5 @@ module.exports = {
 				destination: "http://localhost:5000/:path*",
 			},
 		];
-	},
-	images: {
-		disaleStaticImages: true,
 	},
 };

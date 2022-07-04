@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 interface Props {
 	settings?: Settings;
 	children: React.ReactNode;
+	title: string;
 }
 
 const ArrowButton = styled.button<{ pos?: "left" | "right" }>`
@@ -40,6 +41,18 @@ const ArrowButton = styled.button<{ pos?: "left" | "right" }>`
 		color: #222;
 	}
 `;
+const SliderContainer = styled.div`
+	padding: 1rem;
+	border: 0.8rem solid white;
+	margin-bottom: 1rem;
+	width: 70%;
+	height: auto;
+`;
+
+const SliderTitle = styled.h1`
+	font-size: 3rem;
+	color: white;
+`;
 
 const DEFAULT_SETTINGS: Settings = {
 	dots: false,
@@ -62,8 +75,11 @@ const DEFAULT_SETTINGS: Settings = {
 	),
 };
 
-const Slider: React.FC<Props> = ({ settings = DEFAULT_SETTINGS, children }) => (
-	<ReactSlick {...settings}>{children}</ReactSlick>
+const AxiosSlider: React.FC<Props> = ({ settings = DEFAULT_SETTINGS, children, title }) => (
+	<SliderContainer>
+		<SliderTitle>{title}</SliderTitle>
+		<ReactSlick {...settings}>{children}</ReactSlick>
+	</SliderContainer>
 );
 
-export default Slider;
+export default AxiosSlider;

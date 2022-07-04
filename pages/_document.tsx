@@ -30,7 +30,15 @@ class MyDocument extends Document {
 		return (
 			<Html>
 				<html lang="ko" />
-				<Head></Head>
+				<Head>
+					<link
+						rel="preload"
+						href="/assets/fonts/Gugi/Gugi-Regular.ttf"
+						as="font"
+						type="font/ttf"
+						crossOrigin="anonymous"
+					/>
+				</Head>
 				<body>
 					<Main />
 					<NextScript />

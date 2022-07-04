@@ -1,30 +1,44 @@
 :root {
 	--font-googleGugi: "googleGugi";
 	--font-googleSingleDay: "googleSingleDay";
+	--border-container: 0.8rem solid white;
+	--fong-lnkLi: "lnkLi";
 	--color-text-white: #fffff0;
 	--color-lightgray: #778899;
 	--color-mainpurple: #8a2be2;
 	--color-magentapurple: #ff00ff;
 	--color-deeppurple: #4b0082;
 	--color-middlepurple: #9370db;
+	--color-neon: linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%)
+	margin: 0;
 }
 body {
 	margin: 0;
+	width: 100%;
+	min-height: 100vh;
+	scroll-behavior: smooth;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-		"Droid Sans", "Helvetica Neue", "googleFont";
+		"Droid Sans", "Helvetica Neue", "googlGugi", "googleSingleDay", "likLi";
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace, googleSingleDay;
 }
 @font-face {
 	font-family: "googleGugi";
-	src: url(./assets/fonts/Gugi/Gugi-Regular.ttf);
+	src: url("/assets/fonts/Gugi/Gugi-Regular.ttf") format("ttf");
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
 	font-family: "googleSingleDay";
-	src: url(./assets/fonts/Single_Day/SingleDay-Regular.ttf);
+	src: url("/assets/fonts/Single_Day/SingleDay-Regular.ttf") format("ttf");
+}
+
+@font-face {
+	font-family: "lnkLi";
+	src: url("/assets/fonts/lnkLi/InkLipquidFonts.ttf") format("ttf");
 }

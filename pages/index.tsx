@@ -1,6 +1,6 @@
 import StaticSlider from "components/StaticCarousel";
 import { useEffect, useState } from "react";
-import { HomeContainer, SliderContainer } from "./styled";
+import { HomeContainer } from "./styled";
 import Card from "components/card";
 import mangWon from "assets/images/landscape/mangwon.jpg";
 import hanRiver from "assets/images/landscape/hanriver.jpg";
@@ -15,6 +15,7 @@ import haru4 from "assets/images/together/haru4.png";
 import haru5 from "assets/images/together/haru5.png";
 import togeter2 from "assets/images/together/together2.jpg";
 import DaeunBestImage from "components/DaeunBestAlbum";
+import FullPage from "shared/FullPage";
 const landscapeData = [
 	<Card key="land1" src={mangWon} alt="망원" title="망원에서" year="2022" />,
 	<Card key="land2" src={hanRiver} alt="한강" title="한강 피크닉" year="2022" />,
@@ -33,6 +34,20 @@ const togetherData = [
 	<Card key="together6" src={togeter2} alt="" title="헤헿2" year="2022" />,
 ];
 
+const pages = [
+	{
+		name: "",
+		component: DaeunBestImage,
+	},
+	{
+		name: "carousel-LandScape",
+		component: StaticSlider,
+	},
+	{
+		name: "carousel-Together",
+		component: StaticSlider,
+	},
+];
 const Index = () => {
 	const [page, setPage] = useState<number | null>(0);
 
@@ -42,10 +57,10 @@ const Index = () => {
 			setPage(null);
 		};
 	}, [setPage]);
-	// const handleNext = () => {
-	// 	if (page === null || page === pages.length - 1) return;
-	// 	setPage(page + 1);
-	// };
+	const handleNext = () => {
+		if (page === null || page === pages.length - 1) return;
+		setPage(page + 1);
+	};
 	const handlePrev = () => {
 		if (page === null || page === 0) return;
 		setPage(page - 1);
@@ -54,7 +69,6 @@ const Index = () => {
 		<HomeContainer>
 			<DaeunBestImage />
 			<StaticSlider children={landscapeData} title="LandScape" />
-
 			<StaticSlider children={togetherData} title="Together" />
 		</HomeContainer>
 	);
