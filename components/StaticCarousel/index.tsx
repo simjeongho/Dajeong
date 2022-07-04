@@ -71,6 +71,7 @@ const SliderContainer = styled.div`
 `;
 
 const SliderTitle = styled.h1`
+	font-family: "googleSingleDay";
 	font-size: 3rem;
 	color: white;
 `;

@@ -2,7 +2,7 @@
 	--font-googleGugi: "googleGugi";
 	--font-googleSingleDay: "googleSingleDay";
 	--border-container: 0.8rem solid white;
-	--fong-lnkLi: "lnkLi";
+	--font-lnkLi: "lnkLi";
 	--color-text-white: #fffff0;
 	--color-lightgray: #778899;
 	--color-mainpurple: #8a2be2;
@@ -18,7 +18,7 @@ body {
 	min-height: 100vh;
 	scroll-behavior: smooth;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-		"Droid Sans", "Helvetica Neue", "googlGugi", "googleSingleDay", "likLi";
+		"Droid Sans", "Helvetica Neue", "googleGugi", "googleSingleDay", "likLi";
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -28,17 +28,19 @@ code {
 }
 @font-face {
 	font-family: "googleGugi";
-	src: url("/assets/fonts/Gugi/Gugi-Regular.ttf") format("ttf");
-	font-weight: normal;
-	font-style: normal;
+	src: url("/assets/fonts/Gugi/Gugi-Regular.woff2") format('woff2'), 
+	url("/assets/fonts/Gugi/Gugi-Regular.ttf") format("ttf");
+	font-display: swap;
 }
 
 @font-face {
 	font-family: "googleSingleDay";
-	src: url("/assets/fonts/Single_Day/SingleDay-Regular.ttf") format("ttf");
+	src: url("/assets/fonts/Single_Day/SingleDay-Regular.woff2") format('woff2'), url("/assets/fonts/Single_Day/SingleDay-Regular.ttf") format("ttf");
+	font-display: swap;
 }
 
 @font-face {
 	font-family: "lnkLi";
-	src: url("/assets/fonts/lnkLi/InkLipquidFonts.ttf") format("ttf");
+	src: url("/assets/fonts/lnkLi/lnkLipquidFonts.woff2") format('woff2'), url("/assets/fonts/lnkLi/InkLipquidFonts.ttf") format("ttf");
+	font-display: swap;
 }

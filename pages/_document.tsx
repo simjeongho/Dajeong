@@ -33,9 +33,23 @@ class MyDocument extends Document {
 				<Head>
 					<link
 						rel="preload"
-						href="/assets/fonts/Gugi/Gugi-Regular.ttf"
+						href="/assets/fonts/Gugi/Gugi-Regular.woff2"
 						as="font"
-						type="font/ttf"
+						type="font/woff2"
+						crossOrigin="anonymous"
+					/>
+					<link
+						rel="preload"
+						href="/assets/fonts/lnkLi/lnkLipquidFonts.woff2"
+						as="font"
+						type="font/woff2"
+						crossOrigin="anonymous"
+					/>
+					<link
+						rel="preload"
+						href="/assets/fonts/Single_Day/SingleDay-Regular.woff2"
+						as="font"
+						type="font/woff2"
 						crossOrigin="anonymous"
 					/>
 				</Head>
