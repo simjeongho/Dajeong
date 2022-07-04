@@ -70,14 +70,14 @@ const SingleAlbumWrites = () => {
 			content: description,
 		};
 
-		// axios
-		// 	.post("/singleAlbum/uploadText", data)
-		// 	.then((response) => {
-		// 		console.log(response);
-		// 	})
-		// 	.catch((err) => {
-		// 		console.log(err);
-		// 	});
+		axios
+			.post("/singleAlbum/uploadText", data)
+			.then((response) => {
+				console.log("text", response);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 		const formdata = new FormData();
 		if (singleImage) {
 			//formdata.append("title", title);
