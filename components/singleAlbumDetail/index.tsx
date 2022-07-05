@@ -1,3 +1,4 @@
+import { NonNullChain } from "typescript";
 import {
 	SingleAlbumContentContainer,
 	SingleAlbumDetailContainer,
@@ -8,6 +9,10 @@ import {
 	SingleAlbumDetailTitle,
 	SingleAlbumDetailTitleContainer,
 } from "./styled";
+
+type DetailProps = {
+	postNum: String | null;
+};
 
 const SingleAlbumDetail = () => {
 	return (

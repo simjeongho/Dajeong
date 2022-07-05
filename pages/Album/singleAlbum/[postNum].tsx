@@ -2,15 +2,24 @@
 import SingleAlbumDetail from "components/singleAlbumDetail";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
+import { useEffect } from "react";
 
 interface IParams extends ParsedUrlQuery {
-	postId: string;
+	postNum: string;
 }
 
-const SingleAlbumDetailPage = () => {
+const SingleAlbumDetailPage = ({}) => {
 	const router = useRouter();
 	const { postNum } = router.query;
-	return <SingleAlbumDetail></SingleAlbumDetail>;
+	useEffect(() => {
+		console.log(postNum);
+	}, [postNum]);
+	return (
+		<>
+			<div>{postNum}</div>
+			<SingleAlbumDetail></SingleAlbumDetail>
+		</>
+	);
 };
 
 export default SingleAlbumDetailPage;

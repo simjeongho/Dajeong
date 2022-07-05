@@ -9,11 +9,17 @@ type LinkCardProps = {
 	width: number;
 	height: number;
 	linkurl: string;
+	query: number | string;
 };
 
-const LinkCard: React.FC<LinkCardProps> = ({ src, title, alt, year, width, height, linkurl }) => {
+const LinkCard: React.FC<LinkCardProps> = ({ src, title, alt, year, width, height, linkurl, query }) => {
 	return (
-		<Link href={linkurl}>
+		<Link
+			href={{
+				pathname: `${linkurl}`,
+				query: { postNum: query },
+			}}
+		>
 			<CardContainer>
 				<CardImageWrapper>
 					<Image
