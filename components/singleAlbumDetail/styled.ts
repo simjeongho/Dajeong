@@ -5,14 +5,27 @@ export const SingleAlbumDetailContainer = styled.div`
 	width: 100%;
 	height: 100%;
 	display: flex;
+	background-color: black;
+	justify-content: center;
+	align-items: center;
 `;
 
-export const SingleAlbumDetailImageContainer = styled.div``;
+export const SingleAlbumDetailImageContainer = styled.div`
+	border: var(--border-container);
+	width: 40%;
+	height: 100%;
+`;
 
 export const SingleAlbumDetailImage = styled(Image)``;
-export const SingleAlbumContentContainer = styled.div``;
+export const SingleAlbumContentContainer = styled.div`
+	width: 30%;
+	height: 100%;
+	border: 0.2rem solid var(--color-lightgray);
+`;
 
-export const SingleAlbumDetailTitleContainer = styled.div``;
+export const SingleAlbumDetailTitleContainer = styled.div`
+	font-size: 0.5rem;
+`;
 
 export const SingleAlbumDetailTitle = styled.h1``;
 

@@ -3,6 +3,7 @@ import SingleAlbumDetail from "components/singleAlbumDetail";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import { useEffect } from "react";
+import axios from "axios";
 
 interface IParams extends ParsedUrlQuery {
 	postNum: string;
@@ -11,6 +12,7 @@ interface IParams extends ParsedUrlQuery {
 const SingleAlbumDetailPage = ({}) => {
 	const router = useRouter();
 	const { postNum } = router.query;
+
 	useEffect(() => {
 		console.log(postNum);
 	}, [postNum]);

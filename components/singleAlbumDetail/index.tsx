@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { NonNullChain } from "typescript";
 import {
 	SingleAlbumContentContainer,
@@ -9,12 +10,23 @@ import {
 	SingleAlbumDetailTitle,
 	SingleAlbumDetailTitleContainer,
 } from "./styled";
+import axios from "axios";
 
 type DetailProps = {
-	postNum: String | null;
+	postNum: String;
 };
 
 const SingleAlbumDetail = () => {
+	useEffect(() => {
+		axios
+			.post("/singleAlbum/getDetail")
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 	return (
 		<SingleAlbumDetailContainer>
 			<SingleAlbumDetailImageContainer></SingleAlbumDetailImageContainer>

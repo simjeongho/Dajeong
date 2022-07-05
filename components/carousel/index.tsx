@@ -50,7 +50,8 @@ const SliderContainer = styled.div`
 `;
 
 const SliderTitle = styled.h1`
-	font-size: 3rem;
+	font-family: var(--font-Dongle);
+	font-size: 2rem;
 	color: white;
 `;
 
@@ -59,8 +60,8 @@ const DEFAULT_SETTINGS: Settings = {
 	arrows: true,
 	infinite: true,
 	speed: 500,
-	slidesToShow: 5,
-	slidesToScroll: 5,
+	slidesToShow: 3,
+	slidesToScroll: 3,
 	vertical: false,
 	autoplay: true,
 	prevArrow: (

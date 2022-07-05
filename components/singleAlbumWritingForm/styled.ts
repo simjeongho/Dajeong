@@ -47,7 +47,7 @@ export const BestSingleAlbumTitleInput = styled.input`
 	margin-bottom: 1%;
 `;
 
-export const BestSingleAlbumDescriptionInput = styled.input`
+export const BestSingleAlbumDescriptionInput = styled.textarea`
 	vertical-align: top;
 	width: 60%;
 	height: 300px;

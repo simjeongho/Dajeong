@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import { CardContainer, CardImage, CardImageWrapper, CardInfo, CardKeyWord, CardTitle } from "./styeld";
+import { CardContainer, CardImageWrapper, CardInfo, CardKeyWord, CardTitle } from "./styeld";
 type CardProps = {
 	src: StaticImageData | string;
 	title: string;
