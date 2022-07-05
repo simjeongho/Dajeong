@@ -4,14 +4,26 @@ import "../styles/globals.css";
 import { LayoutContainer } from "components/Layout/styled";
 import type { AppProps } from "next/app";
 import "react-quill/dist/quill.snow.css";
+import { useState } from "react";
+import { QueryClient, QueryClientProvider, Hydrate } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 function MyApp({ Component, pageProps }: AppProps) {
+	//useState lazyinit을 사용해 QueryClient 인스턴스를 생성해
+	//QueryClientProvider의 client 값으로 전달해준다.
+	const [queryClient] = useState(() => new QueryClient());
 	return (
 		<>
-			<LayoutContainer>
-				<Header />
-				<Component {...pageProps} />
-				<Footer />
-			</LayoutContainer>
+			<QueryClientProvider client={queryClient}>
+				<Hydrate state={pageProps.dehydrateState}>
+					<LayoutContainer>
+						<Header />
+						<Component {...pageProps} />
+						<Footer />
+					</LayoutContainer>
+				</Hydrate>
+
+				<ReactQueryDevtools initialIsOpen={false} />
+			</QueryClientProvider>
 		</>
 	);
 }
