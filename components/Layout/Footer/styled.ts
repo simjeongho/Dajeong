@@ -20,4 +20,5 @@ export const LayoutFooterListItem = styled.li`
 	list-style: none;
 	font-family: var(--Font-googleSingleDay);
 	color: var(--color-text-white);
+	font-size: 1rem;
 `;
