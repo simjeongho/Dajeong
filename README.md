@@ -20,3 +20,7 @@
 ### 2022-06-29
 - CRA+TypeScript에서 Next.js로 이사
 - 기본적인 Nextjs 세팅 
+
+### 2022-07-05
+- NextJS와 Express간 이미지 주고 받는 기능 구현 완료 
+- 반응형 적용 
