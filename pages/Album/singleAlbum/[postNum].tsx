@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import SingleAlbumDetail from "components/singleAlbumDetail";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 
@@ -6,14 +7,10 @@ interface IParams extends ParsedUrlQuery {
 	postId: string;
 }
 
-const singleAlbumDetail = () => {
+const SingleAlbumDetailPage = () => {
 	const router = useRouter();
 	const { postNum } = router.query;
-	return (
-		<>
-			<div>single Album Detail: {postNum}</div>
-		</>
-	);
+	return <SingleAlbumDetail></SingleAlbumDetail>;
 };
 
-export default singleAlbumDetail;
+export default SingleAlbumDetailPage;
