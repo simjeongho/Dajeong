@@ -27,5 +27,7 @@ package-lock.json
 *.jpg
 *.svg
 *.png
+*.woff2
+*.ttf
 .next/
 
