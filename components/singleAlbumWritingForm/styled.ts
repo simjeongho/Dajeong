@@ -1,10 +1,10 @@
-import { Appear } from "../../shared/style/styled";
+import { Appear } from "shared/style/styled";
 import { NeonRoundButton } from "shared/component/NeonButton/styled";
 import Image from "next/image";
 import styled from "styled-components";
 
 export const WritingSingleAlbumContainer = styled.div`
-	width: 100vw;
+	width: 100%;
 	height: 80vh;
 	background-color: black;
 	display: flex;
@@ -14,8 +14,8 @@ export const WritingSingleAlbumContainer = styled.div`
 	border: var(--border-container);
 `;
 export const EmptyImage = styled.div`
-	width: 300px;
-	height: 400px;
+	width: 30%;
+	height: 200px;
 	border: 0.3rem dashed var(--color-lightgray);
 	border-radius: 10%;
 	margin: 0.2rem;
@@ -38,7 +38,6 @@ export const BestSingleAlbumInput = styled.input`
 `;
 export const BestSingleAlbumTitleInput = styled.input`
 	width: 60%;
-	height: 10%;
 	font-size: 1rem;
 	background-color: black;
 	border: 0.2rem solid var(--color-lightgray);
@@ -51,7 +50,7 @@ export const BestSingleAlbumTitleInput = styled.input`
 export const BestSingleAlbumDescriptionInput = styled.input`
 	vertical-align: top;
 	width: 60%;
-	height: 100%;
+	height: 300px;
 	font-size: 1rem;
 	background-color: black;
 	color: white;

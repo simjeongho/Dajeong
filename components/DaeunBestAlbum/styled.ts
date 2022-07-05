@@ -4,10 +4,14 @@ import Image from "next/image";
 
 export const BestAlbumContainer = styled.div`
 	width: 70%;
-	height: 800px;
+	height: 50%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	@media screen and (max-width: 768px) {
+		display: flex;
+		flex-direction: column;
+	}
 `;
 
 export const BestAlbumIntroduceContainer = styled.div`
@@ -18,8 +22,11 @@ export const BestAlbumIntroduceContainer = styled.div`
 	padding: 3rem;
 
 	& > h2 {
-		font-size: 1em;
+		font-size: 1rem;
 		color: var(--color-middlepurple);
+		@media screen and (max-width: 500px) {
+			font-size: 0.7rem;
+		}
 	}
 
 	& > h1 {
@@ -29,6 +36,10 @@ export const BestAlbumIntroduceContainer = styled.div`
 	& > p {
 		font-size: 1em;
 		color: var(--color-lightgray);
+	}
+	@media screen and (max-width: 500px) {
+		width: 100%;
+		height: 50%;
 	}
 `;
 export const BestAlbumShowButton = styled.button`

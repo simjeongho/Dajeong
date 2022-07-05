@@ -1,6 +1,4 @@
-import { moveUp, Appear, Disappear } from "./../shared/style/styled";
-import Image from "next/image";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const HomeContainer = styled.div`
 	width: 100%;
@@ -11,11 +9,15 @@ export const HomeContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	/* background: url("/assets/images/Home.svg"); */
+	@media screen and (max-width: 1000px) {
+		display: flex;
+		flex-direction: column;
+	}
 `;
 
 export const ProfileContainer = styled.div`
 	width: 90%;
-	height: 50vh;
+	height: 50%;
 	display: flex;
 
 	& > div:first-child {
@@ -38,5 +40,9 @@ export const ProfileContainer = styled.div`
 		position: relative;
 		top: 15rem;
 		left: 50rem;
+	}
+	@media screen and (max-width: 1000px) {
+		display: flex;
+		flex-direction: column;
 	}
 `;

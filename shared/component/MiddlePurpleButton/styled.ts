@@ -1,5 +1,6 @@
 import styled from "styled-components";
 export const MiddlePurpleButton = styled.button`
+	font-size: var(--font-googleGugi);
 	width: 40%;
 	height: auto;
 	font-size: 1.5rem;

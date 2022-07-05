@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ring } from "shared/style/styled";
 
 export const NeonRoundButton = styled.button`
+	font-family: var(--font-Dongle);
 	position: relative;
 	border: none;
 	min-width: 200px;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const LayoutHeader = styled.header`
 	width: 100%;
-	height: 10%;
+	height: 8%;
 	background-color: black;
 	border-radius: 10px;
 `;
