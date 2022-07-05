@@ -16,7 +16,7 @@ export const LayoutTitlediv = styled.div`
 
 export const LayoutHeaderTitle = styled.h1`
 	height: 100%;
-	font-family: "googlGugi";
+	font-family: "dongle";
 	color: white;
 	font-size: 2rem;
 	margin: 1rem;
