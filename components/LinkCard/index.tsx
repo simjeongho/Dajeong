@@ -16,7 +16,15 @@ const LinkCard: React.FC<LinkCardProps> = ({ src, title, alt, year, width, heigh
 		<Link href={linkurl}>
 			<CardContainer>
 				<CardImageWrapper>
-					<Image src={src} alt={alt} layout="responsive" quality={100} width={width} height={height} />
+					<Image
+						src={src}
+						alt={alt}
+						layout="responsive"
+						quality={100}
+						width={width}
+						height={height}
+						unoptimized={true}
+					/>
 				</CardImageWrapper>
 				<CardInfo>
 					<CardTitle>{title}</CardTitle>

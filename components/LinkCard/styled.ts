@@ -6,6 +6,9 @@ export const CardContainer = styled.div`
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
+	&:hover {
+		transform: scale(1.05);
+	}
 `;
 
 export const CardImageWrapper = styled.div`
