@@ -20,6 +20,7 @@ export const BestAlbumIntroduceContainer = styled.div`
 	border: 10px solid white;
 	position: relative;
 	padding: 3rem;
+	font-family: var(--font-googleGugi);
 
 	& > h2 {
 		font-size: 1rem;
@@ -40,6 +41,7 @@ export const BestAlbumIntroduceContainer = styled.div`
 	@media screen and (max-width: 500px) {
 		width: 100%;
 		height: 50%;
+		margin-bottom: 1rem;
 	}
 `;
 export const BestAlbumShowButton = styled.button`

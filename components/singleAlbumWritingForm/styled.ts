@@ -1,4 +1,3 @@
-import { AlbumListContainer } from "./../../pages/Album/styled";
 import { NeonRoundButton } from "shared/component/NeonButton/styled";
 import Image from "next/image";
 import styled from "styled-components";

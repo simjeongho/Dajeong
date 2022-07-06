@@ -2,8 +2,7 @@ import LinkCard from "components/LinkCard";
 import AxiosSlider from "components/carousel";
 import Link from "next/link";
 import { AlbumListContainer, SingleAlbumWritesButton } from "./styled";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { QueryClient } from "react-query";
+import { InferGetServerSidePropsType } from "next";
 import useGetSingleAlbumList from "hooks/useGetSingleAlbumList";
 export type singleAlbumPost = {
 	title: string;

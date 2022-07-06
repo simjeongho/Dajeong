@@ -7,6 +7,7 @@ import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider, Hydrate } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import "antd/dist/antd.css";
 function MyApp({ Component, pageProps }: AppProps) {
 	//useState lazyinit을 사용해 QueryClient 인스턴스를 생성해
 	//QueryClientProvider의 client 값으로 전달해준다.

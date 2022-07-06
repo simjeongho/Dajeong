@@ -31,6 +31,7 @@ class MyDocument extends Document {
 			<Html>
 				<html lang="ko" />
 				<Head>
+					<title>sim bwat da blog</title>
 					<link
 						rel="preload"
 						href="/assets/fonts/Gugi/Gugi-Regular.woff2"
