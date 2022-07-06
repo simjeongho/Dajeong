@@ -1,6 +1,6 @@
 const nextConfig = {
 	images: {
-		domains: ["localhost:5000", "*"],
+		domains: ["localhost", "*"],
 		remotePatterns: [
 			{
 				protocol: "http",
@@ -19,6 +19,10 @@ const nextConfig = {
 			{
 				source: `/Album`,
 				destination: `http://localhost:5000/singleAlbum/getList`,
+			},
+			{
+				source: `/Album/singleAlbum/:postNum`,
+				destination: `http://localhost:5000/singleAlbum/getDetail/:postNum`,
 			},
 		];
 	},

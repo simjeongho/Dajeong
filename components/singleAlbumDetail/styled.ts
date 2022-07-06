@@ -12,7 +12,6 @@ export const SingleAlbumDetailContainer = styled.div`
 
 export const SingleAlbumDetailImageContainer = styled.div`
 	border: var(--border-container);
-	width: 40%;
 	height: 100%;
 `;
 
@@ -27,8 +26,12 @@ export const SingleAlbumDetailTitleContainer = styled.div`
 	font-size: 0.5rem;
 `;
 
-export const SingleAlbumDetailTitle = styled.h1``;
+export const SingleAlbumDetailTitle = styled.h1`
+	color: white;
+`;
 
-export const SingleAlbumDetailDescriptionContainer = styled.div``;
+export const SingleAlbumDetailDescriptionContainer = styled.div`
+	color: white;
+`;
 
 export const SingleAlbumDetailDescription = styled.div``;

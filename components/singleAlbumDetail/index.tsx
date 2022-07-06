@@ -13,30 +13,24 @@ import {
 import axios from "axios";
 
 type DetailProps = {
-	postNum: String;
+	title: string;
+	content: string;
+	filepath: string;
 };
 
-const SingleAlbumDetail = () => {
-	useEffect(() => {
-		axios
-			.post("/singleAlbum/getDetail")
-			.then((res) => {
-				console.log(res);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	}, []);
+const SingleAlbumDetail = ({ title, content, filepath }: DetailProps) => {
 	return (
 		<SingleAlbumDetailContainer>
-			<SingleAlbumDetailImageContainer></SingleAlbumDetailImageContainer>
+			<SingleAlbumDetailImageContainer>
+				<SingleAlbumDetailImage src={`http://localhost:5000/${filepath}`} alt={title} width={300} height={400} />
+			</SingleAlbumDetailImageContainer>
 
 			<SingleAlbumContentContainer>
 				<SingleAlbumDetailTitleContainer>
-					<SingleAlbumDetailTitle />
+					<SingleAlbumDetailTitle>{title}</SingleAlbumDetailTitle>
 				</SingleAlbumDetailTitleContainer>
 				<SingleAlbumDetailDescriptionContainer>
-					<SingleAlbumDetailDescription>gggg</SingleAlbumDetailDescription>
+					<SingleAlbumDetailDescription>{content}</SingleAlbumDetailDescription>
 				</SingleAlbumDetailDescriptionContainer>
 			</SingleAlbumContentContainer>
 		</SingleAlbumDetailContainer>
