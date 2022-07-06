@@ -31,19 +31,6 @@ export type singleAlbumPost = {
 // 	}
 // };
 const Albums = ({ singleAlbums }: InferGetServerSidePropsType<{ singleAlbums: singleAlbumPost[] }>) => {
-	//const [singleAlbumList, setSingleAlbumList] = useState<singleAlbumPost[] | null>(null);
-	//const singleAlbumList: singleAlbumPost[] = singleAlbums;
-	// useEffect(() => {
-	// 	axios
-	// 		.get("/singleAlbum/getList")
-	// 		.then((response) => {
-	// 			console.log(response.data.singleAlbumList);
-	// 			setSingleAlbumList(response.data.singleAlbumList);
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log(err);
-	// 		});
-	// }, []);
 	const { data, isLoading } = useGetSingleAlbumList();
 	const singleAlbumList = data;
 	useEffect(() => {
