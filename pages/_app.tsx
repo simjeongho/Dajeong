@@ -8,6 +8,7 @@ import { useState } from "react";
 import { QueryClient, QueryClientProvider, Hydrate } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import "antd/dist/antd.css";
+import wrapper from "store/configureStore";
 function MyApp({ Component, pageProps }: AppProps) {
 	//useState lazyinit을 사용해 QueryClient 인스턴스를 생성해
 	//QueryClientProvider의 client 값으로 전달해준다.
@@ -29,4 +30,4 @@ function MyApp({ Component, pageProps }: AppProps) {
 	);
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
