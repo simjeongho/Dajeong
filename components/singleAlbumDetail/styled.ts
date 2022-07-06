@@ -8,11 +8,16 @@ export const SingleAlbumDetailContainer = styled.div`
 	background-color: black;
 	justify-content: center;
 	align-items: center;
+	@media screen and (max-width: 768px) {
+		display: flex;
+		flex-direction: column;
+	}
 `;
 
 export const SingleAlbumDetailImageContainer = styled.div`
 	border: var(--border-container);
 	height: 100%;
+	margin: 3%;
 `;
 
 export const SingleAlbumDetailImage = styled(Image)``;
@@ -20,10 +25,15 @@ export const SingleAlbumContentContainer = styled.div`
 	width: 30%;
 	height: 100%;
 	border: 0.2rem solid var(--color-lightgray);
+
+	@media screen and (max-width: 768px) {
+		width: 80%;
+		height: 100%;
+	}
 `;
 
 export const SingleAlbumDetailTitleContainer = styled.div`
-	font-size: 0.5rem;
+	font-size: 1.2rem;
 `;
 
 export const SingleAlbumDetailTitle = styled.h1`
@@ -32,6 +42,7 @@ export const SingleAlbumDetailTitle = styled.h1`
 
 export const SingleAlbumDetailDescriptionContainer = styled.div`
 	color: white;
+	font-size: 0.9rem;
 `;
 
 export const SingleAlbumDetailDescription = styled.div``;
