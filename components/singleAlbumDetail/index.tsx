@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { NonNullChain } from "typescript";
 import {
 	SingleAlbumContentContainer,
 	SingleAlbumDetailContainer,
@@ -10,7 +8,6 @@ import {
 	SingleAlbumDetailTitle,
 	SingleAlbumDetailTitleContainer,
 } from "./styled";
-import axios from "axios";
 
 type DetailProps = {
 	title: string;
