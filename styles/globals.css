@@ -17,6 +17,7 @@
 
 html{
 	font-size: 12px;
+	scrollbar-width: none;
 }
 
 body {
@@ -31,7 +32,12 @@ body {
 	@media screen and (max-width: 768px) {
 		font-size: 10px;
 	}
+	
 }
+body::-webkit-scrollbar{
+	display: none;
+}
+
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace, googleSingleDay;
