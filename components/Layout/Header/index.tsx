@@ -1,6 +1,12 @@
 import { LayoutHeader, LayoutHeaderTitle, LayoutNavbar, LayoutNavItem, LayoutNavLists, LayoutTitlediv } from "./styled";
 import GinsenTitle from "assets/images/ginsen.svg";
-import { IoImagesOutline, IoFileTrayStackedOutline, IoLogoInstagram, IoDesktopOutline } from "react-icons/io5";
+import {
+	IoImagesOutline,
+	IoFileTrayStackedOutline,
+	IoLogoInstagram,
+	IoDesktopOutline,
+	IoLogInOutline,
+} from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
 const Header = () => {
@@ -36,6 +42,12 @@ const Header = () => {
 						<LayoutNavItem>
 							<IoImagesOutline />
 							Album
+						</LayoutNavItem>
+					</Link>
+					<Link href="/Login">
+						<LayoutNavItem>
+							<IoLogInOutline />
+							Login
 						</LayoutNavItem>
 					</Link>
 				</LayoutNavLists>

@@ -39,7 +39,7 @@ export const BestAlbumIntroduceContainer = styled.div`
 		font-size: 1em;
 		color: var(--color-lightgray);
 	}
-	@media screen and (max-width: 500px) {
+	@media screen and (max-width: 768px) {
 		width: 100%;
 		height: 50%;
 		margin-bottom: 1rem;
