@@ -9,6 +9,8 @@ import {
 	BestSingleAlbumDescriptionInput,
 	EmptyImage,
 	BestSingleAlbumTitleInput,
+	BestSingleAlbumContentInputsContainer,
+	BestSingleAlbumInputs,
 } from "./styled";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -86,33 +88,38 @@ const SingleAlbumWrites = () => {
 	return (
 		<WritingSingleAlbumContainer>
 			<BestSingleAlbumForm onSubmit={handleSubmitForm} encType="multipart/form-data">
-				{showImage}
-				<BestSingleAlbumInput
-					type="file"
-					id="singleImage"
-					name="singleImage"
-					accept="image/*"
-					ref={fileInputRef}
-					onChange={uploadSingleImage}
-				></BestSingleAlbumInput>
-				<BestSingleAlbumTitleInput
-					placeholder="사진의 제목이 무엇인가요?"
-					value={title}
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-						setTitle(e.target.value);
-					}}
-				></BestSingleAlbumTitleInput>
+				<BestSingleAlbumInputs>
+					{showImage}
+					<BestSingleAlbumInput
+						type="file"
+						id="singleImage"
+						name="singleImage"
+						accept="image/*"
+						ref={fileInputRef}
+						onChange={uploadSingleImage}
+					></BestSingleAlbumInput>
+					<BestSingleAlbumContentInputsContainer>
+						<BestSingleAlbumTitleInput
+							placeholder="사진의 제목이 무엇인가요?"
+							value={title}
+							onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+								setTitle(e.target.value);
+							}}
+						></BestSingleAlbumTitleInput>
 
-				<BestSingleAlbumDescriptionInput
-					id="bestalbumdescription"
-					name="bestalbumdescription"
-					placeholder="추억에 대해 설명해주세요"
-					value={description}
-					autoFocus
-					onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
-						setDescription(e.target.value);
-					}}
-				></BestSingleAlbumDescriptionInput>
+						<BestSingleAlbumDescriptionInput
+							id="bestalbumdescription"
+							name="bestalbumdescription"
+							placeholder="추억에 대해 설명해주세요"
+							value={description}
+							autoFocus
+							onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+								setDescription(e.target.value);
+							}}
+						></BestSingleAlbumDescriptionInput>
+					</BestSingleAlbumContentInputsContainer>
+				</BestSingleAlbumInputs>
+
 				<BestSingleAlbumSubmitButton type="submit" value="submit">
 					Upload
 				</BestSingleAlbumSubmitButton>
