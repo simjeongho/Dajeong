@@ -4,7 +4,6 @@ import {
 	LoginFormForm,
 	LoginFormInput,
 	LoginFormInputLabel,
-	LoginFormPasswordInput,
 	LoginFormSubmitButton,
 } from "./styled";
 
@@ -18,9 +17,17 @@ const LoginForm = () => {
 	const onChangePassword = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		setPassword(e.target.value);
 	}, []);
+
+	const handleSubmitForm = useCallback(
+		(e: React.FormEvent<HTMLFormElement>) => {
+			e.preventDefault();
+			console.log(id, password);
+		},
+		[id, password],
+	);
 	return (
 		<LoginFormContainer>
-			<LoginFormForm>
+			<LoginFormForm onSubmit={handleSubmitForm}>
 				<LoginFormInputLabel htmlFor="loginId">아이디</LoginFormInputLabel>
 				<LoginFormInput
 					type="text"
@@ -37,7 +44,7 @@ const LoginForm = () => {
 					onChange={onChangePassword}
 					placeholder="비밀번호를 입력하세요"
 				></LoginFormInput>
-				<LoginFormSubmitButton>로그인</LoginFormSubmitButton>
+				<LoginFormSubmitButton type="submit">로그인</LoginFormSubmitButton>
 			</LoginFormForm>
 		</LoginFormContainer>
 	);

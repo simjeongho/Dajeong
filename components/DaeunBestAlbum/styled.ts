@@ -75,6 +75,10 @@ export const ImageContainer = styled.div<{ show?: boolean }>`
 					animation: ${Disappear} 1s linear;
 					animation-fill-mode: forwards;
 			  `}
+
+	@media screen and (max-width: 768px) {
+		left: 0;
+	}
 `;
 
 export const BestAlbum = styled(Image)``;

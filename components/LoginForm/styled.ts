@@ -13,6 +13,8 @@ export const LoginFormForm = styled.form`
 	color: white;
 `;
 
+export const LoginFormInputDiv = styled.div``;
+
 export const LoginFormInputLabel = styled.label`
 	position: relative;
 	right: 30%;
@@ -25,9 +27,10 @@ export const LoginFormInput = styled.input`
 	border-radius: 10px;
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
+	color: black;
 
 	&:hover {
-		border: 3px solid var(--color-middlepurple);
+		outline: 3px solid var(--color-middlepurple);
 	}
 	&:focus {
 		outline: 3px solid var(--color-middlepurple);
