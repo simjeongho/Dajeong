@@ -20,11 +20,11 @@
 			"components/*": ["components/*"],
 			"pages/*": ["pages/*"],
 			"utils/*": ["utils/*"],
-			"stores/*": ["stores/*"],
 			"constants/*": ["constants/*"],
 			"apis/*": ["apis/*"],
 			"types/*": ["types/*"],
-			"assets/*": ["public/assets/*"]
+			"assets/*": ["public/assets/*"],
+			"store/*": ["store/*"]
 		}
 	},
 	"exclude": ["node_modules"],
