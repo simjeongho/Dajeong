@@ -4,13 +4,13 @@ import { UserData } from "apis/Auth/types";
 type InitialState = {
 	isLogin: boolean;
 	isLogging: boolean;
-	userName: string;
+	usernickName: string;
 };
 
 const initialState: InitialState = {
 	isLogin: false,
 	isLogging: false,
-	userName: "",
+	usernickName: "",
 };
 
 export const userSlice = createSlice({
@@ -23,14 +23,14 @@ export const userSlice = createSlice({
 		},
 		userLogout(state) {
 			state.isLogin = false;
-			state.userName = "";
+			state.usernickName = "";
 			state.isLogging = false;
 		},
 		userLoginRequest(state) {
 			state.isLogging = true;
 		},
 		setUserData(state, action: PayloadAction<UserData>) {
-			state.userName = action.payload.userName;
+			state.usernickName = action.payload.nickname;
 		},
 	},
 });

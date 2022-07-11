@@ -1,17 +1,19 @@
+import { API_HOST } from "apis/api";
+import { delay } from "./root";
 import { UserData } from "./../../apis/Auth/types";
 import axios, { AxiosResponse } from "axios";
 import { userLogin, userLoginRequest } from "store/slices/user-slice";
-import { put, takeLatest, all, fork, call } from "redux-saga/effects";
+import { put, all, fork, throttle, call } from "redux-saga/effects";
+import { LoginRequest } from "apis/Auth/types";
 
-async function loginAPI() {
-	const res = axios.post("http://localhost:5000/login");
+async function loginAPI(data: LoginRequest) {
+	const res = axios.post(`${API_HOST}/login`, data);
 	return res;
 }
 
 function* SagaLogin() {
 	try {
-		const response: AxiosResponse<UserData> = yield call(loginAPI);
-		const { data, status } = response;
+		delay(1000);
 		yield put(userLogin());
 	} catch (err) {
 		console.log(err);
@@ -19,7 +21,7 @@ function* SagaLogin() {
 }
 
 function* watchLogin() {
-	yield takeLatest(userLoginRequest, SagaLogin);
+	yield throttle(2000, userLoginRequest, SagaLogin);
 }
 
 export function* userSaga() {

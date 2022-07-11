@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 type InitialState = {
 	id: string;
 	User: {
-		id: string;
+		email: string;
 		name: string;
 	};
 	content: string;
@@ -12,7 +12,7 @@ type InitialState = {
 const initialState: InitialState = {
 	id: "",
 	User: {
-		id: "",
+		email: "",
 		name: "",
 	},
 	content: "",
