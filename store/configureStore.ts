@@ -23,4 +23,6 @@ const wrapper = createWrapper(createStore, {
 	debug: process.env.NODE_ENV === "development",
 });
 
+export const selectUser = (state: any) => state.user;
+
 export default wrapper;

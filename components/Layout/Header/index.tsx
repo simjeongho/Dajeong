@@ -9,7 +9,11 @@ import {
 } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { selectUser } from "store/configureStore";
 const Header = () => {
+	const userSelector = useSelector(selectUser);
+	const { isLogin } = userSelector;
 	return (
 		<LayoutHeader>
 			<LayoutTitlediv>
@@ -20,37 +24,51 @@ const Header = () => {
 			</LayoutTitlediv>
 
 			<LayoutNavbar>
-				<LayoutNavLists>
-					<a target="_blank" href="https://hojung-testbench.tistory.com/" rel="noreferrer">
+				{isLogin ? (
+					<LayoutNavLists>
+						<a target="_blank" href="https://hojung-testbench.tistory.com/" rel="noreferrer">
+							<LayoutNavItem>
+								<IoDesktopOutline />
+								Blog
+							</LayoutNavItem>
+						</a>
 						<LayoutNavItem>
-							<IoDesktopOutline />
-							Blog
+							<IoLogoInstagram />
+							Instagram
 						</LayoutNavItem>
-					</a>
-
-					<LayoutNavItem>
-						<IoLogoInstagram />
-						Instagram
-					</LayoutNavItem>
-					<Link href="/Posts">
+						<Link href="/Posts">
+							<LayoutNavItem>
+								<IoFileTrayStackedOutline />
+								posts
+							</LayoutNavItem>
+						</Link>
+						<Link href="/Album">
+							<LayoutNavItem>
+								<IoImagesOutline />
+								Album
+							</LayoutNavItem>
+						</Link>
+					</LayoutNavLists>
+				) : (
+					<LayoutNavLists>
+						<a target="_blank" href="https://hojung-testbench.tistory.com/" rel="noreferrer">
+							<LayoutNavItem>
+								<IoDesktopOutline />
+								Blog
+							</LayoutNavItem>
+						</a>
 						<LayoutNavItem>
-							<IoFileTrayStackedOutline />
-							posts
+							<IoLogoInstagram />
+							Instagram
 						</LayoutNavItem>
-					</Link>
-					<Link href="/Album">
-						<LayoutNavItem>
-							<IoImagesOutline />
-							Album
-						</LayoutNavItem>
-					</Link>
-					<Link href="/Login">
-						<LayoutNavItem>
-							<IoLogInOutline />
-							Login
-						</LayoutNavItem>
-					</Link>
-				</LayoutNavLists>
+						<Link href="/Login">
+							<LayoutNavItem>
+								<IoLogInOutline />
+								Login
+							</LayoutNavItem>
+						</Link>
+					</LayoutNavLists>
+				)}
 			</LayoutNavbar>
 		</LayoutHeader>
 	);
