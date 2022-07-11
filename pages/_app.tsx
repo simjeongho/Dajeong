@@ -3,7 +3,6 @@ import Header from "components/Layout/Header";
 import "../styles/globals.css";
 import { LayoutContainer } from "components/Layout/styled";
 import type { AppProps } from "next/app";
-import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider, Hydrate } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
