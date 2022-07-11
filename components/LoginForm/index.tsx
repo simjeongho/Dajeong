@@ -9,33 +9,45 @@ import {
 import { useDispatch } from "react-redux";
 import { userLogin } from "store/slices/user-slice";
 import { useRouter } from "next/router";
+import AuthService from "apis/Auth/auth-service";
+import { LoginRequest } from "apis/Auth/types";
+import axios from "axios";
+
+const authService = new AuthService();
 
 const LoginForm = () => {
-	const [id, setId] = useState<String>("");
-	const [password, setPassword] = useState<String>("");
+	const [email, setEmail] = useState<string>("");
+	const [password, setPassword] = useState<string>("");
 	const dispatch = useDispatch();
 	const Router = useRouter();
 
 	const onChangeId = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-		setId(e.target.value);
+		setEmail(e.target.value);
 	}, []);
 	const onChangePassword = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		setPassword(e.target.value);
 	}, []);
-	const handleSubmitForm = useCallback(
-		(e: React.FormEvent<HTMLFormElement>) => {
-			e.preventDefault();
-			console.log(id, password);
+	const handleSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		const data: LoginRequest = {
+			email: email,
+			password: password,
+		};
+		const statusCode = await authService.login(data);
+		if (statusCode >= 400) {
+			return;
+		}
+
+		if (statusCode === 200) {
 			dispatch(userLogin());
 			Router.push({
 				pathname: "/",
 				query: {
-					login_success: "true",
+					signin_success: "true",
 				},
 			});
-		},
-		[id, password],
-	);
+		}
+	};
 	return (
 		<LoginFormContainer>
 			<LoginFormForm onSubmit={handleSubmitForm}>

@@ -1,8 +1,9 @@
 export type LoginRequest = {
-	id: string;
+	email: string;
 	password: string;
 };
 
 export type UserData = {
-	userName: string;
+	nickname: string;
+	email: string;
 };

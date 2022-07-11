@@ -9,12 +9,12 @@ export type BasicResult = ApiResult<{
 	message: string;
 }>;
 
-export const API_HOST = "https://localhost:5000";
+export const API_HOST = "http://localhost:5000";
 
 const API_URL = {
 	auth: {
 		signup: "/sign-up",
-		login: "/sign-in",
+		login: "/user/login",
 		logout: "/signOut",
 		check: "/token-health",
 		token: "/issue-token",

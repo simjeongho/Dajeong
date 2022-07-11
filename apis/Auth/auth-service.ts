@@ -25,7 +25,11 @@ class AuthService {
 	async login(data: LoginRequest) {
 		const { login } = this.authUrl;
 		const response = await this.base.post(login, data);
-		const result = await response.data;
+		const result = response.data;
+		console.log(result);
+		console.log(response.status);
+		const status = response.status;
+		return status;
 	}
 }
 
