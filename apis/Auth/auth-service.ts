@@ -1,3 +1,4 @@
+import { UserData } from "apis/Auth/types";
 import { LoginRequest } from "./types";
 import API_URL, { API_HOST } from "apis/api";
 import axios, { AxiosInstance } from "axios";
@@ -28,8 +29,15 @@ class AuthService {
 		const result = response.data;
 		console.log(result);
 		console.log(response.status);
-		const status = response.status;
-		return status;
+		const statusCode = response.status;
+		const userData: UserData = {
+			email: result.email,
+			nickname: result.nickname,
+		};
+		return {
+			statusCode,
+			userData,
+		};
 	}
 }
 

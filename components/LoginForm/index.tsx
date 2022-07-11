@@ -7,11 +7,10 @@ import {
 	LoginFormSubmitButton,
 } from "./styled";
 import { useDispatch } from "react-redux";
-import { userLogin } from "store/slices/user-slice";
+import { userLogin, setUserData } from "store/slices/user-slice";
 import { useRouter } from "next/router";
 import AuthService from "apis/Auth/auth-service";
 import { LoginRequest } from "apis/Auth/types";
-import axios from "axios";
 
 const authService = new AuthService();
 
@@ -33,13 +32,13 @@ const LoginForm = () => {
 			email: email,
 			password: password,
 		};
-		const statusCode = await authService.login(data);
+		const { statusCode, userData } = await authService.login(data);
 		if (statusCode >= 400) {
 			return;
 		}
-
 		if (statusCode === 200) {
 			dispatch(userLogin());
+			dispatch(setUserData(userData));
 			Router.push({
 				pathname: "/",
 				query: {
