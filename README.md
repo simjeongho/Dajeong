@@ -12,6 +12,7 @@
 - backEnd
   <img src="https://img.shields.io/badge/Express-000000?style=flat-square&logo=Express&logoColor=white"/></a>
   <img src="https://img.shields.io/badge/Sequelize-52B0E7?style=flat-square&logo=Sequelize&logoColor=white"/></a>
+  <img src="https://img.shields.io/badge/Passport-34E27A?style=flat-square&logo=Passport&logoColor=white"/></a>
 
 - Database
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=MongoDB&logoColor=white"/></a>
@@ -53,3 +54,7 @@
 ### 2022-07-10
 
 - Sequelize사용하여 MySQL과 EXpress ES6모듈로 연결
+
+### 2022-07-11
+
+- Passport세팅 및 로그인 기능 구현
