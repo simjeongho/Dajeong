@@ -7,6 +7,7 @@ import {
 	IoDesktopOutline,
 	IoLogInOutline,
 } from "react-icons/io5";
+import { ImProfile } from "react-icons/im";
 import Image from "next/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
@@ -46,6 +47,12 @@ const Header = () => {
 							<LayoutNavItem>
 								<IoImagesOutline />
 								Album
+							</LayoutNavItem>
+						</Link>
+						<Link href="/Profile">
+							<LayoutNavItem>
+								<ImProfile />
+								Profile
 							</LayoutNavItem>
 						</Link>
 					</LayoutNavLists>
