@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { UserData } from "apis/Auth/types";
 
 type InitialState = {
 	isLogin: boolean;
@@ -27,6 +28,9 @@ export const userSlice = createSlice({
 		},
 		userLoginRequest(state) {
 			state.isLogging = true;
+		},
+		setUserData(state, action: PayloadAction<UserData>) {
+			state.userName = action.payload.userName;
 		},
 	},
 });
