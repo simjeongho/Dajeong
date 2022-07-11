@@ -6,22 +6,33 @@ import {
 	LoginFormInputLabel,
 	LoginFormSubmitButton,
 } from "./styled";
+import { useDispatch } from "react-redux";
+import { userLogin } from "store/slices/user-slice";
+import { useRouter } from "next/router";
 
 const LoginForm = () => {
 	const [id, setId] = useState<String>("");
 	const [password, setPassword] = useState<String>("");
+	const dispatch = useDispatch();
+	const Router = useRouter();
+
 	const onChangeId = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		setId(e.target.value);
 	}, []);
-
 	const onChangePassword = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		setPassword(e.target.value);
 	}, []);
-
 	const handleSubmitForm = useCallback(
 		(e: React.FormEvent<HTMLFormElement>) => {
 			e.preventDefault();
 			console.log(id, password);
+			dispatch(userLogin());
+			Router.push({
+				pathname: "/",
+				query: {
+					login_success: "true",
+				},
+			});
 		},
 		[id, password],
 	);
