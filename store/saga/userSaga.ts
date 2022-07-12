@@ -1,8 +1,7 @@
 import { API_HOST } from "apis/api";
 import { delay } from "./root";
-import { UserData } from "./../../apis/Auth/types";
-import axios, { AxiosResponse } from "axios";
-import { userLogin, userLoginRequest } from "store/slices/user-slice";
+import axios from "axios";
+import { userLogin, userLoginRequest, userLogout } from "store/slices/user-slice";
 import { put, all, fork, throttle, call } from "redux-saga/effects";
 import { LoginRequest } from "apis/Auth/types";
 
@@ -15,6 +14,19 @@ function* SagaLogin() {
 	try {
 		delay(1000);
 		yield put(userLogin());
+	} catch (err) {
+		console.log(err);
+	}
+}
+
+function logOutApi() {
+	axios.post(`${API_HOST}/user/logout`);
+}
+
+function* SagaLogOut() {
+	try {
+		yield call(logOutApi);
+		yield put(userLogout());
 	} catch (err) {
 		console.log(err);
 	}

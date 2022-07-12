@@ -26,6 +26,7 @@ export const userSlice = createSlice({
 		userLogout(state) {
 			state.isLogin = false;
 			state.userNickName = "";
+			state.email = "";
 			state.isLogging = false;
 		},
 		userLoginRequest(state) {

@@ -1,3 +1,4 @@
+import { MiddlePurpleButton } from "shared/component/MiddlePurpleButton/styled";
 import Image from "next/image";
 import styled from "styled-components";
 
@@ -30,6 +31,13 @@ export const ProfileName = styled.h1`
 		color: white;
 		font-size: 1rem;
 	}
+`;
+
+export const LogOutButton = styled(MiddlePurpleButton)`
+	width: 30%;
+	height: 10%;
+	font-size: 1rem;
+	margin-top: 0;
 `;
 
 export const ProfileDream = styled.h2`
