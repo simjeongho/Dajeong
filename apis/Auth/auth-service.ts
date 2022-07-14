@@ -25,10 +25,11 @@ class AuthService {
 
 	async login(data: LoginRequest) {
 		const { login } = this.authUrl;
-		const response = await this.base.post(login, data);
+		const response = await this.base.post(login, data, { withCredentials: true });
 		const result = response.data;
 		console.log(result);
 		console.log(response.status);
+		console.log(response.headers["Set-Cookie"]);
 		const statusCode = response.status;
 		const userData: UserData = {
 			email: result.email,
