@@ -5,7 +5,6 @@ import {
 	ProfileDream,
 	ProfileImage,
 	ProfileImageContainer,
-	ProfileName,
 } from "./styled";
 import moouido from "assets/images/landscape/moouido.jpg";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,10 +21,10 @@ const UserProfile = () => {
 	const Router = useRouter();
 	const handleLogOut = () => {
 		try {
-			axios.post(`${API_HOST}/user/logout`).then((res) => {
+			axios.post(`${API_HOST}/user/logout`, {}, { withCredentials: true }).then((res) => {
 				console.log(res);
 				dispatch(userLogout());
-				Router.push({
+				Router.replace({
 					pathname: "/",
 				});
 			});
@@ -39,15 +38,12 @@ const UserProfile = () => {
 				<ProfileImage src={moouido} width={300} height={400} />
 			</ProfileImageContainer>
 			<ProfileDescriptionContainer>
-				<ProfileName>
-					{userNickName}
-					<h2>{email}</h2>
-					<LogOutButton onClick={handleLogOut}>
-						<IoLogOutOutline />
-						LogOut
-					</LogOutButton>
-				</ProfileName>
-
+				<h1>{userNickName}</h1>
+				<h2>{email}</h2>
+				<LogOutButton onClick={handleLogOut}>
+					<IoLogOutOutline />
+					LogOut
+				</LogOutButton>
 				<ProfileDream></ProfileDream>
 			</ProfileDescriptionContainer>
 		</ProfileContainer>

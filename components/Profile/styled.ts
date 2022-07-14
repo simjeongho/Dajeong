@@ -22,11 +22,11 @@ export const ProfileDescriptionContainer = styled.div`
 	height: 100%;
 	background-color: black;
 	border: var(--border-container);
-`;
-
-export const ProfileName = styled.h1`
 	color: white;
-	font-size: 1.5rem;
+	& > h1 {
+		color: white;
+		font-size: 1.5rem;
+	}
 	& > h2 {
 		color: white;
 		font-size: 1rem;
