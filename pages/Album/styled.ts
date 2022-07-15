@@ -12,3 +12,8 @@ export const AlbumListContainer = styled.div`
 export const SingleAlbumWritesButton = styled(NeonRoundButton)`
 	width: 20%;
 `;
+
+export const MultiAlbumWritesButton = styled(NeonRoundButton)`
+	width: 20%;
+	margin-top: 3%;
+`;

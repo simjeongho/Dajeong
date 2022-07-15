@@ -1,7 +1,7 @@
 import LinkCard from "components/LinkCard";
 import AxiosSlider from "components/carousel";
 import Link from "next/link";
-import { AlbumListContainer, SingleAlbumWritesButton } from "./styled";
+import { AlbumListContainer, MultiAlbumWritesButton, SingleAlbumWritesButton } from "./styled";
 import { InferGetServerSidePropsType } from "next";
 import useGetSingleAlbumList from "hooks/useGetSingleAlbumList";
 export type singleAlbumPost = {
@@ -25,7 +25,6 @@ const Albums = ({ singleAlbums }: InferGetServerSidePropsType<{ singleAlbums: si
 			<Link href="Album/SingleAlbumWrites">
 				<SingleAlbumWritesButton>싱글 앨범 작성</SingleAlbumWritesButton>
 			</Link>
-
 			{isLoading ? (
 				<div>is Loading...</div>
 			) : (
@@ -45,6 +44,9 @@ const Albums = ({ singleAlbums }: InferGetServerSidePropsType<{ singleAlbums: si
 					))}
 				</AxiosSlider>
 			)}
+			<Link href="Album/MultiAlbumWrites">
+				<MultiAlbumWritesButton>멀티 앨범 작성</MultiAlbumWritesButton>
+			</Link>
 		</AlbumListContainer>
 	);
 };
