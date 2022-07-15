@@ -8,7 +8,7 @@ export const MultiAlbumWritingFormContainer = styled.div`
 
 export const MultiAlbumWritingForm = styled.form`
 	width: 100%;
-	height: 60vh;
+	height: 80vh;
 	margin: 5%;
 	display: flex;
 	flex-direction: column;
@@ -29,12 +29,16 @@ export const MultiAlbumWritingImage = styled.input``;
 
 export const MultiAlbumWritingDescription = styled.textarea`
 	width: 40%;
-	height: 40%;
+	height: 50%;
 	color: var(--color-lightgray);
 	background: black;
 
 	&:focus {
 		outline: 3px solid var(--color-middlepurple);
+	}
+
+	@media screen and (max-width: 768px) {
+		width: 90%;
 	}
 `;
 
@@ -42,4 +46,8 @@ export const MultiAlbumSubmitButton = styled(MiddlePurpleButton)`
 	width: 20%;
 	height: 30px;
 	font-family: var(--font-googleGugi);
+
+	@media screen and (max-width: 768px) {
+		width: 100px;
+	}
 `;

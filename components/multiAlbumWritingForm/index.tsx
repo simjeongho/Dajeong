@@ -51,10 +51,13 @@ const MultiAlbumWriting = () => {
 			</UploadSlider>
 		);
 	}, [Images]);
-	const handleChangeDescription = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
-		e.preventDefault();
-		setText(e.target.value);
-	}, []);
+	const handleChangeDescription = useCallback(
+		(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+			e.preventDefault();
+			setText(e.target.value);
+		},
+		[text],
+	);
 
 	return (
 		<MultiAlbumWritingFormContainer>

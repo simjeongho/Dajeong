@@ -48,7 +48,8 @@ const SliderContainer = styled.div`
 	margin-bottom: 1rem;
 	height: auto;
 	@media screen and (max-width: 768px) {
-		width: 100%;
+		width: 90%;
+		margin: auto;
 	}
 `;
 
