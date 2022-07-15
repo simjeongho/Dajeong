@@ -41,7 +41,7 @@
 		"start": "next start",
 		"build": "next build",
 		"test": "next test",
-		"dev": "next dev -p 3001",
+		"dev": "next dev -p 3000",
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {

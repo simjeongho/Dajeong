@@ -7,7 +7,7 @@ export type singleAlbumDetailAxios = {
 };
 
 const getSingleAlbumDetail = (postNum: string | string[]) =>
-	axios.get(`http://localhost:5000/singleAlbum/getDetail/${postNum}`);
+	axios.get(`http://localhost:5000/singleAlbum/getDetail/${postNum}`, { withCredentials: true });
 
 const useGetSingleAlbumDetail = (postNum: string | string[]) => {
 	const queryFn = () => getSingleAlbumDetail(postNum);

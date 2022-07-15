@@ -18,17 +18,21 @@ class AuthService {
 
 	constructor() {
 		this.base = axios.create({
+			headers: {
+				"Access-Control-Allow-Origin": "http://localhost:5000",
+			},
 			baseURL: API_HOST,
+			withCredentials: true,
 		});
 		this.authUrl = API_URL.auth;
 	}
 
 	async login(data: LoginRequest) {
 		const { login } = this.authUrl;
-		const response = await this.base.post(login, data, { withCredentials: true });
+		const response = await this.base.post(login, data);
 		const result = response.data;
 		console.log(result);
-		console.log(response.status);
+		console.log(response);
 		console.log(response.headers["Set-Cookie"]);
 		const statusCode = response.status;
 		const userData: UserData = {

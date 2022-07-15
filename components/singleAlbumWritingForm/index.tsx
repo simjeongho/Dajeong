@@ -70,7 +70,7 @@ const SingleAlbumWrites = () => {
 			formdata.append("content", description);
 			formdata.append("singleImage", singleImage.file);
 			axios
-				.post("/singleAlbum/uploadSingleAlbumPost", formdata)
+				.post("/singleAlbum/uploadSingleAlbumPost", formdata, { withCredentials: true })
 				.then((response) => {
 					alert("글 작성이 완료되었습니다.");
 					console.log(response);

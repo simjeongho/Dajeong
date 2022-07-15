@@ -5,7 +5,7 @@ export type singleAlbumPostAxios = {
 	singleAlbumList: singleAlbumPost[];
 };
 
-const getSingleAlbumList = () => axios.get("http://localhost:5000/singleAlbum/getList");
+const getSingleAlbumList = () => axios.get("http://localhost:5000/singleAlbum/getList", { withCredentials: true });
 
 const useGetSingleAlbumList = () => {
 	return useQuery<AxiosResponse<singleAlbumPostAxios>, AxiosError>("getSingleAlbumList", getSingleAlbumList);
