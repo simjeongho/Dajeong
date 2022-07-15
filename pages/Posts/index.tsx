@@ -6,7 +6,7 @@ import { RiBallPenLine } from "react-icons/ri";
 const PostsPage = () => {
 	return (
 		<Background>
-			<Link href="/writingposts">
+			<Link href="/Posts/BlogPostEdit">
 				<WritingPostsButton>
 					<RiBallPenLine />글 쓰기
 				</WritingPostsButton>
