@@ -19,7 +19,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 	useEffect(() => {
 		axios.get("/user", { withCredentials: true }).then((res) => {
 			console.log("홈!", res);
-			dispatch(setUserData(res.data));
+			if (res.data != null) {
+				dispatch(setUserData(res.data));
+			}
 		});
 	}, []);
 	return (
