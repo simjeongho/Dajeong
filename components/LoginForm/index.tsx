@@ -60,7 +60,7 @@ const LoginForm = () => {
 				></LoginFormInput>
 				<LoginFormInputLabel htmlFor="loginPassword">비밀번호</LoginFormInputLabel>
 				<LoginFormInput
-					type="text"
+					type="password"
 					name="loginPassword"
 					id="loginPassword"
 					onChange={onChangePassword}
