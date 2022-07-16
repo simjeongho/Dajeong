@@ -19,6 +19,10 @@
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=MongoDB&logoColor=white"/></a>
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/></a>
 
+- storage & deployment
+  <img src="https://img.shields.io/badge/Amazon-232F3E?style=flat-square&logo=Amazon AWS&logoColor=white"/></a>
+  <img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat-square&logo=Amazon S3&logoColor=white"/></a>
+  
 ## 이슈 해결
 
 ### 2022-06-23
@@ -59,3 +63,7 @@
 ### 2022-07-11
 
 - Passport세팅 및 로그인 기능 구현
+
+### 2022-07-16
+
+- 여러 장 이미지 업로드 기능 및 s3 연결 
