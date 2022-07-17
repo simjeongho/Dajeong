@@ -6,6 +6,7 @@ type InitialState = {
 	isLogging: boolean;
 	userNickName: string;
 	email: string;
+	userId: number | null;
 };
 
 const initialState: InitialState = {
@@ -13,6 +14,7 @@ const initialState: InitialState = {
 	isLogging: false,
 	userNickName: "",
 	email: "",
+	userId: null,
 };
 
 export const userSlice = createSlice({
@@ -35,6 +37,8 @@ export const userSlice = createSlice({
 		setUserData(state, action: PayloadAction<UserData>) {
 			state.userNickName = action.payload.nickname;
 			state.email = action.payload.email;
+			state.isLogin = true;
+			state.userId = action.payload.userId;
 		},
 	},
 });

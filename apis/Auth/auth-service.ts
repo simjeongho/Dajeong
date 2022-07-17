@@ -38,6 +38,7 @@ class AuthService {
 		const userData: UserData = {
 			email: result.email,
 			nickname: result.nickname,
+			userId: result.id,
 		};
 		return {
 			statusCode,

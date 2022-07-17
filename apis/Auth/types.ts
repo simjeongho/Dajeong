@@ -4,6 +4,7 @@ export type LoginRequest = {
 };
 
 export type UserData = {
+	userId: number | null;
 	nickname: string;
 	email: string;
 };

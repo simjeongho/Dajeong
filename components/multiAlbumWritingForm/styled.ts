@@ -27,6 +27,20 @@ export const ShowMultipleImage = styled.div`
 `;
 export const MultiAlbumWritingImage = styled.input``;
 
+export const MultiAlbumTitle = styled.input`
+	width: 40%;
+	color: var(--color-lightgray);
+	background: black;
+	margin: 3%;
+	&:focus {
+		outline: 3px solid var(--color-middlepurple);
+	}
+
+	@media screen and (max-width: 768px) {
+		width: 90%;
+	}
+`;
+
 export const MultiAlbumWritingDescription = styled.textarea`
 	width: 40%;
 	height: 50%;
