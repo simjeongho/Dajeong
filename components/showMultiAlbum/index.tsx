@@ -1,5 +1,5 @@
 import AxiosSlider from "components/carousel";
-import LinkCard from "components/LinkCard";
+import MultiLinkCard from "components/multiLinkCard";
 import useGetMultiAlbumList from "hooks/useGetMultiAlbumList";
 
 const MultiAlbumList = () => {
@@ -19,7 +19,7 @@ const MultiAlbumList = () => {
 			) : (
 				<AxiosSlider title="multi Albums">
 					{data?.data.multiAlbumList.map((item) => (
-						<LinkCard
+						<MultiLinkCard
 							key={item.Images[0].src}
 							src={`${item.Images[0].src}`}
 							title={item.title}
@@ -27,9 +27,9 @@ const MultiAlbumList = () => {
 							year={handleContentLength(item.content)}
 							width={300}
 							height={400}
-							linkurl={`/Album/multiAlbum/[id]`}
+							linkurl={`/Album/MultiAlbum/[id]`}
 							query={item.id}
-						></LinkCard>
+						></MultiLinkCard>
 					))}
 				</AxiosSlider>
 			)}
