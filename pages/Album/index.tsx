@@ -4,6 +4,8 @@ import Link from "next/link";
 import { AlbumListContainer, MultiAlbumWritesButton, SingleAlbumWritesButton } from "./styled";
 import { InferGetServerSidePropsType } from "next";
 import useGetSingleAlbumList from "hooks/useGetSingleAlbumList";
+import useGetMultiAlbumList from "hooks/useGetMultiAlbumList";
+import MultiAlbumList from "components/showMultiAlbum";
 export type singleAlbumPost = {
 	title: string;
 	content: string;
@@ -47,6 +49,7 @@ const Albums = ({ singleAlbums }: InferGetServerSidePropsType<{ singleAlbums: si
 			<Link href="Album/MultiAlbumWrites">
 				<MultiAlbumWritesButton>멀티 앨범 작성</MultiAlbumWritesButton>
 			</Link>
+			<MultiAlbumList />
 		</AlbumListContainer>
 	);
 };
