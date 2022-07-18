@@ -26,7 +26,7 @@ const MultiAlbumList = () => {
 					{data?.data.map((item) => (
 						<LinkCard
 							key={item.Images[0].src}
-							src={`${API_HOST}/${item.Images[0].src}`}
+							src={`${item.Images[0].src}`}
 							title={item.title}
 							alt={item.content}
 							year={handleContentLength(item.content)}
