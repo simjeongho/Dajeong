@@ -1,8 +1,6 @@
-import { API_HOST } from "apis/api";
 import AxiosSlider from "components/carousel";
 import LinkCard from "components/LinkCard";
 import useGetMultiAlbumList from "hooks/useGetMultiAlbumList";
-import { useEffect } from "react";
 
 const MultiAlbumList = () => {
 	const { data, isLoading } = useGetMultiAlbumList();
@@ -13,9 +11,6 @@ const MultiAlbumList = () => {
 			return content;
 		}
 	};
-	useEffect(() => {
-		console.log(data?.data[0].Images.src);
-	}, []);
 
 	return (
 		<>
@@ -23,7 +18,7 @@ const MultiAlbumList = () => {
 				<div>is Loading ... </div>
 			) : (
 				<AxiosSlider title="multi Albums">
-					{data?.data.map((item) => (
+					{data?.data.multiAlbumList.map((item) => (
 						<LinkCard
 							key={item.Images[0].src}
 							src={`${item.Images[0].src}`}
