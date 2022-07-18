@@ -22,20 +22,16 @@ export const SingleAlbumDetailImageContainer = styled.div`
 
 export const SingleAlbumDetailImage = styled(Image)``;
 export const SingleAlbumContentContainer = styled.div`
-	width: 30%;
+	width: 100%;
 	height: 100%;
 	border: 0.2rem solid var(--color-lightgray);
-
-	@media screen and (max-width: 768px) {
-		width: 80%;
-		height: 100%;
-	}
+	margin-bottom: 3%;
 `;
 
 export const SingleAlbumDetailTitleContainer = styled.div`
 	font-size: 1.2rem;
+	margin-bottom: 2rem;
 `;
-
 export const SingleAlbumDetailTitle = styled.h1`
 	color: white;
 `;
@@ -46,3 +42,12 @@ export const SingleAlbumDetailDescriptionContainer = styled.div`
 `;
 
 export const SingleAlbumDetailDescription = styled.div``;
+
+export const SingleAlbumDetailRightContainer = styled.div`
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	@media screen and (max-width: 768px) {
+		width: 80%;
+	}
+`;

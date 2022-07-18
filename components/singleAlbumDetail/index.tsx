@@ -1,3 +1,4 @@
+import CommentForms from "components/CommentsForm";
 import {
 	SingleAlbumContentContainer,
 	SingleAlbumDetailContainer,
@@ -5,6 +6,7 @@ import {
 	SingleAlbumDetailDescriptionContainer,
 	SingleAlbumDetailImage,
 	SingleAlbumDetailImageContainer,
+	SingleAlbumDetailRightContainer,
 	SingleAlbumDetailTitle,
 	SingleAlbumDetailTitleContainer,
 } from "./styled";
@@ -21,15 +23,17 @@ const SingleAlbumDetail = ({ title, content, filepath }: DetailProps) => {
 			<SingleAlbumDetailImageContainer>
 				<SingleAlbumDetailImage src={`http://localhost:5000/${filepath}`} alt={title} width={300} height={400} />
 			</SingleAlbumDetailImageContainer>
-
-			<SingleAlbumContentContainer>
-				<SingleAlbumDetailTitleContainer>
-					<SingleAlbumDetailTitle>{title}</SingleAlbumDetailTitle>
-				</SingleAlbumDetailTitleContainer>
-				<SingleAlbumDetailDescriptionContainer>
-					<SingleAlbumDetailDescription>{content}</SingleAlbumDetailDescription>
-				</SingleAlbumDetailDescriptionContainer>
-			</SingleAlbumContentContainer>
+			<SingleAlbumDetailRightContainer>
+				<SingleAlbumContentContainer>
+					<SingleAlbumDetailTitleContainer>
+						<SingleAlbumDetailTitle>{title}</SingleAlbumDetailTitle>
+					</SingleAlbumDetailTitleContainer>
+					<SingleAlbumDetailDescriptionContainer>
+						<SingleAlbumDetailDescription>{content}</SingleAlbumDetailDescription>
+					</SingleAlbumDetailDescriptionContainer>
+				</SingleAlbumContentContainer>
+				<CommentForms></CommentForms>
+			</SingleAlbumDetailRightContainer>
 		</SingleAlbumDetailContainer>
 	);
 };

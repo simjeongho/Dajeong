@@ -14,7 +14,7 @@ import {
 } from "./styled";
 import axios from "axios";
 import { useRouter } from "next/router";
-type SingleImage = {
+export type SingleImage = {
 	file: File;
 	thumbnail: string;
 	type: string;
