@@ -1,13 +1,10 @@
-import { singleAlbumPost } from "pages/Album";
+import { API_HOST } from "./../../apis/api";
+import { singleAlbumDetailAxios } from "types/singleAlbum";
 import axios, { AxiosResponse, AxiosError } from "axios";
 import { useQuery } from "react-query";
 
-export type singleAlbumDetailAxios = {
-	singleAlbumDetail: singleAlbumPost;
-};
-
 const getSingleAlbumDetail = (postNum: string | string[]) =>
-	axios.get(`http://localhost:5000/singleAlbum/getDetail/${postNum}`, { withCredentials: true });
+	axios.get(`${API_HOST}/singleAlbum/getDetail/${postNum}`, { withCredentials: true });
 
 const useGetSingleAlbumDetail = (postNum: string | string[]) => {
 	const queryFn = () => getSingleAlbumDetail(postNum);
