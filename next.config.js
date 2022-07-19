@@ -1,6 +1,6 @@
 const nextConfig = {
 	images: {
-		domains: ["localhost", "*"],
+		domains: ["localhost", "*", "simbwatda.s3.ap-northeast-2.amazonaws.com"],
 		remotePatterns: [
 			{
 				protocol: "http",
