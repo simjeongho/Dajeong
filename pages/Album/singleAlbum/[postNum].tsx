@@ -2,7 +2,6 @@
 import SingleAlbumDetail from "components/singleAlbumDetail";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useEffect } from "react";
 import useGetSingleAlbumDetail from "hooks/useSingleAlbumDetail";
 
