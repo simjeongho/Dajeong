@@ -33,9 +33,14 @@ export type DetailImage = {
 	PostId: number;
 };
 
+export type DetailUser = {
+	nickname: string;
+};
+
 export type multiAlbumPost = {
 	Comments: DetailComments[] | null;
 	Images: DetailImage[] | null;
+	User: DetailUser;
 	RetweetId: number | null;
 	UserId: number;
 	content: string;
@@ -45,5 +50,13 @@ export type multiAlbumPost = {
 	updatedAt: string;
 };
 export type multiAlbumDetailAxios = {
-	singleAlbumDetail: multiAlbumPost;
+	multiAlbumDetail: multiAlbumPost;
+};
+
+export type multiAlbumDetailPage = {
+	Images: DetailImage[] | null;
+	User: DetailUser;
+	content: string;
+	createdAt: string;
+	title: string;
 };
