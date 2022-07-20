@@ -11,8 +11,31 @@ export const ProfileContainer = styled.div`
 `;
 
 export const ProfileImageContainer = styled.div`
-	margin: 5%;
 	border: var(--border-container);
+	width: 100%;
+	height: 20vh;
+	color: white;
+`;
+
+export const ProfileUploadForm = styled.form`
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 5%;
+`;
+
+export const ProfileUploadInput = styled.input``;
+
+export const ProfileUploadButton = styled.button`
+	outline: none;
+	background-color: black;
+	color: var(--color-lightgray);
+
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 export const ProfileImage = styled(Image)``;
