@@ -31,9 +31,6 @@ class AuthService {
 		const { login } = this.authUrl;
 		const response = await this.base.post(login, data);
 		const result = response.data;
-		console.log(result);
-		console.log(response);
-		console.log(response.headers["Set-Cookie"]);
 		const statusCode = response.status;
 		const userData: UserData = {
 			email: result.email,

@@ -9,6 +9,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import "antd/dist/antd.css";
 import wrapper from "store/configureStore";
 import axios from "axios";
+import { UserData } from "apis/Auth/types";
 import { useDispatch } from "react-redux";
 import { setUserData } from "store/slices/user-slice";
 function MyApp({ Component, pageProps }: AppProps) {
@@ -18,9 +19,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		axios.get("/user", { withCredentials: true }).then((res) => {
-			console.log("홈!", res);
 			if (res.data != null) {
-				dispatch(setUserData(res.data));
+				const userData: UserData = {
+					email: res.data.email,
+					nickname: res.data.nickname,
+					userId: res.data.id,
+				};
+				dispatch(setUserData(userData));
 			}
 		});
 	}, []);
