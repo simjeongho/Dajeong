@@ -40,8 +40,10 @@ export const MultiAlbumTitleContainer = styled.div`
 	color: white;
 	display: flex;
 	flex-direction: column;
-	border: 6px solid var(--color-middlepurple);
+	background-color: var(--color-deepgray);
+	border-radius: 10px;
 	margin-right: 3%;
+	font-family: var(--font-crown);
 	& > h1 {
 		color: white;
 	}
@@ -62,7 +64,9 @@ export const MultiAlbumTitleContainer = styled.div`
 
 export const MultiAlbumDescriptionContainer = styled.div`
 	color: white;
-	border: 6px solid var(--color-middlepurple);
+	background-color: var(--color-deepgray);
+	border-radius: 10px;
+	padding: 3%;
 	font-size: 1rem;
 	margin-bottom: 2%;
 	@media screen and (max-width: 768px) {

@@ -14,4 +14,12 @@ export const UploadImage = styled(Image)`
 	width: 100%;
 `;
 
-export const DeleteImage = styled.button``;
+export const Deletebutton = styled.button`
+	background-color: black;
+	font-family: var(--font-Dongle);
+	font-size: 1.2rem;
+	color: white;
+	&:hover {
+		cursor: pointer;
+	}
+`;

@@ -14,7 +14,14 @@ export const ProfileImageContainer = styled.div`
 	border: var(--border-container);
 	width: 100%;
 	height: 20vh;
-	color: white;
+	color: var(--color-lightgray);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 export const ProfileUploadForm = styled.form`
