@@ -17,7 +17,6 @@ const CommentForms = () => {
 	};
 
 	const handleSubmitCommentForm = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
 		const data = {
 			userId: userId,
 			PostId: id,

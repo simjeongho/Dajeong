@@ -27,12 +27,16 @@ export const MultiAlbumImage = styled(Image)`
 
 export const MultiAlbumContentArea = styled.div`
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	width: 100%;
+	margin: 5%;
+	@media screen and (max-width: 768px) {
+		flex-direction: column;
+		margin: 5%;
+	}
 `;
 
 export const MultiAlbumTitleContainer = styled.div`
+	width: 40%;
 	color: white;
 	display: flex;
 	flex-direction: column;
@@ -49,11 +53,28 @@ export const MultiAlbumTitleContainer = styled.div`
 	& > h3 {
 		color: white;
 	}
+
+	@media screen and (max-width: 768px) {
+		margin-right: 0;
+		width: 100%;
+	}
 `;
 
 export const MultiAlbumDescriptionContainer = styled.div`
 	color: white;
-	width: 60%;
 	border: 6px solid var(--color-middlepurple);
-	font-size: 1.5rem;
+	font-size: 1rem;
+	margin-bottom: 2%;
+	@media screen and (max-width: 768px) {
+		width: 100%;
+	}
+`;
+
+export const MultiAlbumDescriptionComments = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	@media screen and (max-width: 768px) {
+		width: 100%;
+	}
 `;
