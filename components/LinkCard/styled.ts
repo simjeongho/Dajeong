@@ -24,7 +24,8 @@ export const CardImage = styled(Image)`
 export const CardInfo = styled.div`
 	text-align: center;
 	width: 100%;
-	background-color: black;
+	background-color: var(--color-deepgray);
+	border-radius: 7px;
 `;
 
 export const CardTitle = styled.h4`
@@ -32,8 +33,6 @@ export const CardTitle = styled.h4`
 	font-size: 1.5rem;
 	font-weight: 500;
 	overflow: hidden;
-	border: 5px solid var(--color-middlepurple);
-	border-radius: 0% 0% 0 0% / 100% 100% 100% 100%;
 	text-overflow: ellipsis;
 	line-height: 22px;
 	margin-bottom: 3px;
@@ -42,7 +41,7 @@ export const CardTitle = styled.h4`
 `;
 
 export const CardKeyWord = styled.div`
-	color: white;
+	color: var(--color-lightgray);
 	padding-bottom: 1px;
 	font-size: 1rem;
 	font-weight: 400;

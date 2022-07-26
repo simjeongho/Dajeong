@@ -3,7 +3,7 @@ import { moveUp, Appear, Disappear } from "shared/style/styled";
 import Image from "next/image";
 
 export const BestAlbumContainer = styled.div`
-	width: 70%;
+	width: 50%;
 	height: 50%;
 	display: flex;
 	justify-content: center;
@@ -16,7 +16,7 @@ export const BestAlbumContainer = styled.div`
 `;
 
 export const BestAlbumIntroduceContainer = styled.div`
-	width: 40%;
+	width: 60%;
 	height: 60%;
 	border: 10px solid white;
 	position: relative;

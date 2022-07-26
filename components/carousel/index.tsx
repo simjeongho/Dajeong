@@ -43,9 +43,10 @@ const ArrowButton = styled.button<{ pos?: "left" | "right" }>`
 `;
 const SliderContainer = styled.div`
 	padding: 1rem;
-	border: 0.8rem solid white;
+	background-color: var(--color-deepgray);
+	border-radius: 10px;
 	margin-bottom: 1rem;
-	width: 70%;
+	width: 40%;
 	height: auto;
 	@media screen and (max-width: 768px) {
 		width: 100%;

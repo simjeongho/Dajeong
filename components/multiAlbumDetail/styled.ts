@@ -30,19 +30,21 @@ export const MultiAlbumContentArea = styled.div`
 	width: 100%;
 	margin: 5%;
 	@media screen and (max-width: 768px) {
+		width: 90%;
 		flex-direction: column;
-		margin: 5%;
+		margin: 5%, 5%, 5%, 5%;
 	}
 `;
 
 export const MultiAlbumTitleContainer = styled.div`
-	width: 40%;
+	width: 30%;
 	color: white;
 	display: flex;
 	flex-direction: column;
 	background-color: var(--color-deepgray);
 	border-radius: 10px;
 	margin-right: 3%;
+	margin-bottom: 2%;
 	font-family: var(--font-crown);
 	& > h1 {
 		color: white;
@@ -57,7 +59,6 @@ export const MultiAlbumTitleContainer = styled.div`
 	}
 
 	@media screen and (max-width: 768px) {
-		margin-right: 0;
 		width: 100%;
 	}
 `;
