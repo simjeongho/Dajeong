@@ -1,31 +1,39 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import SingleAlbumDetail from "components/singleAlbumDetail";
-import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import { useEffect } from "react";
-import useGetSingleAlbumDetail from "hooks/useSingleAlbumDetail";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import axios from "axios";
+import useGetSingleAlbumDetail, { getSingleAlbumDetail } from "hooks/useSingleAlbumDetail";
+import { API_HOST } from "apis/api";
+import { singleAlbumDetailAxios, singleAlbumPost } from "types/singleAlbum";
+import { dehydrate, QueryClient, useQuery } from "react-query";
+import { useRouter } from "next/router";
 
 interface IParams extends ParsedUrlQuery {
 	postNum: string;
 }
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-// 	const { postNum } = context.params as IParams;
-// 	const res = await axios.get(`http://localhost:5000/singleAlbum/getDetail/${postNum}`);
-// 	return {
-// 		props: {
-// 			detail: res,
-// 		},
-// 	};
-// };
-const SingleAlbumDetailPage = ({}) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const { postNum } = context.params as IParams;
+	const queryClient = new QueryClient();
+	const queryFn = () => getSingleAlbumDetail(postNum);
+	await queryClient.prefetchQuery(["singleAlbumDetail", postNum], queryFn);
+	//const singleDetailData = getSingleAlbumDetail(postNum);
+
+	return {
+		props: {
+			dehydratedState: dehydrate(queryClient),
+		},
+	};
+};
+const SingleAlbumDetailPage = ({
+	singleDetaildata,
+}: InferGetServerSidePropsType<{ singleDetailData: singleAlbumPost }>) => {
 	const router = useRouter();
 	const { postNum } = router.query;
-	const { data, isLoading } = useGetSingleAlbumDetail(postNum ? postNum : "");
-
-	useEffect(() => {
-		console.log(data);
-		console.log(data?.data.singleAlbumDetail.content);
-	}, [data]);
+	const { data, isLoading } = useGetSingleAlbumDetail(postNum ? postNum : " ");
+	//const { data, isLoading } = useGetSingleAlbumDetail("1");
+	console.log("data", data);
 	return (
 		<>
 			{isLoading || !data ? (

@@ -3,7 +3,7 @@ import axios, { AxiosResponse, AxiosError } from "axios";
 import { useQuery } from "react-query";
 import { multiAlbumDetailAxios } from "types/multiAlbum";
 
-const getMultiAlbumDetail = (id: string | string[] | number) =>
+export const getMultiAlbumDetail = (id: string | string[] | number) =>
 	axios.get(`${API_HOST}/multiAlbum/getDetail/${id}`, { withCredentials: true });
 
 const useGetMultiAlbumDetail = (id: string | string[] | number) => {

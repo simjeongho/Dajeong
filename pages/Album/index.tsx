@@ -2,18 +2,23 @@ import LinkCard from "components/LinkCard";
 import AxiosSlider from "components/carousel";
 import Link from "next/link";
 import { AlbumListContainer, MultiAlbumWritesButton, SingleAlbumWritesButton } from "./styled";
-import { InferGetServerSidePropsType } from "next";
 import useGetSingleAlbumList from "hooks/useGetSingleAlbumList";
-import useGetMultiAlbumList from "hooks/useGetMultiAlbumList";
 import MultiAlbumList from "components/showMultiAlbum";
-export type singleAlbumPost = {
-	title: string;
-	content: string;
-	filePath: string;
-	postNum: string;
+import { GetServerSideProps } from "next";
+import { dehydrate, QueryClient } from "react-query";
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const queryClient = new QueryClient();
+	await queryClient.prefetchQuery("getSingleAlbumList", useGetSingleAlbumList);
+
+	return {
+		props: {
+			deydratedState: dehydrate(queryClient),
+		},
+	};
 };
 
-const Albums = ({ singleAlbums }: InferGetServerSidePropsType<{ singleAlbums: singleAlbumPost[] }>) => {
+const Albums = () => {
 	const { data, isLoading } = useGetSingleAlbumList();
 	const handleContentLength = (content: string) => {
 		if (content.length > 15) {
