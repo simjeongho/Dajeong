@@ -1,3 +1,5 @@
+import { Comment, Comments } from "types/Comments";
+
 // 전체 리스트 조회
 export type multiAlbumImage = {
 	src: string;
@@ -22,7 +24,6 @@ export type multiAlbumPostAxios = {
 
 // detail page
 export type DetailComments = {
-	PostId: number;
 	UserId: number;
 	createdAt: string;
 	content: string;

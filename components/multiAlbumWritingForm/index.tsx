@@ -16,6 +16,7 @@ import axios, { AxiosResponse } from "axios";
 import { API_HOST } from "apis/api";
 import { useSelector } from "react-redux";
 import { selectUser } from "store/configureStore";
+import { useRouter } from "next/router";
 const MultiAlbumWriting = () => {
 	const [title, setTitle] = useState<string>("");
 	const [content, setContent] = useState<string>("");
@@ -23,6 +24,7 @@ const MultiAlbumWriting = () => {
 	const fileInputRef = useRef<HTMLInputElement>(null);
 	const userSelector = useSelector(selectUser);
 	const { userId } = userSelector;
+	const Router = useRouter();
 	const handleClickFileInput = () => {
 		fileInputRef.current?.click();
 	};
@@ -93,6 +95,8 @@ const MultiAlbumWriting = () => {
 					console.log("두번 응답", res);
 				});
 			});
+
+		Router.push("/Album");
 	};
 
 	return (

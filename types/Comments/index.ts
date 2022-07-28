@@ -4,6 +4,7 @@ export type CommentUser = {
 export type Comment = {
 	PostId: number;
 	User: CommentUser;
+	UserId: number;
 	content: string;
 	id: number;
 	createdAt: string;

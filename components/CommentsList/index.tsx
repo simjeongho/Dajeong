@@ -1,39 +1,66 @@
 import { API_HOST } from "apis/api";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { Comments } from "types/Comments";
 import { RiDeleteBin6Line, RiEditBoxLine } from "react-icons/ri";
 import { CommentDeleteFix, CommentItem, CommentsListContainer } from "./styled";
+import { useSelector } from "react-redux";
+import { selectUser } from "store/configureStore";
+import useGetMultiAlbumComment, { getMultiAlbumComment } from "hooks/useCommentList";
+import { dehydrate, QueryClient } from "react-query";
+import { ParsedUrlQuery } from "querystring";
+import { GetServerSideProps } from "next";
+interface IParams extends ParsedUrlQuery {
+	id: string;
+}
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const { id } = context.params as IParams;
+	const queryClient = new QueryClient();
+	await queryClient.prefetchQuery(["multiAlbumComment", id], () => getMultiAlbumComment(id));
+	return {
+		props: {
+			dehydratedState: dehydrate(queryClient),
+		},
+	};
+};
 
 const CommentList = () => {
-	const [comments, setComments] = useState<Comments | null>(null);
 	const router = useRouter();
 	const id = router.query.id;
-	useEffect(() => {
-		console.log("commentList", id);
-		axios.get(`${API_HOST}/comment/multiAlbum/${id}`, { withCredentials: true }).then((res) => {
-			console.log(res.data.multiAlbumComments);
-			const data = res.data.multiAlbumComments;
-			setComments({
-				multiAlbumComments: data,
+	const userSelector = useSelector(selectUser);
+	const { userId } = userSelector;
+	const { data, isLoading } = useGetMultiAlbumComment(id ? id : "");
+	const handleCreatedAt = (createdAt: string) => {
+		return createdAt.slice(0, 10) + " " + createdAt.slice(12, 19);
+	};
+
+	const handleDeleteComment = async (commentid: number, creatorId: number) => {
+		await axios
+			.delete(`${API_HOST}/comment/multiAlbum/delete/${commentid}`, {
+				data: {
+					id: commentid,
+					UserId: userId,
+					creatorId: creatorId,
+				},
+				withCredentials: true,
+			})
+			.then((res) => {
+				console.log("삭제 성공");
+				router.push({ pathname: `/Album/MultiAlbum/${id}` });
 			});
-			console.log("comment!!", comments);
-		});
-	}, []);
+	};
 	return (
 		<CommentsListContainer>
-			{comments === null ? (
+			{!data || isLoading ? (
 				<div>Loading</div>
 			) : (
-				comments?.multiAlbumComments.map((comment) => (
-					<CommentItem key={comment.createdAt}>
+				data?.data.multiAlbumComments.map((comment) => (
+					<CommentItem key={comment.id}>
 						<h1>{comment.User.nickname}</h1>
-						<h3>{comment.createdAt}</h3>
+						<h3>{handleCreatedAt(comment.createdAt)}</h3>
 						<h2>{comment.content}</h2>
 						<CommentDeleteFix>
-							<RiDeleteBin6Line />
 							<RiEditBoxLine />
+							<RiDeleteBin6Line onClick={() => handleDeleteComment(comment.id, comment.UserId)} />
 						</CommentDeleteFix>
 					</CommentItem>
 				))

@@ -1,3 +1,7 @@
+import CommentForms from "components/CommentsForm";
+import CommentList from "components/CommentsList";
+import OneSlider from "components/ShowOneCarousel";
+import { useRouter } from "next/router";
 import { multiAlbumDetailPage } from "types/multiAlbum";
 import {
 	MultiAlbumContentArea,
@@ -5,8 +9,8 @@ import {
 	MultiAlbumDetailContainer,
 	MultiAlbumImage,
 	MultiAlbumImageArea,
-	MultiAlbumImageList,
 	MultiAlbumTitleContainer,
+	MultiAlbumDescriptionComments,
 } from "./styled";
 
 const MultiAlbumDetail = ({ Images, content, createdAt, title, User }: multiAlbumDetailPage) => {
@@ -17,19 +21,23 @@ const MultiAlbumDetail = ({ Images, content, createdAt, title, User }: multiAlbu
 		<>
 			<MultiAlbumDetailContainer>
 				<MultiAlbumImageArea>
-					<MultiAlbumImageList>
+					<OneSlider>
 						{Images?.map((image) => (
 							<MultiAlbumImage key={image.src} src={image.src} width={300} height={400} />
 						))}
-					</MultiAlbumImageList>
+					</OneSlider>
 				</MultiAlbumImageArea>
 				<MultiAlbumContentArea>
 					<MultiAlbumTitleContainer>
 						<h1>{title}</h1>
 						<h2>{`작성자 ${User.nickname}`}</h2>
-						<h3>{`작성 일 : ${handleDate()}`}</h3>
+						<h3>{`작성 일 ${handleDate()}`}</h3>
 					</MultiAlbumTitleContainer>
-					<MultiAlbumDescriptionContainer>{content}</MultiAlbumDescriptionContainer>
+					<MultiAlbumDescriptionComments>
+						<MultiAlbumDescriptionContainer>{content}</MultiAlbumDescriptionContainer>
+						<CommentForms />
+						<CommentList />
+					</MultiAlbumDescriptionComments>
 				</MultiAlbumContentArea>
 			</MultiAlbumDetailContainer>
 		</>

@@ -40,3 +40,7 @@ export const CommentItem = styled.div`
 export const CommentDeleteFix = styled.div`
 	align-self: flex-end;
 `;
+
+export const CommentDelete = styled.button``;
+
+export const CommentFix = styled.div``;

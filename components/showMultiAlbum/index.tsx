@@ -1,6 +1,19 @@
 import AxiosSlider from "components/carousel";
 import MultiLinkCard from "components/multiLinkCard";
-import useGetMultiAlbumList from "hooks/useGetMultiAlbumList";
+import useGetMultiAlbumList, { getMultiAlbumList } from "hooks/useGetMultiAlbumList";
+import { GetServerSideProps } from "next";
+import { dehydrate, QueryClient } from "react-query";
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const queryClient = new QueryClient();
+	await queryClient.prefetchQuery("getMultiAlbumList", getMultiAlbumList);
+
+	return {
+		props: {
+			dehydratedState: dehydrate(queryClient),
+		},
+	};
+};
 
 const MultiAlbumList = () => {
 	const { data, isLoading } = useGetMultiAlbumList();
