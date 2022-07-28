@@ -1,13 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import SingleAlbumDetail from "components/singleAlbumDetail";
 import { ParsedUrlQuery } from "querystring";
-import { useEffect } from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import axios from "axios";
 import useGetSingleAlbumDetail, { getSingleAlbumDetail } from "hooks/useSingleAlbumDetail";
-import { API_HOST } from "apis/api";
-import { singleAlbumDetailAxios, singleAlbumPost } from "types/singleAlbum";
-import { dehydrate, QueryClient, useQuery } from "react-query";
+import { singleAlbumPost } from "types/singleAlbum";
+import { dehydrate, QueryClient } from "react-query";
 import { useRouter } from "next/router";
 
 interface IParams extends ParsedUrlQuery {

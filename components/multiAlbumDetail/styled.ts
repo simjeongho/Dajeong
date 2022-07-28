@@ -41,6 +41,7 @@ export const MultiAlbumTitleContainer = styled.div`
 	color: white;
 	display: flex;
 	flex-direction: column;
+	padding: 5%;
 	background-color: var(--color-deepgray);
 	border-radius: 10px;
 	margin-right: 3%;

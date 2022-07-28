@@ -3,7 +3,7 @@ import GinsenTitle from "assets/images/ginsen.svg";
 import {
 	IoImagesOutline,
 	IoFileTrayStackedOutline,
-	IoLogoInstagram,
+	IoLogoGithub,
 	IoDesktopOutline,
 	IoLogInOutline,
 } from "react-icons/io5";
@@ -33,10 +33,13 @@ const Header = () => {
 								Blog
 							</LayoutNavItem>
 						</a>
-						<LayoutNavItem>
-							<IoLogoInstagram />
-							Instagram
-						</LayoutNavItem>
+						<a target="_blank" href="https://github.com/simjeongho/Dajeong" rel="noreferrer">
+							<LayoutNavItem>
+								<IoLogoGithub />
+								github
+							</LayoutNavItem>
+						</a>
+
 						<Link href="/Posts">
 							<LayoutNavItem>
 								<IoFileTrayStackedOutline />
@@ -65,8 +68,8 @@ const Header = () => {
 							</LayoutNavItem>
 						</a>
 						<LayoutNavItem>
-							<IoLogoInstagram />
-							Instagram
+							<IoLogoGithub />
+							github
 						</LayoutNavItem>
 						<Link href="/Login">
 							<LayoutNavItem>

@@ -3,7 +3,7 @@ import { singleAlbumDetailAxios } from "types/singleAlbum";
 import axios, { AxiosResponse, AxiosError } from "axios";
 import { useQuery } from "react-query";
 
-const getSingleAlbumDetail = (postNum: string | string[]) =>
+export const getSingleAlbumDetail = (postNum: string | string[]) =>
 	axios.get(`${API_HOST}/singleAlbum/getDetail/${postNum}`, { withCredentials: true });
 
 const useGetSingleAlbumDetail = (postNum: string | string[]) => {

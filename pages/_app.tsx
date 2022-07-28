@@ -12,6 +12,7 @@ import axios from "axios";
 import { UserData } from "apis/Auth/types";
 import { useDispatch } from "react-redux";
 import { setUserData } from "store/slices/user-slice";
+import { GetServerSideProps } from "next";
 function MyApp({ Component, pageProps }: AppProps) {
 	//useState lazyinit을 사용해 QueryClient 인스턴스를 생성해
 	//QueryClientProvider의 client 값으로 전달해준다.
@@ -45,5 +46,4 @@ function MyApp({ Component, pageProps }: AppProps) {
 		</>
 	);
 }
-
 export default wrapper.withRedux(MyApp);

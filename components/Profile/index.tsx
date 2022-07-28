@@ -32,7 +32,6 @@ const UserProfile = () => {
 	const handleLogOut = () => {
 		try {
 			axios.post(`${API_HOST}/user/logout`, {}, { withCredentials: true }).then((res) => {
-				console.log(res);
 				dispatch(userLogout());
 				Router.replace({
 					pathname: "/",
@@ -72,7 +71,7 @@ const UserProfile = () => {
 						hidden
 					></ProfileUploadInput>
 				</ProfileImageContainer>
-				<ProfileUploadButton>프로필 변경</ProfileUploadButton>
+				<ProfileUploadButton type="submit">프로필 변경</ProfileUploadButton>
 			</ProfileUploadForm>
 
 			<ProfileDescriptionContainer>

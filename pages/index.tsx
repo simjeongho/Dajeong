@@ -1,5 +1,4 @@
 import StaticSlider from "components/StaticCarousel";
-import { useEffect, useState } from "react";
 import { HomeContainer } from "./styled";
 import Card from "components/card";
 import mangWon from "assets/images/landscape/mangwon.jpg";
@@ -33,38 +32,7 @@ const togetherData = [
 	<Card key="together5" src={haru5} alt="하루5" title="하루필름5" year="2022" width={300} height={400} />,
 	<Card key="together6" src={togeter2} alt="" title="헤헿2" year="2022" width={300} height={400} />,
 ];
-
-const pages = [
-	{
-		name: "",
-		component: DaeunBestImage,
-	},
-	{
-		name: "carousel-LandScape",
-		component: StaticSlider,
-	},
-	{
-		name: "carousel-Together",
-		component: StaticSlider,
-	},
-];
 const Index = () => {
-	const [page, setPage] = useState<number | null>(0);
-
-	useEffect(() => {
-		setPage(0);
-		return () => {
-			setPage(null);
-		};
-	}, [setPage]);
-	// const handleNext = () => {
-	// 	if (page === null || page === pages.length - 1) return;
-	// 	setPage(page + 1);
-	// };
-	// const handlePrev = () => {
-	// 	if (page === null || page === 0) return;
-	// 	setPage(page - 1);
-	// };
 	return (
 		<HomeContainer>
 			<DaeunBestImage />
