@@ -7,4 +7,5 @@ export type UserData = {
 	userId: number | null;
 	nickname: string;
 	email: string;
+	userProfileImage: string | null;
 };

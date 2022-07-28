@@ -1,7 +1,6 @@
 import CommentForms from "components/CommentsForm";
 import CommentList from "components/CommentsList";
 import OneSlider from "components/ShowOneCarousel";
-import { useRouter } from "next/router";
 import { multiAlbumDetailPage } from "types/multiAlbum";
 import {
 	MultiAlbumContentArea,

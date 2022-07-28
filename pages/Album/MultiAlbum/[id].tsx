@@ -1,5 +1,4 @@
 import MultiAlbumDetail from "components/multiAlbumDetail";
-import useGetMultiAlbumComment, { getMultiAlbumComment } from "hooks/useCommentList";
 import useGetMultiAlbumDetail, { getMultiAlbumDetail } from "hooks/useMultiAlbumDetail";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
@@ -25,11 +24,10 @@ const MultiAlbumDetailPage = () => {
 	const router = useRouter();
 	const { id } = router.query;
 	const { data, isLoading } = useGetMultiAlbumDetail(id ? id : "");
-	const { data: CommentData, isLoading: CommentLoading } = useGetMultiAlbumComment(id ? id : "");
 	console.log("detail", data);
 	return (
 		<>
-			{isLoading || !data || !CommentData ? (
+			{isLoading || !data ? (
 				<div>is Loading...</div>
 			) : (
 				<>
