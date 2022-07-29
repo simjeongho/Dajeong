@@ -37,6 +37,7 @@ class AuthService {
 			nickname: result.nickname,
 			userId: result.id,
 			userProfileImage: result.profileImage,
+			userDescription: result.profileDescription,
 		};
 		return {
 			statusCode,

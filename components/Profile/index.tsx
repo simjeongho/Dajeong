@@ -3,11 +3,14 @@ import {
 	ProfileContainer,
 	ProfileDescriptionContainer,
 	ProfileDream,
-	ProfileImage,
+	ProfileImageTag,
 	ProfileImageContainer,
 	ProfileUploadButton,
 	ProfileUploadForm,
 	ProfileUploadInput,
+	ProfileDescriptionUploadForm,
+	ProfileDescriptionTextArea,
+	ProfileDescriptionLabel,
 } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "store/configureStore";
@@ -16,10 +19,10 @@ import axios from "axios";
 import { changeProfileImage, userLogout } from "store/slices/user-slice";
 import { API_HOST } from "apis/api";
 import { useRouter } from "next/router";
-import React, { useMemo, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { ProfileImageType } from "types/Profile";
 import { useState } from "react";
-import Image from "next/image";
+import { changeDescription } from "apis/profile";
 const UserProfile = () => {
 	const userSelector = useSelector(selectUser);
 	const { email, userNickName, userId, userProfileImage } = userSelector;
@@ -28,8 +31,9 @@ const UserProfile = () => {
 		file: null,
 		userId: userId,
 	});
+	const [userDescription, setUserDescription] = useState<string>("");
 	const dispatch = useDispatch();
-	const Router = useRouter();
+	const router = useRouter();
 	const fileInputRef = useRef<HTMLInputElement>(null);
 	const handleFileInput = () => {
 		fileInputRef.current?.click();
@@ -38,7 +42,7 @@ const UserProfile = () => {
 		try {
 			axios.post(`${API_HOST}/user/logout`, {}, { withCredentials: true }).then((res) => {
 				dispatch(userLogout());
-				Router.replace({
+				router.replace({
 					pathname: "/",
 				});
 			});
@@ -61,7 +65,6 @@ const UserProfile = () => {
 	};
 
 	const handleSubmitUserProfile = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
 		const formdata = new FormData();
 		if (ProfileImage) {
 			formdata.append("profileImageSrc", ProfileImage.src);
@@ -74,6 +77,7 @@ const UserProfile = () => {
 						userProfileImage: res.data,
 					};
 					dispatch(changeProfileImage(newProfile));
+					router.reload();
 				});
 			} catch (err) {
 				console.log(err);
@@ -89,11 +93,26 @@ const UserProfile = () => {
 		} else {
 			return (
 				<ProfileImageContainer onClick={handleFileInput}>
-					<Image src={ProfileImage.src} alt={ProfileImage.src} width={300} height={400} />
+					<ProfileImageTag src={ProfileImage.src} alt={ProfileImage.src} width={300} height={400} />
 				</ProfileImageContainer>
 			);
 		}
 	}, [ProfileImage]);
+
+	const handleChangeDescription = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		e.preventDefault();
+		setUserDescription(e.target.value);
+	}, []);
+
+	const handleSubmitDesctiption = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		const data = {
+			profileDescription: userDescription,
+			userId: userId,
+		};
+		changeDescription(data);
+		router.reload();
+	};
 	return (
 		<ProfileContainer>
 			<ProfileUploadForm onSubmit={handleSubmitUserProfile}>
@@ -116,6 +135,11 @@ const UserProfile = () => {
 					<IoLogOutOutline />
 					LogOut
 				</LogOutButton>
+				<ProfileDescriptionUploadForm onSubmit={handleSubmitDesctiption}>
+					<ProfileDescriptionLabel>자기 소개를 적어보세요</ProfileDescriptionLabel>
+					<ProfileDescriptionTextArea onChange={handleChangeDescription} />
+					<button type="submit">자기소개 변경</button>
+				</ProfileDescriptionUploadForm>
 				<ProfileDream></ProfileDream>
 			</ProfileDescriptionContainer>
 		</ProfileContainer>

@@ -8,4 +8,5 @@ export type UserData = {
 	nickname: string;
 	email: string;
 	userProfileImage: string | null;
+	userDescription: string | null;
 };

@@ -26,6 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 					nickname: res.data.nickname,
 					userId: res.data.id,
 					userProfileImage: res.data.profileImage,
+					userDescription: res.data.profileDescription,
 				};
 				dispatch(setUserData(userData));
 			}

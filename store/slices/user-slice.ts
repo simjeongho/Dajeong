@@ -8,6 +8,7 @@ type InitialState = {
 	email: string;
 	userId: number | null;
 	userProfileImage: string | null;
+	userDescription: string | null;
 };
 
 const initialState: InitialState = {
@@ -17,6 +18,7 @@ const initialState: InitialState = {
 	email: "",
 	userId: null,
 	userProfileImage: null,
+	userDescription: null,
 };
 
 export const userSlice = createSlice({
@@ -33,6 +35,7 @@ export const userSlice = createSlice({
 			state.email = "";
 			state.isLogging = false;
 			state.userProfileImage = "";
+			state.userDescription = "";
 		},
 		userLoginRequest(state) {
 			state.isLogging = true;
@@ -43,6 +46,7 @@ export const userSlice = createSlice({
 			state.isLogin = true;
 			state.userId = action.payload.userId;
 			state.userProfileImage = action.payload.userProfileImage;
+			state.userDescription = action.payload.userDescription;
 		},
 		changeProfileImage(state, action) {
 			state.userProfileImage = action.payload.userProfileImage;
