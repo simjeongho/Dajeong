@@ -52,7 +52,7 @@ const CommentList = () => {
 			})
 			.then((res) => {
 				console.log("삭제 성공");
-				router.push({ pathname: `/Album/MultiAlbum/${id}` });
+				router.reload();
 			});
 	};
 	return (
