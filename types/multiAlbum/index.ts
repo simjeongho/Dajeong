@@ -36,6 +36,7 @@ export type DetailImage = {
 
 export type DetailUser = {
 	nickname: string;
+	profileImage: string | null;
 };
 
 export type multiAlbumPost = {

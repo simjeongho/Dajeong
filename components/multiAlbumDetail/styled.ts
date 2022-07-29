@@ -15,6 +15,15 @@ export const MultiAlbumImageArea = styled.div`
 	justify-content: center;
 	align-items: center;
 `;
+export const ProfileContainer = styled.div``;
+export const ProfileImageContainer = styled.div`
+	width: 30px;
+	height: 30px;
+`;
+
+export const ProfileImage = styled(Image)`
+	border-radius: 50%;
+`;
 
 export const MultiAlbumImageList = styled.ul`
 	width: 80%;
@@ -54,7 +63,6 @@ export const MultiAlbumTitleContainer = styled.div`
 	& > h2 {
 		color: white;
 	}
-
 	& > h3 {
 		color: white;
 	}

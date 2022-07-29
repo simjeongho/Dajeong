@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled from "styled-components";
 
 export const CommentsListContainer = styled.div`
@@ -11,6 +12,15 @@ export const CommentList = styled.ul`
 	flex-direction: column;
 `;
 
+export const CommentProfileContainer = styled.div`
+	width: 20px;
+	height: 20px;
+`;
+
+export const CommentProfileImage = styled(Image)`
+	border-radius: 50%;
+`;
+
 export const CommentItem = styled.div`
 	width: 100%;
 	list-style: none;
@@ -20,6 +30,9 @@ export const CommentItem = styled.div`
 
 	border-radius: 10px;
 	box-shadow: 1px 1px gray;
+
+	& > div {
+	}
 	& > h1 {
 		color: white;
 		font-size: 1.2rem;

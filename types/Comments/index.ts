@@ -1,5 +1,6 @@
 export type CommentUser = {
 	nickname: string;
+	profileImage: string;
 };
 export type Comment = {
 	PostId: number;

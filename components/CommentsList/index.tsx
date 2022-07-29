@@ -1,14 +1,21 @@
 import { API_HOST } from "apis/api";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { RiDeleteBin6Line, RiEditBoxLine } from "react-icons/ri";
-import { CommentDeleteFix, CommentItem, CommentsListContainer } from "./styled";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import {
+	CommentDeleteFix,
+	CommentItem,
+	CommentProfileContainer,
+	CommentProfileImage,
+	CommentsListContainer,
+} from "./styled";
 import { useSelector } from "react-redux";
 import { selectUser } from "store/configureStore";
 import useGetMultiAlbumComment, { getMultiAlbumComment } from "hooks/useCommentList";
 import { dehydrate, QueryClient } from "react-query";
 import { ParsedUrlQuery } from "querystring";
 import { GetServerSideProps } from "next";
+import emptyProfile from "public/assets/images/emptyProfile.png";
 interface IParams extends ParsedUrlQuery {
 	id: string;
 }
@@ -55,11 +62,19 @@ const CommentList = () => {
 			) : (
 				data?.data.multiAlbumComments.map((comment) => (
 					<CommentItem key={comment.id}>
+						<div>
+							<CommentProfileContainer>
+								<CommentProfileImage
+									src={comment.User.profileImage ? comment.User.profileImage : emptyProfile}
+									width={20}
+									height={20}
+								/>
+							</CommentProfileContainer>
+						</div>
 						<h1>{comment.User.nickname}</h1>
 						<h3>{handleCreatedAt(comment.createdAt)}</h3>
 						<h2>{comment.content}</h2>
 						<CommentDeleteFix>
-							<RiEditBoxLine />
 							<RiDeleteBin6Line onClick={() => handleDeleteComment(comment.id, comment.UserId)} />
 						</CommentDeleteFix>
 					</CommentItem>
