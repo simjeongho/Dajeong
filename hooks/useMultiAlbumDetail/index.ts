@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { multiAlbumDetailAxios } from "types/multiAlbum";
 
 export const getMultiAlbumDetail = (id: string | string[] | number) =>
-	axios.get(`${API_HOST}/multiAlbum/getDetail/${id}`, { withCredentials: true });
+	axios.get(`${API_HOST}/multiAlbum/${id}`, { withCredentials: true });
 
 const useGetMultiAlbumDetail = (id: string | string[] | number) => {
 	const queryFn = () => getMultiAlbumDetail(id);

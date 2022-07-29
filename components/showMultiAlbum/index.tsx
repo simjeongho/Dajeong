@@ -40,7 +40,7 @@ const MultiAlbumList = () => {
 							year={handleContentLength(item.content)}
 							width={300}
 							height={400}
-							linkurl={`/Album/MultiAlbum/[id]`}
+							linkurl={`/multiAlbum/[id]`}
 							query={item.id}
 						></MultiLinkCard>
 					))}
