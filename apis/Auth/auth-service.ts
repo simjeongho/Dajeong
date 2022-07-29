@@ -36,6 +36,7 @@ class AuthService {
 			email: result.email,
 			nickname: result.nickname,
 			userId: result.id,
+			userProfileImage: result.profileImage,
 		};
 		return {
 			statusCode,

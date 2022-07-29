@@ -44,9 +44,12 @@ export const userSlice = createSlice({
 			state.userId = action.payload.userId;
 			state.userProfileImage = action.payload.userProfileImage;
 		},
+		changeProfileImage(state, action) {
+			state.userProfileImage = action.payload.userProfileImage;
+		},
 	},
 });
 
 export default userSlice;
 
-export const { userLogin, userLogout, userLoginRequest, setUserData } = userSlice.actions;
+export const { userLogin, userLogout, userLoginRequest, setUserData, changeProfileImage } = userSlice.actions;

@@ -1,5 +1,5 @@
 export type ProfileImageType = {
 	src: string;
-	file: File;
+	file: File | null;
 	userId: number;
 };

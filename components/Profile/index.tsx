@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "store/configureStore";
 import { IoLogOutOutline } from "react-icons/io5";
 import axios from "axios";
-import { userLogout } from "store/slices/user-slice";
+import { changeProfileImage, userLogout } from "store/slices/user-slice";
 import { API_HOST } from "apis/api";
 import { useRouter } from "next/router";
 import React, { useMemo, useRef } from "react";
@@ -22,8 +22,12 @@ import { useState } from "react";
 import Image from "next/image";
 const UserProfile = () => {
 	const userSelector = useSelector(selectUser);
-	const { email, userNickName, userId } = userSelector;
-	const [ProfileImage, setProfileImage] = useState<ProfileImageType | null>(null);
+	const { email, userNickName, userId, userProfileImage } = userSelector;
+	const [ProfileImage, setProfileImage] = useState<ProfileImageType | null>({
+		src: userProfileImage,
+		file: null,
+		userId: userId,
+	});
 	const dispatch = useDispatch();
 	const Router = useRouter();
 	const fileInputRef = useRef<HTMLInputElement>(null);
@@ -61,11 +65,15 @@ const UserProfile = () => {
 		const formdata = new FormData();
 		if (ProfileImage) {
 			formdata.append("profileImageSrc", ProfileImage.src);
-			formdata.append("profileImage", ProfileImage.file);
+			formdata.append("profileImage", ProfileImage.file ? ProfileImage.file : "");
 			formdata.append("userId", String(ProfileImage.userId));
 			try {
 				axios.post(`${API_HOST}/user/profileImage`, formdata, { withCredentials: true }).then((res) => {
 					console.log("profileImageSuccess ", res);
+					const newProfile = {
+						userProfileImage: res.data,
+					};
+					dispatch(changeProfileImage(newProfile));
 				});
 			} catch (err) {
 				console.log(err);
@@ -74,7 +82,7 @@ const UserProfile = () => {
 	};
 
 	const showImages = useMemo(() => {
-		if (!ProfileImage && ProfileImage == null) {
+		if (!ProfileImage || ProfileImage == null || !userProfileImage) {
 			return (
 				<ProfileImageContainer onClick={handleFileInput}>프로필을 변경하려면 여기를 클릭하세요</ProfileImageContainer>
 			);
