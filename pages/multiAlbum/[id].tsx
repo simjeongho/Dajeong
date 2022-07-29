@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const MultiAlbumDetailPage = () => {
 	const router = useRouter();
 	const { id } = router.query;
-	const { data, isLoading } = useGetMultiAlbumDetail(id ? id : "");
+	const { data, isLoading } = useGetMultiAlbumDetail(id ? id : 16);
 	console.log("detail", data);
 	return (
 		<>

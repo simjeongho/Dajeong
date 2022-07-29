@@ -12,18 +12,18 @@ const nextConfig = {
 	},
 	async rewrites() {
 		return [
-			{
-				source: `/:path*`,
-				destination: `http://localhost:5000/:path*`,
-			},
-			{
-				source: `/Album`,
-				destination: `http://localhost:5000/singleAlbum/getList`,
-			},
-			{
-				source: `/Album/singleAlbum/:postNum`,
-				destination: `http://localhost:5000/singleAlbum/getDetail/:postNum`,
-			},
+			// {
+			// 	source: `/:path*`,
+			// 	destination: `http://localhost:5000/:path*`,
+			// },
+			// {
+			// 	source: `/Album`,
+			// 	destination: `http://localhost:5000/singleAlbum/getList`,
+			// },
+			// {
+			// 	source: `/Album/singleAlbum/:postNum`,
+			// 	destination: `http://localhost:5000/singleAlbum/getDetail/:postNum`,
+			// },
 		];
 	},
 };
