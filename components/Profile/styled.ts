@@ -1,9 +1,11 @@
 import { MiddlePurpleButton } from "shared/component/MiddlePurpleButton/styled";
 import Image from "next/image";
 import styled from "styled-components";
+import { Collapse } from "antd";
 
 export const ProfileContainer = styled.div`
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
@@ -11,9 +13,8 @@ export const ProfileContainer = styled.div`
 `;
 
 export const ProfileImageContainer = styled.div`
-	border: var(--border-container);
 	width: 100%;
-	height: 20vh;
+	border-radius: 10px;
 	color: var(--color-lightgray);
 	display: flex;
 	align-items: center;
@@ -22,6 +23,10 @@ export const ProfileImageContainer = styled.div`
 	&:hover {
 		cursor: pointer;
 	}
+`;
+
+export const ProfileImageTag = styled(Image)`
+	border-radius: 50%;
 `;
 
 export const ProfileUploadForm = styled.form`
@@ -45,13 +50,12 @@ export const ProfileUploadButton = styled.button`
 	}
 `;
 
-export const ProfileImage = styled(Image)``;
-
 export const ProfileDescriptionContainer = styled.div`
-	width: 50%;
+	width: 70%;
 	height: 100%;
-	background-color: black;
-	border: var(--border-container);
+	background-color: var(--color-deepgray);
+	padding: 3%;
+	border-radius: 10px;
 	color: white;
 	& > h1 {
 		color: white;
@@ -61,6 +65,49 @@ export const ProfileDescriptionContainer = styled.div`
 		color: white;
 		font-size: 1rem;
 	}
+`;
+
+export const EditProfileDescription = styled.div`
+	margin: 5% 2% 5% 2%;
+`;
+export const EditProfileDescriptionIcons = styled.div`
+	margin-left: 2%;
+	&:hover {
+		cursor: pointer;
+	}
+`;
+export const ProfileDescriptionDiv = styled.div`
+	background-color: black;
+	padding: 3%;
+	border-radius: 10px;
+	font-family: var(--font-crown);
+`;
+
+export const ProfileDescriptionUploadForm = styled.form`
+	width: 100%;
+`;
+
+export const ProfileDescriptionLabel = styled.label`
+	font-family: var(--font-crown);
+`;
+
+export const ProfileDescriptionTextArea = styled.textarea`
+	width: 100%;
+	color: black;
+`;
+
+export const ChangeDescriptionButton = styled(MiddlePurpleButton)`
+	width: 30%;
+	padding: 1%;
+	font-size: 1rem;
+	font-family: var(--font-crown);
+`;
+
+export const CustomCollapse = styled(Collapse)`
+	background-color: black;
+	font-family: var(--font-crown);
+	width: 100%;
+	background: black;
 `;
 
 export const LogOutButton = styled(MiddlePurpleButton)`

@@ -2,7 +2,6 @@ import {
 	LogOutButton,
 	ProfileContainer,
 	ProfileDescriptionContainer,
-	ProfileDream,
 	ProfileImageTag,
 	ProfileImageContainer,
 	ProfileUploadButton,
@@ -11,6 +10,11 @@ import {
 	ProfileDescriptionUploadForm,
 	ProfileDescriptionTextArea,
 	ProfileDescriptionLabel,
+	ProfileDescriptionDiv,
+	ChangeDescriptionButton,
+	EditProfileDescription,
+	EditProfileDescriptionIcons,
+	CustomCollapse,
 } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "store/configureStore";
@@ -19,21 +23,27 @@ import axios from "axios";
 import { changeProfileImage, userLogout } from "store/slices/user-slice";
 import { API_HOST } from "apis/api";
 import { useRouter } from "next/router";
-import React, { useCallback, useEffect, useMemo, useRef } from "react";
+import React, { useCallback, useMemo, useRef } from "react";
 import { ProfileImageType } from "types/Profile";
 import { useState } from "react";
-import { changeDescription } from "apis/profile";
+import { changeDescription, changeNickname } from "apis/profile";
+import { FiEdit } from "react-icons/fi";
+import { TbTriangleInverted } from "react-icons/tb";
+import { Collapse } from "antd";
+
 const UserProfile = () => {
 	const userSelector = useSelector(selectUser);
-	const { email, userNickName, userId, userProfileImage } = userSelector;
+	const { email, userNickName, userId, userProfileImage, userDescription } = userSelector;
 	const [ProfileImage, setProfileImage] = useState<ProfileImageType | null>({
 		src: userProfileImage,
 		file: null,
 		userId: userId,
 	});
-	const [userDescription, setUserDescription] = useState<string>("");
+	const [newDescription, setNewDescription] = useState<string>("");
+	const [newNickname, setNewNickname] = useState<string>("");
 	const dispatch = useDispatch();
 	const router = useRouter();
+	const { Panel } = Collapse;
 	const fileInputRef = useRef<HTMLInputElement>(null);
 	const handleFileInput = () => {
 		fileInputRef.current?.click();
@@ -99,15 +109,30 @@ const UserProfile = () => {
 		}
 	}, [ProfileImage]);
 
+	const handleChangeNickname = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		e.preventDefault();
+		setNewNickname(e.target.value);
+	}, []);
+
+	const handleSubmitNickname = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		const data = {
+			newNickName: newNickname,
+			userId: userId,
+		};
+		changeNickname(data);
+		router.reload();
+	};
+
 	const handleChangeDescription = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		e.preventDefault();
-		setUserDescription(e.target.value);
+		setNewDescription(e.target.value);
 	}, []);
 
 	const handleSubmitDesctiption = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const data = {
-			profileDescription: userDescription,
+			profileDescription: newDescription,
 			userId: userId,
 		};
 		changeDescription(data);
@@ -135,12 +160,29 @@ const UserProfile = () => {
 					<IoLogOutOutline />
 					LogOut
 				</LogOutButton>
-				<ProfileDescriptionUploadForm onSubmit={handleSubmitDesctiption}>
-					<ProfileDescriptionLabel>자기 소개를 적어보세요</ProfileDescriptionLabel>
-					<ProfileDescriptionTextArea onChange={handleChangeDescription} />
-					<button type="submit">자기소개 변경</button>
-				</ProfileDescriptionUploadForm>
-				<ProfileDream></ProfileDream>
+				<EditProfileDescription>
+					<ProfileDescriptionDiv>{userDescription}</ProfileDescriptionDiv>
+					<EditProfileDescriptionIcons>
+						<FiEdit />
+						<TbTriangleInverted />
+					</EditProfileDescriptionIcons>
+				</EditProfileDescription>
+				<CustomCollapse defaultActiveKey={["1"]}>
+					<Panel header="닉네임 변경" key="1">
+						<ProfileDescriptionUploadForm onSubmit={handleSubmitNickname}>
+							<ProfileDescriptionLabel>변경할 닉네임을 적어보세요</ProfileDescriptionLabel>
+							<ProfileDescriptionTextArea onChange={handleChangeNickname} />
+							<ChangeDescriptionButton type="submit">닉네임 변경</ChangeDescriptionButton>
+						</ProfileDescriptionUploadForm>
+					</Panel>
+					<Panel header="자기소개 변경" key="2">
+						<ProfileDescriptionUploadForm onSubmit={handleSubmitDesctiption}>
+							<ProfileDescriptionLabel>자기 소개를 적어보세요</ProfileDescriptionLabel>
+							<ProfileDescriptionTextArea onChange={handleChangeDescription} />
+							<ChangeDescriptionButton type="submit">자기소개 변경</ChangeDescriptionButton>
+						</ProfileDescriptionUploadForm>
+					</Panel>
+				</CustomCollapse>
 			</ProfileDescriptionContainer>
 		</ProfileContainer>
 	);

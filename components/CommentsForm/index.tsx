@@ -23,9 +23,9 @@ const CommentForms = () => {
 			PostId: id,
 			content: comment,
 		};
-		console.log("submit!");
 		axios.post(`${API_HOST}/comment/multiAlbum/${id}`, data, { withCredentials: true }).then((res) => {
 			console.log(res);
+			router.reload();
 		});
 	};
 	return (
