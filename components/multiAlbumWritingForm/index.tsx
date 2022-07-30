@@ -44,7 +44,6 @@ const MultiAlbumWriting = () => {
 				multiImageList.slice(0, 10);
 			}
 			setImages(multiImageList);
-			console.log(Images);
 		}
 	};
 
@@ -83,7 +82,6 @@ const MultiAlbumWriting = () => {
 		axios
 			.post(`${API_HOST}/multiAlbum/uploadMultiAlbumImage`, formdata, { withCredentials: true })
 			.then((res: AxiosResponse) => {
-				console.log("첫번째", res.data);
 				const imagesUrl = res.data;
 				const data = {
 					title: title,
@@ -91,9 +89,7 @@ const MultiAlbumWriting = () => {
 					userId: userId,
 					imagepath: imagesUrl,
 				};
-				axios.post(`${API_HOST}/multiAlbum/uploadMultiAlbumContent`, data, { withCredentials: true }).then((res) => {
-					console.log("두번 응답", res);
-				});
+				axios.post(`${API_HOST}/multiAlbum/uploadMultiAlbumContent`, data, { withCredentials: true }).then((res) => {});
 			});
 
 		Router.push("/Album");

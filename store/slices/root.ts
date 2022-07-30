@@ -5,7 +5,6 @@ import { combineReducers } from "redux";
 const rootReducer = (state: any, action: any) => {
 	switch (action.type) {
 		case HYDRATE:
-			console.log("HYDRATE");
 			return { ...state, ...action.payload };
 		default: {
 			const combineReducer = combineReducers({

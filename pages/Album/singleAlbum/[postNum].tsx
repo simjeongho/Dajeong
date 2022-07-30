@@ -30,7 +30,6 @@ const SingleAlbumDetailPage = ({
 	const { postNum } = router.query;
 	const { data, isLoading } = useGetSingleAlbumDetail(postNum ? postNum : " ");
 	//const { data, isLoading } = useGetSingleAlbumDetail("1");
-	console.log("data", data);
 	return (
 		<>
 			{isLoading || !data ? (

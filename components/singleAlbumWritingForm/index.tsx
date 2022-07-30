@@ -73,7 +73,6 @@ const SingleAlbumWrites = () => {
 				.post("/singleAlbum/uploadSingleAlbumPost", formdata, { withCredentials: true })
 				.then((response) => {
 					alert("글 작성이 완료되었습니다.");
-					console.log(response);
 					router.push("/Album");
 				})
 				.catch((error) => {

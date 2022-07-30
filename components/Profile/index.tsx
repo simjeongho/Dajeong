@@ -71,7 +71,6 @@ const UserProfile = () => {
 				userId: userId,
 			});
 		}
-		console.log(ProfileImage);
 	};
 
 	const handleSubmitUserProfile = (e: React.FormEvent<HTMLFormElement>) => {
@@ -82,7 +81,6 @@ const UserProfile = () => {
 			formdata.append("userId", String(ProfileImage.userId));
 			try {
 				axios.post(`${API_HOST}/user/profileImage`, formdata, { withCredentials: true }).then((res) => {
-					console.log("profileImageSuccess ", res);
 					const newProfile = {
 						userProfileImage: res.data,
 					};

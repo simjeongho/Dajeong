@@ -12,13 +12,9 @@ type ChangeNicknameType = {
 	userId: string | number;
 };
 export const changeDescription = async (data: ChangeDescriptionType) => {
-	await axios.post(`${API_HOST}/user/description`, data, { withCredentials: true }).then((res) => {
-		console.log(res);
-	});
+	await axios.post(`${API_HOST}/user/description`, data, { withCredentials: true }).then((res) => {});
 };
 
 export const changeNickname = async (data: ChangeNicknameType) => {
-	await axios.post(`${API_HOST}/user/nickname`, data, { withCredentials: true }).then((res) => {
-		console.log(res);
-	});
+	await axios.post(`${API_HOST}/user/nickname`, data, { withCredentials: true }).then((res) => {});
 };
