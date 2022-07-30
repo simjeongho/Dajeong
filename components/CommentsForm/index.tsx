@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "store/configureStore";
 import { useRouter } from "next/router";
-import useSubmitComment, { CommentSubmit, SubmitComment } from "apis/comment";
+import useSubmitComment, { CommentSubmit } from "apis/comment";
 const CommentForms = () => {
 	const router = useRouter();
 	const id = router.query.id;
@@ -31,11 +31,6 @@ const CommentForms = () => {
 	const handleSubmitCommentForm = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (id) {
-			const data = {
-				userId: userId,
-				PostId: id,
-				content: comment,
-			};
 			submitCommentQuery.mutate();
 		} else {
 			alert("댓글 작성에 실패했습니다");

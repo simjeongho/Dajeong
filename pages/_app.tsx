@@ -32,10 +32,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 			}
 		});
 	}, []);
+
 	return (
 		<>
 			<QueryClientProvider client={queryClient}>
-				<Hydrate state={pageProps?.dehydrateState}>
+				<Hydrate state={pageProps?.dehydratedState}>
 					<LayoutContainer>
 						<Header />
 						<Component {...pageProps} />

@@ -20,4 +20,26 @@ const useSubmitComment = (id: string | string[], data: CommentSubmit) => {
 	});
 };
 
+export type CommentDeleteType = {
+	id: number;
+	UserId: string | number;
+	creatorId: number | string;
+};
+
+export const deleteComment = async (data: CommentDeleteType) => {
+	await axios.delete(`${API_HOST}/comment/multiAlbum/delete/${data.id}`, { data, withCredentials: true });
+};
+
+export const useDeleteComment = (id: string | string[], data: CommentDeleteType) => {
+	const queryClient = useQueryClient();
+	return useMutation(
+		() => axios.delete(`${API_HOST}/comment/multiAlbum/delete/${id}`, { data, withCredentials: true }),
+		{
+			onSuccess: () => {
+				queryClient.invalidateQueries(["multiAlbumComment", id]);
+			},
+		},
+	);
+};
+
 export default useSubmitComment;
