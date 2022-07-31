@@ -26,17 +26,32 @@ import { useRouter } from "next/router";
 import React, { useCallback, useMemo, useRef } from "react";
 import { ProfileImageType } from "types/Profile";
 import { useState } from "react";
-import { changeDescription, changeNickname } from "apis/profile";
+import {
+	changeDescription,
+	ChangeDescriptionType,
+	changeNickname,
+	changeProfileImageAxios,
+	changeProfileImageType,
+	useChangeDescription,
+	useChangeNickName,
+	useChangeProfileImage,
+	useGetProfile,
+} from "apis/profile";
 import { FiEdit } from "react-icons/fi";
 import { TbTriangleInverted } from "react-icons/tb";
 import { Collapse } from "antd";
 
 const UserProfile = () => {
 	const userSelector = useSelector(selectUser);
-	const { email, userNickName, userId, userProfileImage, userDescription } = userSelector;
+	const { email, userId, userProfileImage } = userSelector;
 	const [ProfileImage, setProfileImage] = useState<ProfileImageType | null>({
 		src: userProfileImage,
 		file: null,
+		userId: userId,
+	});
+	const [changeProfile, setChangeProfile] = useState<changeProfileImageType>({
+		profileImageSrc: "",
+		profileImage: null,
 		userId: userId,
 	});
 	const [newDescription, setNewDescription] = useState<string>("");
@@ -48,6 +63,13 @@ const UserProfile = () => {
 	const handleFileInput = () => {
 		fileInputRef.current?.click();
 	};
+	const { data, isLoading } = useGetProfile(userId);
+	const changeProfileImageQuery = useChangeProfileImage(userId ? userId : "", changeProfile);
+	const changeDescriptionQuery = useChangeDescription(userId ? userId : "", {
+		profileDescription: newDescription,
+		userId: userId,
+	});
+	const changeNickNameQuery = useChangeNickName(userId ? userId : "", { newNickName: newNickname, userId: userId });
 	const handleLogOut = () => {
 		try {
 			axios.post(`${API_HOST}/user/logout`, {}, { withCredentials: true }).then((res) => {
@@ -70,42 +92,42 @@ const UserProfile = () => {
 				src: url,
 				userId: userId,
 			});
+			setChangeProfile({
+				profileImageSrc: url,
+				profileImage: fileList[0],
+				userId: userId,
+			});
 		}
 	};
 
 	const handleSubmitUserProfile = (e: React.FormEvent<HTMLFormElement>) => {
-		const formdata = new FormData();
-		if (ProfileImage) {
-			formdata.append("profileImageSrc", ProfileImage.src);
-			formdata.append("profileImage", ProfileImage.file ? ProfileImage.file : "");
-			formdata.append("userId", String(ProfileImage.userId));
-			try {
-				axios.post(`${API_HOST}/user/profileImage`, formdata, { withCredentials: true }).then((res) => {
-					const newProfile = {
-						userProfileImage: res.data,
-					};
-					dispatch(changeProfileImage(newProfile));
-					router.reload();
-				});
-			} catch (err) {
-				console.log(err);
-			}
+		e.preventDefault();
+		if (ProfileImage?.file) {
+			const data: changeProfileImageType = {
+				profileImageSrc: ProfileImage?.src ? ProfileImage.src : "",
+				profileImage: ProfileImage?.file,
+				userId: userId,
+			};
+			const newProfile = changeProfileImageAxios(data);
+			dispatch(changeProfileImage(newProfile));
+			changeProfileImageQuery.mutate();
 		}
 	};
 
 	const showImages = useMemo(() => {
-		if (!ProfileImage || ProfileImage == null || !userProfileImage) {
+		if (!data || isLoading || data.data.profileImage === null || !ProfileImage) {
+			console.log("empty");
 			return (
 				<ProfileImageContainer onClick={handleFileInput}>프로필을 변경하려면 여기를 클릭하세요</ProfileImageContainer>
 			);
 		} else {
 			return (
 				<ProfileImageContainer onClick={handleFileInput}>
-					<ProfileImageTag src={ProfileImage.src} alt={ProfileImage.src} width={300} height={400} />
+					<ProfileImageTag src={data.data.profileImage} alt={data.data.profileImage} width={300} height={400} />
 				</ProfileImageContainer>
 			);
 		}
-	}, [ProfileImage]);
+	}, []);
 
 	const handleChangeNickname = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		e.preventDefault();
@@ -119,7 +141,7 @@ const UserProfile = () => {
 			userId: userId,
 		};
 		changeNickname(data);
-		router.reload();
+		changeNickNameQuery.mutate();
 	};
 
 	const handleChangeDescription = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -134,7 +156,7 @@ const UserProfile = () => {
 			userId: userId,
 		};
 		changeDescription(data);
-		router.reload();
+		changeDescriptionQuery.mutate();
 	};
 	return (
 		<ProfileContainer>
@@ -152,14 +174,14 @@ const UserProfile = () => {
 			</ProfileUploadForm>
 
 			<ProfileDescriptionContainer>
-				<h1>{userNickName}</h1>
+				<h1>{data?.data.nickname}</h1>
 				<h2>{email}</h2>
 				<LogOutButton onClick={handleLogOut}>
 					<IoLogOutOutline />
 					LogOut
 				</LogOutButton>
 				<EditProfileDescription>
-					<ProfileDescriptionDiv>{userDescription}</ProfileDescriptionDiv>
+					<ProfileDescriptionDiv>{data?.data.profileDescription}</ProfileDescriptionDiv>
 					<EditProfileDescriptionIcons>
 						<FiEdit />
 						<TbTriangleInverted />
