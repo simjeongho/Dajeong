@@ -28,7 +28,6 @@ import { ProfileImageType } from "types/Profile";
 import { useState } from "react";
 import {
 	changeDescription,
-	ChangeDescriptionType,
 	changeNickname,
 	changeProfileImageAxios,
 	changeProfileImageType,
