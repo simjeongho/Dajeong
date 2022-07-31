@@ -17,3 +17,21 @@ export const MultiAlbumWritesButton = styled(NeonRoundButton)`
 	width: 20%;
 	margin-top: 3%;
 `;
+
+export const ShowAllMultiAlbumButton = styled.button`
+	background-color: transparent;
+	outline: none;
+	&:hover {
+		cursor: pointer;
+	}
+`;
+
+export const ShowAllMultiAlbum = styled.div`
+	color: white;
+	background-color: var(--color-deepgray);
+	border-radius: 5px;
+	width: 40%;
+	padding: 1%;
+	display: flex;
+	justify-content: space-between;
+`;

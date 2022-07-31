@@ -1,11 +1,18 @@
 import LinkCard from "components/LinkCard";
 import AxiosSlider from "components/carousel";
 import Link from "next/link";
-import { AlbumListContainer, MultiAlbumWritesButton, SingleAlbumWritesButton } from "./styled";
+import {
+	AlbumListContainer,
+	MultiAlbumWritesButton,
+	ShowAllMultiAlbum,
+	ShowAllMultiAlbumButton,
+	SingleAlbumWritesButton,
+} from "./styled";
 import useGetSingleAlbumList from "hooks/useGetSingleAlbumList";
 import MultiAlbumList from "components/showMultiAlbum";
 import { GetServerSideProps } from "next";
 import { dehydrate, QueryClient } from "react-query";
+import { BsArrowRightCircle } from "react-icons/bs";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const queryClient = new QueryClient();
@@ -55,6 +62,14 @@ const Albums = () => {
 				<MultiAlbumWritesButton>멀티 앨범 작성</MultiAlbumWritesButton>
 			</Link>
 			<MultiAlbumList />
+			<Link href="Album/AllAlbum">
+				<ShowAllMultiAlbum>
+					모든 앨범 조회
+					<ShowAllMultiAlbumButton>
+						<BsArrowRightCircle />
+					</ShowAllMultiAlbumButton>
+				</ShowAllMultiAlbum>
+			</Link>
 		</AlbumListContainer>
 	);
 };
