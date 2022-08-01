@@ -51,19 +51,14 @@ const AlbumList = () => {
 				{status === "error" && <div>error</div>}
 				{status === "success" &&
 					AllAlbum.map((item) => (
-						<Link
-							href={{
-								pathname: `/`,
-							}}
-						>
-							<AllAlbumCard
-								key={item.Images[0].src}
-								src={item.Images[0].src}
-								title={item.title}
-								content={item.content}
-								nickname={item.User.nickname}
-							/>
-						</Link>
+						<AllAlbumCard
+							key={item.Images[0].src}
+							src={item.Images[0].src}
+							title={item.title}
+							content={item.content}
+							nickname={item.User.nickname}
+							linkUrl={`/multiAlbum/${item.id}`}
+						/>
 					))}
 			</AlbumListComponent>
 		</AlbumListComponentContainer>
