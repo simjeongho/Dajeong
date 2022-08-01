@@ -7,6 +7,9 @@ export const AlbumListContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	background-color: black;
+	@media screen and (max-width: 768px) {
+		padding: 3%;
+	}
 `;
 
 export const SingleAlbumWritesButton = styled(NeonRoundButton)`
@@ -34,4 +37,7 @@ export const ShowAllMultiAlbum = styled.div`
 	padding: 1%;
 	display: flex;
 	justify-content: space-between;
+	@media screen and (max-width: 768px) {
+		width: 100%;
+	}
 `;
