@@ -88,7 +88,8 @@ export const useChangeNickName = (id: string | string[] | number, data: ChangeNi
 	});
 };
 
-export const getProfile = (id: string | string[] | number) => axios.get(`${API_HOST}/user/profile/${id}`);
+export const getProfile = (id: string | string[] | number) =>
+	axios.get(`${API_HOST}/user/profile/${id}`, { withCredentials: true });
 
 export const useGetProfile = (id: string | string[] | number) => {
 	const queryFn = () => getProfile(id);
