@@ -20,13 +20,15 @@ export const AllAlbumListCardThumbnail = styled(Image)``;
 export const AllAlbumListCardTitleDiv = styled.div`
 	display: flex;
 	justify-content: space-around;
-	width: 20%;
+	width: 25%;
 	& > h1 {
 		font-family: var(--font-crown);
 		color: white;
 		font-size: 1.5rem;
 	}
+`;
 
+export const AllAlbumListCardWriter = styled.div`
 	& > h2 {
 		color: white;
 		font-family: var(--font-crown);
@@ -34,8 +36,14 @@ export const AllAlbumListCardTitleDiv = styled.div`
 	}
 `;
 
+export const AllAlbumListCardWriterProfileContainer = styled.div``;
+
+export const AllAlbumListCardWriterProfile = styled(Image)`
+	border-radius: 50%;
+`;
+
 export const AllAlbumListCardPreviewDiv = styled.div`
-	width: 40%;
+	width: 30%;
 	& > h3 {
 		color: white;
 		font-size: 0.8rem;

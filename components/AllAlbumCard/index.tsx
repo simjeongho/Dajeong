@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
 	AllAlbumListCardContainer,
@@ -5,6 +6,9 @@ import {
 	AllAlbumListCardThumbnail,
 	AllAlbumListCardThumbnailContainer,
 	AllAlbumListCardTitleDiv,
+	AllAlbumListCardWriter,
+	AllAlbumListCardWriterProfile,
+	AllAlbumListCardWriterProfileContainer,
 } from "./styled";
 
 type AllAlbumCardProps = {
@@ -13,9 +17,10 @@ type AllAlbumCardProps = {
 	content: string;
 	nickname: string;
 	linkUrl: string;
+	profileImage: string;
 };
 
-const AllAlbumCard = ({ src, title, content, nickname, linkUrl }: AllAlbumCardProps) => {
+const AllAlbumCard = ({ src, title, content, nickname, linkUrl, profileImage }: AllAlbumCardProps) => {
 	const handleContent = (content: string) => {
 		return content.slice(0, 15) + "...";
 	};
@@ -31,8 +36,13 @@ const AllAlbumCard = ({ src, title, content, nickname, linkUrl }: AllAlbumCardPr
 				</AllAlbumListCardThumbnailContainer>
 				<AllAlbumListCardTitleDiv>
 					<h1>{title}</h1>
-					<h2>{nickname}</h2>
 				</AllAlbumListCardTitleDiv>
+				<AllAlbumListCardWriter>
+					<AllAlbumListCardWriterProfileContainer>
+						<AllAlbumListCardWriterProfile src={profileImage} width={20} height={20}></AllAlbumListCardWriterProfile>
+					</AllAlbumListCardWriterProfileContainer>
+					<h2>{nickname}</h2>
+				</AllAlbumListCardWriter>
 				<AllAlbumListCardPreviewDiv>
 					<h3>{handleContent(content)}</h3>
 				</AllAlbumListCardPreviewDiv>
