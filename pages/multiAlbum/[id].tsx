@@ -27,7 +27,7 @@ const MultiAlbumDetailPage = () => {
 	return (
 		<>
 			{isLoading || !data ? (
-				<div>is Loading...</div>
+				<div>로딩중이거나 로그인을 하지 않으면 볼 수 없습니다.</div>
 			) : (
 				<>
 					<MultiAlbumDetail
