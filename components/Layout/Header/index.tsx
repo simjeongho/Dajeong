@@ -40,12 +40,12 @@ const Header = () => {
 							</LayoutNavItem>
 						</a>
 
-						<Link href="/Posts">
+						{/* <Link href="/Posts">
 							<LayoutNavItem>
 								<IoFileTrayStackedOutline />
 								posts
 							</LayoutNavItem>
-						</Link>
+						</Link> */}
 						<Link href="/Album">
 							<LayoutNavItem>
 								<IoImagesOutline />
@@ -71,6 +71,12 @@ const Header = () => {
 							<IoLogoGithub />
 							github
 						</LayoutNavItem>
+						<Link href="/Album">
+							<LayoutNavItem>
+								<IoImagesOutline />
+								Album
+							</LayoutNavItem>
+						</Link>
 						<Link href="/Login">
 							<LayoutNavItem>
 								<IoLogInOutline />
