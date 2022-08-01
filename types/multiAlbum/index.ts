@@ -2,7 +2,6 @@
 export type multiAlbumImage = {
 	src: string;
 	PostId: string;
-	RetweetId: number | null;
 };
 export type Usernickname = {
 	nickname: string;

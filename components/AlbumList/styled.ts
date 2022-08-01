@@ -9,7 +9,6 @@ export const AlbumListComponentContainer = styled.div`
 
 export const AlbumListComponent = styled.div`
 	width: 50%;
-	height: 60vh;
 	background-color: var(--color-deepgray);
 	border-radius: 20px;
 	padding: 3%;
