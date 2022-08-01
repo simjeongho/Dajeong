@@ -32,7 +32,6 @@ const SingleAlbumDetail = ({ title, content, filepath }: DetailProps) => {
 						<SingleAlbumDetailDescription>{content}</SingleAlbumDetailDescription>
 					</SingleAlbumDetailDescriptionContainer>
 				</SingleAlbumContentContainer>
-				<CommentForms></CommentForms>
 			</SingleAlbumDetailRightContainer>
 		</SingleAlbumDetailContainer>
 	);
