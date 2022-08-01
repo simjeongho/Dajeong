@@ -1,10 +1,10 @@
 import { API_HOST } from "apis/api";
 import AllAlbumCard from "components/AllAlbumCard";
 import { useInfiniteQuery } from "react-query";
-import { AlbumListComponent, AlbumListComponentContainer } from "./styled";
+import { AlbumListComponent, AlbumListComponentContainer, FetchMoreButton } from "./styled";
 import axios from "axios";
-import Link from "next/link";
 import { multiAlbumImage } from "types/multiAlbum/index";
+import blankProfile from "public/assets/images/emptyProfile.png";
 
 type GetAllAlbumUserType = {
 	nickname: string;
@@ -34,32 +34,48 @@ const AlbumList = () => {
 			}),
 		{
 			getNextPageParam: (lastPage, allPages) => {
-				const { offset, hasMore } = lastPage?.data;
+				const { nextOffset, hasMore } = lastPage?.data;
 				if (!hasMore) return false;
 				else {
-					return Number(offset);
+					return Number(nextOffset);
 				}
 			},
 		},
 	);
-	const AllAlbum: GetAllAlbumItemType[] = data?.pages[0].data.multiAlbumList;
-	console.log(data?.pages[0].data.multiAlbumList);
+
+	const changeButtonText = (hasMore: boolean) => {
+		return hasMore ? "load More ..." : "finish";
+	};
+
+	const loadMore = () => {
+		if (hasNextPage) {
+			fetchNextPage();
+		}
+	};
+	const AllAlbums = data?.pages;
+	console.log(data);
 	return (
 		<AlbumListComponentContainer>
 			<AlbumListComponent>
 				{status === "loading" && <div>loading...</div>}
 				{status === "error" && <div>error</div>}
 				{status === "success" &&
-					AllAlbum.map((item) => (
-						<AllAlbumCard
-							key={item.Images[0].src}
-							src={item.Images[0].src}
-							title={item.title}
-							content={item.content}
-							nickname={item.User.nickname}
-							linkUrl={`/multiAlbum/${item.id}`}
-						/>
-					))}
+					AllAlbums?.map((page) => {
+						return page.data.multiAlbumList.map((item: GetAllAlbumItemType) => (
+							<AllAlbumCard
+								key={item.Images[0].src}
+								src={item.Images[0].src}
+								title={item.title}
+								content={item.content}
+								nickname={item.User.nickname}
+								linkUrl={`/multiAlbum/${item.id}`}
+								profileImage={item.User.profileImage ? item.User.profileImage : blankProfile.src}
+							/>
+						));
+					})}
+				<FetchMoreButton onClick={loadMore}>
+					{changeButtonText(data?.pages[data?.pages.length - 1].data.hasMore)}
+				</FetchMoreButton>
 			</AlbumListComponent>
 		</AlbumListComponentContainer>
 	);
