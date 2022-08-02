@@ -5,6 +5,8 @@ import { AlbumListComponent, AlbumListComponentContainer, FetchMoreButton } from
 import axios from "axios";
 import { multiAlbumImage } from "types/multiAlbum/index";
 import blankProfile from "public/assets/images/emptyProfile.png";
+import useIntersectionObserver from "hooks/useObserver";
+import { useRef } from "react";
 
 type GetAllAlbumUserType = {
 	nickname: string;
@@ -22,7 +24,8 @@ type GetAllAlbumItemType = {
 };
 
 const AlbumList = () => {
-	const OFFSET = 2;
+	const OFFSET = 4;
+	const bottom = useRef<HTMLDivElement>(null);
 	const { data, error, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } = useInfiniteQuery(
 		"getAllAlbumList",
 		({ pageParam = 0 }) =>
@@ -54,30 +57,39 @@ const AlbumList = () => {
 	};
 	const AllAlbums = data?.pages;
 	console.log(data);
+	const onIntersect: IntersectionObserverCallback = ([{ isIntersecting }]) => {
+		console.log(`감지결과 : ${isIntersecting}`);
+		fetchNextPage();
+	};
+
+	const { setTarget } = useIntersectionObserver({ onIntersect });
 	return (
-		<AlbumListComponentContainer>
-			<AlbumListComponent>
-				{status === "loading" && <div>loading...</div>}
-				{status === "error" && <div>error</div>}
-				{status === "success" &&
-					AllAlbums?.map((page) => {
-						return page.data.multiAlbumList.map((item: GetAllAlbumItemType) => (
-							<AllAlbumCard
-								key={item.Images[0].src}
-								src={item.Images[0].src}
-								title={item.title}
-								content={item.content}
-								nickname={item.User.nickname}
-								linkUrl={`/multiAlbum/${item.id}`}
-								profileImage={item.User.profileImage ? item.User.profileImage : blankProfile.src}
-							/>
-						));
-					})}
-				<FetchMoreButton onClick={loadMore}>
-					{changeButtonText(data?.pages[data?.pages.length - 1].data.hasMore)}
-				</FetchMoreButton>
-			</AlbumListComponent>
-		</AlbumListComponentContainer>
+		<>
+			<AlbumListComponentContainer>
+				<AlbumListComponent>
+					{status === "loading" && <div>loading...</div>}
+					{status === "error" && <div>error</div>}
+					{status === "success" &&
+						AllAlbums?.map((page) => {
+							return page.data.multiAlbumList.map((item: GetAllAlbumItemType) => (
+								<AllAlbumCard
+									key={item.Images[0].src}
+									src={item.Images[0].src}
+									title={item.title}
+									content={item.content}
+									nickname={item.User.nickname}
+									linkUrl={`/multiAlbum/${item.id}`}
+									profileImage={item.User.profileImage ? item.User.profileImage : blankProfile.src}
+								/>
+							));
+						})}
+					<FetchMoreButton onClick={loadMore}>
+						{changeButtonText(data?.pages[data?.pages.length - 1].data.hasMore)}
+					</FetchMoreButton>
+				</AlbumListComponent>
+			</AlbumListComponentContainer>
+			<div ref={setTarget}></div>
+		</>
 	);
 };
 
