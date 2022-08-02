@@ -6,6 +6,7 @@ import useGetSingleAlbumDetail, { getSingleAlbumDetail } from "hooks/useSingleAl
 import { singleAlbumPost } from "types/singleAlbum";
 import { dehydrate, QueryClient } from "react-query";
 import { useRouter } from "next/router";
+import Footer from "components/Layout/Footer";
 
 interface IParams extends ParsedUrlQuery {
 	postNum: string;
@@ -41,6 +42,7 @@ const SingleAlbumDetailPage = ({
 					filepath={data?.data.singleAlbumDetail.filePath}
 				></SingleAlbumDetail>
 			)}
+			<Footer />
 		</>
 	);
 };

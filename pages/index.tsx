@@ -14,6 +14,7 @@ import haru4 from "assets/images/together/haru4.png";
 import haru5 from "assets/images/together/haru5.png";
 import togeter2 from "assets/images/together/together2.jpg";
 import DaeunBestImage from "components/DaeunBestAlbum";
+import Footer from "components/Layout/Footer";
 
 const landscapeData = [
 	<Card key="land1" src={mangWon} alt="망원" title="망원에서" year="2022" width={300} height={400} />,
@@ -34,11 +35,14 @@ const togetherData = [
 ];
 const Index = () => {
 	return (
-		<HomeContainer>
-			<DaeunBestImage />
-			<StaticSlider children={landscapeData} title="LandScape" />
-			<StaticSlider children={togetherData} title="Together" />
-		</HomeContainer>
+		<>
+			<HomeContainer>
+				<DaeunBestImage />
+				<StaticSlider children={landscapeData} title="LandScape" />
+				<StaticSlider children={togetherData} title="Together" />
+			</HomeContainer>
+			<Footer />
+		</>
 	);
 };
 

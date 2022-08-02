@@ -1,3 +1,4 @@
+import Footer from "components/Layout/Footer";
 import MultiAlbumDetail from "components/multiAlbumDetail";
 import useGetMultiAlbumDetail, { getMultiAlbumDetail } from "hooks/useMultiAlbumDetail";
 import { GetServerSideProps } from "next";
@@ -39,6 +40,7 @@ const MultiAlbumDetailPage = () => {
 					/>
 				</>
 			)}
+			<Footer />
 		</>
 	);
 };

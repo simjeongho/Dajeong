@@ -40,7 +40,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 					<LayoutContainer>
 						<Header />
 						<Component {...pageProps} />
-						<Footer />
 					</LayoutContainer>
 				</Hydrate>
 
