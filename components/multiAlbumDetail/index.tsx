@@ -12,8 +12,10 @@ import {
 	MultiAlbumDescriptionComments,
 	ProfileImage,
 	ProfileImageContainer,
+	MultiAlbumLikeDiv,
 } from "./styled";
 import emptyProfile from "public/assets/images/emptyProfile.png";
+import { IoHeartOutline } from "react-icons/io5";
 
 const MultiAlbumDetail = ({ Images, content, createdAt, title, User }: multiAlbumDetailPage) => {
 	const handleDate = () => {
@@ -38,6 +40,9 @@ const MultiAlbumDetail = ({ Images, content, createdAt, title, User }: multiAlbu
 						</ProfileImageContainer>
 						<h2>{`작성자 ${User.nickname}`}</h2>
 						<h3>{`작성 일 ${handleDate()}`}</h3>
+						<MultiAlbumLikeDiv>
+							<IoHeartOutline />
+						</MultiAlbumLikeDiv>
 					</MultiAlbumTitleContainer>
 
 					<MultiAlbumDescriptionComments>
