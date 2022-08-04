@@ -13,7 +13,16 @@ export const useLikePost = (id: string | number, data: SubmitLike) => {
 	const queryClient = useQueryClient();
 	return useMutation(() => axios.patch(`${API_HOST}/multiAlbum/${id}/like`, data, { withCredentials: true }), {
 		onSuccess: () => {
-			queryClient.invalidateQueries(["multiAlbumDetail", id]);
+			queryClient.invalidateQueries(["multiAlbumDetail", String(id)]);
+		},
+	});
+};
+
+export const useLikeCancelPost = (id: string | number) => {
+	const queryClient = useQueryClient();
+	return useMutation(() => axios.delete(`${API_HOST}/multiAlbum/${id}/like`, { withCredentials: true }), {
+		onSuccess: () => {
+			queryClient.invalidateQueries(["multiAlbumDetail", String(id)]);
 		},
 	});
 };

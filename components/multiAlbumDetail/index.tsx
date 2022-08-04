@@ -18,25 +18,47 @@ import {
 } from "./styled";
 import emptyProfile from "public/assets/images/emptyProfile.png";
 import { IoHeartOutline } from "react-icons/io5";
-import { useLikePost } from "apis/MultiAlbum";
+import { FcLike } from "react-icons/fc";
+import { useLikeCancelPost, useLikePost } from "apis/MultiAlbum";
 import { useSelector } from "react-redux";
 import { selectUser } from "store/configureStore";
+import { useEffect, useState } from "react";
 
 const MultiAlbumDetail = ({ Images, content, createdAt, title, User, id, Likers }: multiAlbumDetailPage) => {
+	const [likeState, setLikeState] = useState<boolean>(false);
+	const userSelector = useSelector(selectUser);
+	const { userId } = userSelector;
 	const handleDate = () => {
 		return createdAt.slice(0, 10) + "일 " + createdAt.slice(12, 19);
 	};
 
-	const userSelector = useSelector(selectUser);
-	const { userId } = userSelector;
+	useEffect(() => {
+		Likers?.map((item) => {
+			if (item.id === userId) {
+				setLikeState(true);
+			}
+		});
+	}, [Likers, userId]);
 
 	const SubmitLikeQuery = useLikePost(id, {
 		PostId: id,
 		UserId: userId,
 	});
 
+	const DeleteLikeQuery = useLikeCancelPost(id);
+
 	const handleSubmitLike = () => {
-		SubmitLikeQuery.mutate();
+		if (!SubmitLikeQuery.isLoading) {
+			setLikeState(true);
+			SubmitLikeQuery.mutate();
+		}
+	};
+
+	const handleCancelLike = () => {
+		if (!DeleteLikeQuery.isLoading) {
+			setLikeState(false);
+			DeleteLikeQuery.mutate();
+		}
 	};
 
 	return (
@@ -58,7 +80,7 @@ const MultiAlbumDetail = ({ Images, content, createdAt, title, User, id, Likers 
 						<h2>{`작성자 ${User.nickname}`}</h2>
 						<h3>{`작성 일 ${handleDate()}`}</h3>
 						<MultiAlbumLikeDiv>
-							<IoHeartOutline onClick={handleSubmitLike} />
+							{likeState ? <FcLike onClick={handleCancelLike} /> : <IoHeartOutline onClick={handleSubmitLike} />}
 							<MultiAlbumLikersDiv>
 								이 앨범을 좋아하는 사람:
 								{Likers?.map((item) => (
