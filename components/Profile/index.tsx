@@ -39,6 +39,7 @@ import {
 import { FiEdit } from "react-icons/fi";
 import { TbTriangleInverted } from "react-icons/tb";
 import { Collapse } from "antd";
+import ShowLiked from "components/ShowLiked";
 
 const UserProfile = () => {
 	const userSelector = useSelector(selectUser);
@@ -158,52 +159,55 @@ const UserProfile = () => {
 		changeDescriptionQuery.mutate();
 	};
 	return (
-		<ProfileContainer>
-			<ProfileUploadForm onSubmit={handleSubmitUserProfile}>
-				{showImages}
-				<ProfileUploadInput
-					ref={fileInputRef}
-					type="file"
-					name="profileImage"
-					id="profileImage"
-					hidden
-					onChange={uploadProfileImage}
-				></ProfileUploadInput>
-				<ProfileUploadButton type="submit">프로필 변경</ProfileUploadButton>
-			</ProfileUploadForm>
+		<>
+			<ProfileContainer>
+				<ProfileUploadForm onSubmit={handleSubmitUserProfile}>
+					{showImages}
+					<ProfileUploadInput
+						ref={fileInputRef}
+						type="file"
+						name="profileImage"
+						id="profileImage"
+						hidden
+						onChange={uploadProfileImage}
+					></ProfileUploadInput>
+					<ProfileUploadButton type="submit">프로필 변경</ProfileUploadButton>
+				</ProfileUploadForm>
 
-			<ProfileDescriptionContainer>
-				<h1>{data?.data.nickname}</h1>
-				<h2>{email}</h2>
-				<LogOutButton onClick={handleLogOut}>
-					<IoLogOutOutline />
-					LogOut
-				</LogOutButton>
-				<EditProfileDescription>
-					<ProfileDescriptionDiv>{data?.data.profileDescription}</ProfileDescriptionDiv>
-					<EditProfileDescriptionIcons>
-						<FiEdit />
-						<TbTriangleInverted />
-					</EditProfileDescriptionIcons>
-				</EditProfileDescription>
-				<CustomCollapse defaultActiveKey={["1"]}>
-					<Panel header="닉네임 변경" key="1">
-						<ProfileDescriptionUploadForm onSubmit={handleSubmitNickname}>
-							<ProfileDescriptionLabel>변경할 닉네임을 적어보세요</ProfileDescriptionLabel>
-							<ProfileDescriptionTextArea onChange={handleChangeNickname} />
-							<ChangeDescriptionButton type="submit">닉네임 변경</ChangeDescriptionButton>
-						</ProfileDescriptionUploadForm>
-					</Panel>
-					<Panel header="자기소개 변경" key="2">
-						<ProfileDescriptionUploadForm onSubmit={handleSubmitDesctiption}>
-							<ProfileDescriptionLabel>자기 소개를 적어보세요</ProfileDescriptionLabel>
-							<ProfileDescriptionTextArea onChange={handleChangeDescription} />
-							<ChangeDescriptionButton type="submit">자기소개 변경</ChangeDescriptionButton>
-						</ProfileDescriptionUploadForm>
-					</Panel>
-				</CustomCollapse>
-			</ProfileDescriptionContainer>
-		</ProfileContainer>
+				<ProfileDescriptionContainer>
+					<h1>{data?.data.nickname}</h1>
+					<h2>{email}</h2>
+					<LogOutButton onClick={handleLogOut}>
+						<IoLogOutOutline />
+						LogOut
+					</LogOutButton>
+					<EditProfileDescription>
+						<ProfileDescriptionDiv>{data?.data.profileDescription}</ProfileDescriptionDiv>
+						<EditProfileDescriptionIcons>
+							<FiEdit />
+							<TbTriangleInverted />
+						</EditProfileDescriptionIcons>
+					</EditProfileDescription>
+					<CustomCollapse defaultActiveKey={["1"]}>
+						<Panel header="닉네임 변경" key="1">
+							<ProfileDescriptionUploadForm onSubmit={handleSubmitNickname}>
+								<ProfileDescriptionLabel>변경할 닉네임을 적어보세요</ProfileDescriptionLabel>
+								<ProfileDescriptionTextArea onChange={handleChangeNickname} />
+								<ChangeDescriptionButton type="submit">닉네임 변경</ChangeDescriptionButton>
+							</ProfileDescriptionUploadForm>
+						</Panel>
+						<Panel header="자기소개 변경" key="2">
+							<ProfileDescriptionUploadForm onSubmit={handleSubmitDesctiption}>
+								<ProfileDescriptionLabel>자기 소개를 적어보세요</ProfileDescriptionLabel>
+								<ProfileDescriptionTextArea onChange={handleChangeDescription} />
+								<ChangeDescriptionButton type="submit">자기소개 변경</ChangeDescriptionButton>
+							</ProfileDescriptionUploadForm>
+						</Panel>
+					</CustomCollapse>
+				</ProfileDescriptionContainer>
+			</ProfileContainer>
+			<ShowLiked></ShowLiked>
+		</>
 	);
 };
 
