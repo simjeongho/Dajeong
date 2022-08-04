@@ -32,6 +32,7 @@ const CommentForms = () => {
 		e.preventDefault();
 		if (id) {
 			submitCommentQuery.mutate();
+			setComment("");
 		} else {
 			alert("댓글 작성에 실패했습니다");
 		}
@@ -43,6 +44,7 @@ const CommentForms = () => {
 					placeholder="댓글을 입력해주세요"
 					onChange={handleCommentText}
 					ref={commentRef}
+					value={comment}
 				></CommentFormInput>
 				<SubmitButton type="submit">댓글 작성</SubmitButton>
 			</CommentForm>
