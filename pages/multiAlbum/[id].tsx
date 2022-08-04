@@ -1,5 +1,6 @@
 import Footer from "components/Layout/Footer";
 import MultiAlbumDetail from "components/multiAlbumDetail";
+import MultiAlbumDetailSkeleton from "components/Skeleton/multiDetailSkeleton";
 import useGetMultiAlbumDetail, { getMultiAlbumDetail } from "hooks/useMultiAlbumDetail";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
@@ -29,7 +30,7 @@ const MultiAlbumDetailPage = () => {
 	return (
 		<>
 			{isLoading || !data ? (
-				<div>로딩중이거나 로그인을 하지 않으면 볼 수 없습니다.</div>
+				<MultiAlbumDetailSkeleton></MultiAlbumDetailSkeleton>
 			) : (
 				<>
 					<MultiAlbumDetail
