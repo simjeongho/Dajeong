@@ -9,7 +9,7 @@ type SubmitLike = {
 	UserId: string | number;
 };
 
-export const useLikePost = (id: string | number, data: SubmitLike) => {
+export const useLikePost = (id: string | number, data: SubmitLike, userId: number | string) => {
 	const queryClient = useQueryClient();
 	return useMutation(() => axios.patch(`${API_HOST}/multiAlbum/${id}/like`, data, { withCredentials: true }), {
 		onSuccess: () => {
@@ -18,7 +18,7 @@ export const useLikePost = (id: string | number, data: SubmitLike) => {
 	});
 };
 
-export const useLikeCancelPost = (id: string | number) => {
+export const useLikeCancelPost = (id: string | number, userId: number | string) => {
 	const queryClient = useQueryClient();
 	return useMutation(() => axios.delete(`${API_HOST}/multiAlbum/${id}/like`, { withCredentials: true }), {
 		onSuccess: () => {

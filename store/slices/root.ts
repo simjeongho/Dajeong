@@ -1,3 +1,4 @@
+import { postSlice } from "./post-slice";
 import { userSlice } from "./user-slice";
 import { HYDRATE } from "next-redux-wrapper";
 import { combineReducers } from "redux";
@@ -9,6 +10,7 @@ const rootReducer = (state: any, action: any) => {
 		default: {
 			const combineReducer = combineReducers({
 				user: userSlice.reducer,
+				post: postSlice.reducer,
 			});
 			return combineReducer(state, action);
 		}

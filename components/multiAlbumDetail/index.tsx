@@ -39,12 +39,16 @@ const MultiAlbumDetail = ({ Images, content, createdAt, title, User, id, Likers 
 		});
 	}, [Likers, userId]);
 
-	const SubmitLikeQuery = useLikePost(id, {
-		PostId: id,
-		UserId: userId,
-	});
+	const SubmitLikeQuery = useLikePost(
+		id,
+		{
+			PostId: id,
+			UserId: userId,
+		},
+		userId,
+	);
 
-	const DeleteLikeQuery = useLikeCancelPost(id);
+	const DeleteLikeQuery = useLikeCancelPost(id, userId);
 
 	const handleSubmitLike = () => {
 		if (!SubmitLikeQuery.isLoading) {

@@ -79,6 +79,7 @@ export const ImageContainer = styled.div<{ show?: boolean }>`
 			  `}
 
 	@media screen and (max-width: 768px) {
+		width: 100%;
 		left: 0;
 	}
 `;

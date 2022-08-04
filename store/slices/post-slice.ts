@@ -1,63 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
-type Me = {
-	email: string;
-	nickname: string;
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PostsData } from "apis/Auth/types";
+type LikedPost = {
+	id: number;
+	title: string;
 };
-type Images = {
-	src: string;
-};
-type Comments = {
-	user: Me;
-	comment: string;
-};
-type MainPosts = {
-	id: string;
-	me: Me;
-	content: string;
-	Images: Images[];
-	Comments: Comments[];
+type WritedPost = {
+	RetweetId: null | number;
+	UserId: number;
+	content: string | null;
+	createdAt: string;
+	id: number;
+	title: string;
+	updatedAt: string;
 };
 type InitialState = {
-	mainPosts: MainPosts[];
-	ImagePath: Images[];
-	postAdded: boolean;
+	likedPosts: LikedPost[] | null;
+	writedPosts: WritedPost[] | null;
 };
-
 const initialState: InitialState = {
-	mainPosts: [
-		{
-			id: "1",
-			me: {
-				email: "simjeongho012@gmail.com",
-				nickname: "호정",
-			},
-			content: "요후리",
-			Images: [
-				{
-					src: "http://localhost:3001/public/assets/images/2090122.png",
-				},
-			],
-			Comments: [
-				{
-					user: {
-						email: "simjeongho012@gmail.com",
-						nickname: "호정",
-					},
-					comment: "댓글이에염",
-				},
-			],
-		},
-	],
-	ImagePath: [],
-	postAdded: false,
+	likedPosts: null,
+	writedPosts: null,
 };
 
 export const postSlice = createSlice({
-	name: "user",
+	name: "post",
 	initialState,
 	reducers: {
-		addPost(state) {
-			//dummy post
+		setPosts(state, action: PayloadAction<PostsData>) {
+			state.likedPosts = action.payload.Liked;
+			state.writedPosts = action.payload.Posts;
 		},
 	},
 });
+
+export default postSlice;
+export const { setPosts } = postSlice.actions;

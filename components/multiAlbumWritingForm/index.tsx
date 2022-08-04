@@ -17,6 +17,7 @@ import { API_HOST } from "apis/api";
 import { useSelector } from "react-redux";
 import { selectUser } from "store/configureStore";
 import { useRouter } from "next/router";
+import { QueryClient } from "react-query";
 const MultiAlbumWriting = () => {
 	const [title, setTitle] = useState<string>("");
 	const [content, setContent] = useState<string>("");
@@ -89,9 +90,11 @@ const MultiAlbumWriting = () => {
 					userId: userId,
 					imagepath: imagesUrl,
 				};
-				axios.post(`${API_HOST}/multiAlbum/uploadMultiAlbumContent`, data, { withCredentials: true }).then((res) => {});
+				axios.post(`${API_HOST}/multiAlbum/uploadMultiAlbumContent`, data, { withCredentials: true }).then((res) => {
+					const queryClient = new QueryClient();
+					queryClient.invalidateQueries("getMultiAlbumList");
+				});
 			});
-
 		Router.push("/Album");
 	};
 
