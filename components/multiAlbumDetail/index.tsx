@@ -21,7 +21,6 @@ import { IoHeartOutline } from "react-icons/io5";
 import { useLikePost } from "apis/MultiAlbum";
 import { useSelector } from "react-redux";
 import { selectUser } from "store/configureStore";
-import { ImTelegram } from "react-icons/im";
 
 const MultiAlbumDetail = ({ Images, content, createdAt, title, User, id, Likers }: multiAlbumDetailPage) => {
 	const handleDate = () => {

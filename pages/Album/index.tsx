@@ -38,6 +38,18 @@ const Albums = () => {
 	return (
 		<>
 			<AlbumListContainer>
+				<Link href="Album/MultiAlbumWrites">
+					<MultiAlbumWritesButton>멀티 앨범 작성</MultiAlbumWritesButton>
+				</Link>
+				<MultiAlbumList />
+				<Link href="Album/AllAlbum">
+					<ShowAllMultiAlbum>
+						모든 앨범 조회
+						<ShowAllMultiAlbumButton>
+							<BsArrowRightCircle />
+						</ShowAllMultiAlbumButton>
+					</ShowAllMultiAlbum>
+				</Link>
 				<Link href="Album/SingleAlbumWrites">
 					<SingleAlbumWritesButton>싱글 앨범 작성</SingleAlbumWritesButton>
 				</Link>
@@ -60,18 +72,6 @@ const Albums = () => {
 						))}
 					</AxiosSlider>
 				)}
-				<Link href="Album/MultiAlbumWrites">
-					<MultiAlbumWritesButton>멀티 앨범 작성</MultiAlbumWritesButton>
-				</Link>
-				<MultiAlbumList />
-				<Link href="Album/AllAlbum">
-					<ShowAllMultiAlbum>
-						모든 앨범 조회
-						<ShowAllMultiAlbumButton>
-							<BsArrowRightCircle />
-						</ShowAllMultiAlbumButton>
-					</ShowAllMultiAlbum>
-				</Link>
 			</AlbumListContainer>
 			<Footer />
 		</>
