@@ -1,12 +1,6 @@
 import { LayoutHeader, LayoutHeaderTitle, LayoutNavbar, LayoutNavItem, LayoutNavLists, LayoutTitlediv } from "./styled";
 import GinsenTitle from "assets/images/ginsen.svg";
-import {
-	IoImagesOutline,
-	IoFileTrayStackedOutline,
-	IoLogoGithub,
-	IoDesktopOutline,
-	IoLogInOutline,
-} from "react-icons/io5";
+import { IoImagesOutline, IoLogoGithub, IoDesktopOutline, IoLogInOutline } from "react-icons/io5";
 import { ImProfile } from "react-icons/im";
 import Image from "next/image";
 import Link from "next/link";

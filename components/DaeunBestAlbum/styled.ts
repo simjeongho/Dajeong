@@ -3,11 +3,12 @@ import { moveUp, Appear, Disappear } from "shared/style/styled";
 import Image from "next/image";
 
 export const BestAlbumContainer = styled.div`
-	width: 50%;
+	width: 40%;
 	height: 50%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 5%;
 	@media screen and (max-width: 768px) {
 		display: flex;
 		flex-direction: column;
@@ -64,6 +65,7 @@ export const BestAlbumShowButton = styled.button`
 export const ImageContainer = styled.div<{ show?: boolean }>`
 	position: relative;
 	left: 3%;
+	width: 40%;
 	/* visibility: ${({ show }) => (show ? "visible" : "hidden")}; */
 	${({ show }) =>
 		show

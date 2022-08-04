@@ -31,7 +31,6 @@ const MultiAlbumDetail = ({ Images, content, createdAt, title, User, id, Likers 
 	const handleDate = () => {
 		return createdAt.slice(0, 10) + "일 " + createdAt.slice(12, 19);
 	};
-
 	useEffect(() => {
 		Likers?.map((item) => {
 			if (item.id === userId) {

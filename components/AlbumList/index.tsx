@@ -25,7 +25,6 @@ type GetAllAlbumItemType = {
 
 const AlbumList = () => {
 	const OFFSET = 4;
-	const bottom = useRef<HTMLDivElement>(null);
 	const { data, error, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } = useInfiniteQuery(
 		"getAllAlbumList",
 		({ pageParam = 0 }) =>

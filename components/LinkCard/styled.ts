@@ -38,6 +38,7 @@ export const CardTitle = styled.h4`
 	margin-bottom: 3px;
 	white-space: nowrap;
 	max-width: 200px;
+	font-family: var(--font-crown);
 `;
 
 export const CardKeyWord = styled.div`

@@ -6,6 +6,7 @@ export const CardContainer = styled.div`
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
+	border-radius: 10px;
 	&:hover {
 		transform: scale(1.05);
 	}
@@ -14,6 +15,7 @@ export const CardContainer = styled.div`
 export const CardImageWrapper = styled.div`
 	width: 100%;
 	height: auto;
+	border-radius: 10px;
 `;
 
 export const CardImage = styled(Image)`
@@ -39,6 +41,7 @@ export const CardTitle = styled.h4`
 	margin-bottom: 3px;
 	white-space: nowrap;
 	max-width: 200px;
+	font-family: var(--font-crown);
 `;
 
 export const CardKeyWord = styled.div`
