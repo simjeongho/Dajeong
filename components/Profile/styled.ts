@@ -10,6 +10,12 @@ export const ProfileContainer = styled.div`
 	align-items: center;
 	width: 100%;
 	background-color: black;
+	padding-left: 30%;
+	padding-right: 30%;
+	@media screen and (max-width: 768px) {
+		padding-left: 5%;
+		padding-right: 5%;
+	}
 `;
 
 export const ProfileImageContainer = styled.div`
@@ -35,7 +41,10 @@ export const ProfileUploadForm = styled.form`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin: 5%;
+	margin: 3%;
+	@media screen and (max-width: 768px) {
+		width: 100%;
+	}
 `;
 
 export const ProfileUploadInput = styled.input``;
@@ -49,10 +58,15 @@ export const ProfileUploadButton = styled.button`
 		cursor: pointer;
 	}
 `;
+export const ShowLikedContainer = styled.div`
+	width: 100%;
+	@media screen and (max-width: 768px) {
+		width: 100%;
+	}
+`;
 
 export const ProfileDescriptionContainer = styled.div`
-	width: 70%;
-	height: 100%;
+	width: 100%;
 	background-color: var(--color-deepgray);
 	padding: 3%;
 	border-radius: 10px;
@@ -64,6 +78,9 @@ export const ProfileDescriptionContainer = styled.div`
 	& > h2 {
 		color: white;
 		font-size: 1rem;
+	}
+	@media screen and (max-width: 768px) {
+		width: 100%;
 	}
 `;
 

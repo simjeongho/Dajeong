@@ -10,7 +10,7 @@ export const LikedContainer = styled.div`
 `;
 
 export const LikedInnerContainer = styled.div`
-	width: 70%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
