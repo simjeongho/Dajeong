@@ -47,7 +47,6 @@ export const changeProfileImageAxios = async (data: changeProfileImageType) => {
 				const newProfile = {
 					userProfileImage: res.data,
 				};
-				console.log("new", newProfile);
 				return newProfile;
 			});
 		} catch (err) {

@@ -17,7 +17,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const MultiAlbumList = () => {
 	const { data, isLoading } = useGetMultiAlbumList();
-	console.log(data?.data.multiAlbumList);
 	const handleContentLength = (content: string) => {
 		if (content.length > 15) {
 			return content.slice(0, 15) + "...";

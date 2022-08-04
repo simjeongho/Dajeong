@@ -15,6 +15,7 @@ import {
 	EditProfileDescription,
 	EditProfileDescriptionIcons,
 	CustomCollapse,
+	ShowLikedContainer,
 } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "store/configureStore";
@@ -116,18 +117,17 @@ const UserProfile = () => {
 
 	const showImages = useMemo(() => {
 		if (!data || isLoading || data.data.profileImage === null || !ProfileImage) {
-			console.log("empty");
 			return (
 				<ProfileImageContainer onClick={handleFileInput}>프로필을 변경하려면 여기를 클릭하세요</ProfileImageContainer>
 			);
 		} else {
 			return (
 				<ProfileImageContainer onClick={handleFileInput}>
-					<ProfileImageTag src={data.data.profileImage} alt={data.data.profileImage} width={300} height={400} />
+					<ProfileImageTag src={data.data.profileImage} alt={data.data.profileImage} width={120} height={160} />
 				</ProfileImageContainer>
 			);
 		}
-	}, []);
+	}, [ProfileImage, data, isLoading]);
 
 	const handleChangeNickname = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		e.preventDefault();
@@ -205,8 +205,10 @@ const UserProfile = () => {
 						</Panel>
 					</CustomCollapse>
 				</ProfileDescriptionContainer>
+				<ShowLikedContainer>
+					<ShowLiked></ShowLiked>
+				</ShowLikedContainer>
 			</ProfileContainer>
-			<ShowLiked></ShowLiked>
 		</>
 	);
 };

@@ -1,4 +1,3 @@
-import CommentForms from "components/CommentsForm";
 import {
 	SingleAlbumContentContainer,
 	SingleAlbumDetailContainer,

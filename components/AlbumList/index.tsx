@@ -55,9 +55,7 @@ const AlbumList = () => {
 		}
 	};
 	const AllAlbums = data?.pages;
-	console.log(data);
 	const onIntersect: IntersectionObserverCallback = ([{ isIntersecting }]) => {
-		console.log(`감지결과 : ${isIntersecting}`);
 		fetchNextPage();
 	};
 
