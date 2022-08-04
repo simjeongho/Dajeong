@@ -1,6 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserData } from "apis/Auth/types";
 
+type LikedPost = {
+	id: number;
+	title: string;
+};
+type WritedPost = {
+	RetweetId: null | number;
+	UserId: number;
+	content: string | null;
+	createdAt: string;
+	id: number;
+	title: string;
+	updatedAt: string;
+};
 type InitialState = {
 	isLogin: boolean;
 	isLogging: boolean;
@@ -9,6 +22,8 @@ type InitialState = {
 	userId: number | null;
 	userProfileImage: string | null;
 	userDescription: string | null;
+	likedPosts: LikedPost[] | null;
+	writedPosts: WritedPost[] | null;
 };
 
 const initialState: InitialState = {
@@ -19,6 +34,8 @@ const initialState: InitialState = {
 	userId: null,
 	userProfileImage: null,
 	userDescription: null,
+	likedPosts: null,
+	writedPosts: null,
 };
 
 export const userSlice = createSlice({
@@ -33,9 +50,12 @@ export const userSlice = createSlice({
 			state.isLogin = false;
 			state.userNickName = "";
 			state.email = "";
+			state.userId = null;
 			state.isLogging = false;
 			state.userProfileImage = "";
 			state.userDescription = "";
+			state.likedPosts = null;
+			state.writedPosts = null;
 		},
 		userLoginRequest(state) {
 			state.isLogging = true;
@@ -47,6 +67,8 @@ export const userSlice = createSlice({
 			state.userId = action.payload.userId;
 			state.userProfileImage = action.payload.userProfileImage;
 			state.userDescription = action.payload.userDescription;
+			state.likedPosts = action.payload.Liked;
+			state.writedPosts = action.payload.Posts;
 		},
 		changeProfileImage(state, action) {
 			state.userProfileImage = action.payload.userProfileImage;

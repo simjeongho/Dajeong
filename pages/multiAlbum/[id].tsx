@@ -25,6 +25,7 @@ const MultiAlbumDetailPage = () => {
 	const router = useRouter();
 	const { id } = router.query;
 	const { data, isLoading } = useGetMultiAlbumDetail(id ? id : 16);
+	console.log(data);
 	return (
 		<>
 			{isLoading || !data ? (
@@ -37,6 +38,8 @@ const MultiAlbumDetailPage = () => {
 						content={data?.data.multiAlbumDetail.content}
 						createdAt={data?.data.multiAlbumDetail.createdAt}
 						User={data?.data.multiAlbumDetail.User}
+						id={data?.data.multiAlbumDetail.id}
+						Likers={data?.data.multiAlbumDetail.Likers}
 					/>
 				</>
 			)}

@@ -6,9 +6,15 @@ export type multiAlbumImage = {
 export type Usernickname = {
 	nickname: string;
 };
+export type Liker = {
+	id: number;
+	nickname: string;
+	profileImage: string | null;
+};
 export type GetmultiAlbumPost = {
 	Images: multiAlbumImage[];
 	User: Usernickname;
+	Likers: Liker[] | null;
 	content: string;
 	createAt: string;
 	id: number;
@@ -39,6 +45,7 @@ export type DetailUser = {
 export type multiAlbumPost = {
 	Comments: DetailComments[] | null;
 	Images: DetailImage[] | null;
+	Likers: Liker[] | null;
 	User: DetailUser;
 	RetweetId: number | null;
 	UserId: number;
@@ -54,8 +61,10 @@ export type multiAlbumDetailAxios = {
 
 export type multiAlbumDetailPage = {
 	Images: DetailImage[] | null;
+	Likers?: Liker[] | null;
 	User: DetailUser;
 	content: string;
 	createdAt: string;
 	title: string;
+	id: string | number;
 };

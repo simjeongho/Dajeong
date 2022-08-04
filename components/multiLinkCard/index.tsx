@@ -1,5 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
+import { Liker } from "types/multiAlbum";
 import { CardContainer, CardImageWrapper, CardInfo, CardKeyWord, CardTitle } from "./styled";
 type LinkCardProps = {
 	src: StaticImageData | string;
@@ -10,6 +11,7 @@ type LinkCardProps = {
 	height: number;
 	linkurl: string;
 	query: number | string;
+	Likers: Liker[] | null;
 };
 
 const MultiLinkCard: React.FC<LinkCardProps> = ({ src, title, alt, year, width, height, linkurl, query }) => {

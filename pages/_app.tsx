@@ -1,4 +1,3 @@
-import Footer from "components/Layout/Footer";
 import Header from "components/Layout/Header";
 import "../styles/globals.css";
 import { LayoutContainer } from "components/Layout/styled";
@@ -27,6 +26,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 					userId: res.data.id,
 					userProfileImage: res.data.profileImage,
 					userDescription: res.data.profileDescription,
+					Liked: res.data.Liked,
+					Posts: res.data.Posts,
 				};
 				dispatch(setUserData(userData));
 			}

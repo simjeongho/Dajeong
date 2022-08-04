@@ -2,16 +2,6 @@ import { UserData } from "apis/Auth/types";
 import { LoginRequest } from "./types";
 import API_URL, { API_HOST } from "apis/api";
 import axios, { AxiosInstance } from "axios";
-
-// export interface IAuthService {
-// 	setAuthHeader(): {
-// 		headers: {
-// 			Authorization: string;
-// 			"Content-Type"?: string;
-// 		};
-// 	};
-// }
-
 class AuthService {
 	private base: AxiosInstance;
 	private authUrl;
@@ -38,6 +28,8 @@ class AuthService {
 			userId: result.id,
 			userProfileImage: result.profileImage,
 			userDescription: result.profileDescription,
+			Liked: result.Liked,
+			Posts: result.Posts,
 		};
 		return {
 			statusCode,

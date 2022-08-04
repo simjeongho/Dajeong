@@ -15,6 +15,8 @@ import haru5 from "assets/images/together/haru5.png";
 import togeter2 from "assets/images/together/together2.jpg";
 import DaeunBestImage from "components/DaeunBestAlbum";
 import Footer from "components/Layout/Footer";
+import axios from "axios";
+import { API_HOST } from "apis/api";
 
 const landscapeData = [
 	<Card key="land1" src={mangWon} alt="망원" title="망원에서" year="2022" width={300} height={400} />,
@@ -34,6 +36,17 @@ const togetherData = [
 	<Card key="together6" src={togeter2} alt="" title="헤헿2" year="2022" width={300} height={400} />,
 ];
 const Index = () => {
+	axios
+		.get(`${API_HOST}/multiAlbum/likes/1`, {
+			params: {
+				offset: 2,
+				limit: 2,
+			},
+			withCredentials: true,
+		})
+		.then((res) => {
+			console.log(res);
+		});
 	return (
 		<>
 			<HomeContainer>

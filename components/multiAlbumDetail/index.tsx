@@ -13,13 +13,31 @@ import {
 	ProfileImage,
 	ProfileImageContainer,
 	MultiAlbumLikeDiv,
+	MultiAlbumLikersDiv,
+	MultiAlbumLiker,
 } from "./styled";
 import emptyProfile from "public/assets/images/emptyProfile.png";
 import { IoHeartOutline } from "react-icons/io5";
+import { useLikePost } from "apis/MultiAlbum";
+import { useSelector } from "react-redux";
+import { selectUser } from "store/configureStore";
+import { ImTelegram } from "react-icons/im";
 
-const MultiAlbumDetail = ({ Images, content, createdAt, title, User }: multiAlbumDetailPage) => {
+const MultiAlbumDetail = ({ Images, content, createdAt, title, User, id, Likers }: multiAlbumDetailPage) => {
 	const handleDate = () => {
 		return createdAt.slice(0, 10) + "일 " + createdAt.slice(12, 19);
+	};
+
+	const userSelector = useSelector(selectUser);
+	const { userId } = userSelector;
+
+	const SubmitLikeQuery = useLikePost(id, {
+		PostId: id,
+		UserId: userId,
+	});
+
+	const handleSubmitLike = () => {
+		SubmitLikeQuery.mutate();
 	};
 
 	return (
@@ -41,7 +59,20 @@ const MultiAlbumDetail = ({ Images, content, createdAt, title, User }: multiAlbu
 						<h2>{`작성자 ${User.nickname}`}</h2>
 						<h3>{`작성 일 ${handleDate()}`}</h3>
 						<MultiAlbumLikeDiv>
-							<IoHeartOutline />
+							<IoHeartOutline onClick={handleSubmitLike} />
+							<MultiAlbumLikersDiv>
+								이 앨범을 좋아하는 사람:
+								{Likers?.map((item) => (
+									<MultiAlbumLiker>
+										<ProfileImage
+											src={item.profileImage ? item.profileImage : emptyProfile}
+											width={10}
+											height={10}
+										></ProfileImage>
+										{item.nickname ? item.nickname : "없습니다"}
+									</MultiAlbumLiker>
+								))}{" "}
+							</MultiAlbumLikersDiv>
 						</MultiAlbumLikeDiv>
 					</MultiAlbumTitleContainer>
 

@@ -72,6 +72,20 @@ export const MultiAlbumTitleContainer = styled.div`
 	}
 `;
 
+export const MultiAlbumLikeDiv = styled.div``;
+
+export const MultiAlbumLikersDiv = styled.div`
+	display: flex;
+
+	& > h3 {
+		color: white;
+		margin: 5px;
+		font-size: 1rem;
+	}
+`;
+
+export const MultiAlbumLiker = styled.div``;
+
 export const MultiAlbumDescriptionContainer = styled.div`
 	color: white;
 	background-color: var(--color-deepgray);
