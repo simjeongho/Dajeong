@@ -1,4 +1,4 @@
-import { CommentFormContainer, CommentFormInput, CommentForm, SubmitButton } from "./styled";
+import { CommentFormContainer, CommentForm, SubmitButton, CommentFormInput } from "./styled";
 import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "store/configureStore";
@@ -17,8 +17,8 @@ const CommentForms = () => {
 	});
 	const submitCommentQuery = useSubmitComment(id ? id : "", commentData);
 
-	const commentRef = useRef<HTMLTextAreaElement>(null);
-	const handleCommentText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+	const commentRef = useRef<HTMLInputElement>(null);
+	const handleCommentText = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
 		setComment(e.target.value);
 		setCommentData({

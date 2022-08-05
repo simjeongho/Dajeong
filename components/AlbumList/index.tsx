@@ -35,7 +35,7 @@ const AlbumList = () => {
 				},
 			}),
 		{
-			getNextPageParam: (lastPage, allPages) => {
+			getNextPageParam: (lastPage) => {
 				const { nextOffset, hasMore } = lastPage?.data;
 				if (!hasMore) return false;
 				else {
