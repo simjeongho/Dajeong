@@ -10,12 +10,6 @@ export const ProfileContainer = styled.div`
 	align-items: center;
 	width: 100%;
 	background-color: black;
-	padding-left: 30%;
-	padding-right: 30%;
-	@media screen and (max-width: 768px) {
-		padding-left: 5%;
-		padding-right: 5%;
-	}
 `;
 
 export const ProfileImageContainer = styled.div`
@@ -56,12 +50,6 @@ export const ProfileUploadButton = styled.button`
 
 	&:hover {
 		cursor: pointer;
-	}
-`;
-export const ShowLikedContainer = styled.div`
-	width: 100%;
-	@media screen and (max-width: 768px) {
-		width: 100%;
 	}
 `;
 

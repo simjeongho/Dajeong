@@ -12,7 +12,7 @@ type RecentLiker = {
 	nickname: string;
 };
 
-type RecentListType = {
+export type RecentListType = {
 	id: number;
 	title: string;
 	content: string;

@@ -38,7 +38,7 @@ export type UserLikedPost = {
 	profileImage: string | null;
 };
 
-const getLikedPosts = (id: number | string) =>
+export const getLikedPosts = (id: number | string) =>
 	axios.get(`${API_HOST}/multiAlbum/likes/${id}`, { withCredentials: true });
 
 const useGetLikedPosts = (id: number | string) => {

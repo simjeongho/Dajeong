@@ -15,7 +15,6 @@ import {
 	EditProfileDescription,
 	EditProfileDescriptionIcons,
 	CustomCollapse,
-	ShowLikedContainer,
 } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "store/configureStore";
@@ -36,12 +35,10 @@ import {
 	useChangeDescription,
 	useChangeNickName,
 	useChangeProfileImage,
-	useGetProfile,
 } from "apis/profile";
 import { FiEdit } from "react-icons/fi";
 import { TbTriangleInverted } from "react-icons/tb";
 import { Collapse } from "antd";
-import ShowLiked from "components/ShowLiked";
 import MultiAlbumDetailSkeleton from "components/Skeleton/multiDetailSkeleton";
 
 type ProfileProps = {
@@ -213,9 +210,6 @@ const UserProfile = ({ profileData, profileLoading }: ProfileProps) => {
 							</Panel>
 						</CustomCollapse>
 					</ProfileDescriptionContainer>
-					<ShowLikedContainer>
-						<ShowLiked></ShowLiked>
-					</ShowLikedContainer>
 				</ProfileContainer>
 			)}
 		</>

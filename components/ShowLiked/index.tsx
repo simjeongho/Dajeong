@@ -1,15 +1,17 @@
-import useGetLikedPosts from "apis/Liked";
+import { UserLikedPost } from "apis/Liked";
 import AllAlbumCard from "components/AllAlbumCard";
 import { useSelector } from "react-redux";
 import { selectUser } from "store/configureStore";
 import blankProfile from "public/assets/images/emptyProfile.png";
 import { FcStackOfPhotos } from "react-icons/fc";
 import { LikedContainer, LikedContent, LikedInnerContainer, LikedTitle } from "./styled";
-
-const ShowLiked = () => {
+type ShowLikedProps = {
+	LikedData: UserLikedPost | null;
+	LikedLoading: boolean;
+};
+const ShowLiked = ({ LikedData, LikedLoading }: ShowLikedProps) => {
 	const userSelector = useSelector(selectUser);
-	const { userNickName, userId } = userSelector;
-	const { data, isLoading } = useGetLikedPosts(userId);
+	const { userNickName } = userSelector;
 	return (
 		<LikedContainer>
 			<LikedInnerContainer>
@@ -17,11 +19,11 @@ const ShowLiked = () => {
 					<h1>{userNickName}이 좋아하는 앨범</h1>
 					<FcStackOfPhotos />
 				</LikedTitle>
-				{isLoading || !data || !data.data.Liked ? (
+				{LikedLoading || !LikedData || !LikedData.Liked ? (
 					<div>is Loading</div>
 				) : (
 					<LikedContent>
-						{data?.data.Liked.map((item) => (
+						{LikedData.Liked.map((item) => (
 							<AllAlbumCard
 								key={item.Images[0].src}
 								src={item.Images[0].src}

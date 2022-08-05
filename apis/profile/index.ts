@@ -13,7 +13,7 @@ export type ChangeNicknameType = {
 	userId: string | number;
 };
 
-type GetProfileAxiosType = {
+export type GetProfileAxiosType = {
 	createdAt: string;
 	email: string;
 	id: number | string;
