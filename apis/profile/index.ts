@@ -1,6 +1,7 @@
 import { API_HOST } from "apis/api";
 import axios, { AxiosResponse, AxiosError } from "axios";
 import { useMutation, useQuery, useQueryClient } from "react-query";
+import FormData from "form-data";
 
 export type ChangeDescriptionType = {
 	profileDescription: string | null;
