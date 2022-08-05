@@ -12,6 +12,7 @@ import { UserData } from "apis/Auth/types";
 import { useDispatch } from "react-redux";
 import { setUserData } from "store/slices/user-slice";
 import { API_HOST } from "apis/api";
+import Head from "next/head";
 function MyApp({ Component, pageProps }: AppProps) {
 	//useState lazyinit을 사용해 QueryClient 인스턴스를 생성해
 	//QueryClientProvider의 client 값으로 전달해준다.
@@ -32,10 +33,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 				dispatch(setUserData(userData));
 			}
 		});
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<>
+			<Head>
+				<title>simbwatda blog</title>
+			</Head>
 			<QueryClientProvider client={queryClient}>
 				<Hydrate state={pageProps?.dehydratedState}>
 					<LayoutContainer>
