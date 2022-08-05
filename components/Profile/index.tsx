@@ -32,6 +32,7 @@ import {
 	changeNickname,
 	changeProfileImageAxios,
 	changeProfileImageType,
+	GetProfileAxiosType,
 	useChangeDescription,
 	useChangeNickName,
 	useChangeProfileImage,
@@ -41,8 +42,13 @@ import { FiEdit } from "react-icons/fi";
 import { TbTriangleInverted } from "react-icons/tb";
 import { Collapse } from "antd";
 import ShowLiked from "components/ShowLiked";
+import MultiAlbumDetailSkeleton from "components/Skeleton/multiDetailSkeleton";
 
-const UserProfile = () => {
+type ProfileProps = {
+	profileData: GetProfileAxiosType | null;
+	profileLoading: boolean;
+};
+const UserProfile = ({ profileData, profileLoading }: ProfileProps) => {
 	const userSelector = useSelector(selectUser);
 	const { email, userId, userProfileImage } = userSelector;
 	const [ProfileImage, setProfileImage] = useState<ProfileImageType | null>({
@@ -64,7 +70,6 @@ const UserProfile = () => {
 	const handleFileInput = () => {
 		fileInputRef.current?.click();
 	};
-	const { data, isLoading } = useGetProfile(userId);
 	const changeProfileImageQuery = useChangeProfileImage(userId ? userId : "", changeProfile);
 	const changeDescriptionQuery = useChangeDescription(userId ? userId : "", {
 		profileDescription: newDescription,
@@ -116,18 +121,18 @@ const UserProfile = () => {
 	};
 
 	const showImages = useMemo(() => {
-		if (!data || isLoading || data.data.profileImage === null || !ProfileImage) {
+		if (!profileData || profileLoading || profileData.profileImage === null || !ProfileImage) {
 			return (
 				<ProfileImageContainer onClick={handleFileInput}>프로필을 변경하려면 여기를 클릭하세요</ProfileImageContainer>
 			);
 		} else {
 			return (
 				<ProfileImageContainer onClick={handleFileInput}>
-					<ProfileImageTag src={data.data.profileImage} alt={data.data.profileImage} width={120} height={160} />
+					<ProfileImageTag src={profileData.profileImage} alt={profileData.profileImage} width={120} height={160} />
 				</ProfileImageContainer>
 			);
 		}
-	}, [ProfileImage, data, isLoading]);
+	}, [ProfileImage, profileData, profileLoading]);
 
 	const handleChangeNickname = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		e.preventDefault();
@@ -160,55 +165,59 @@ const UserProfile = () => {
 	};
 	return (
 		<>
-			<ProfileContainer>
-				<ProfileUploadForm onSubmit={handleSubmitUserProfile}>
-					{showImages}
-					<ProfileUploadInput
-						ref={fileInputRef}
-						type="file"
-						name="profileImage"
-						id="profileImage"
-						hidden
-						onChange={uploadProfileImage}
-					></ProfileUploadInput>
-					<ProfileUploadButton type="submit">프로필 변경</ProfileUploadButton>
-				</ProfileUploadForm>
+			{profileLoading ? (
+				<MultiAlbumDetailSkeleton />
+			) : (
+				<ProfileContainer>
+					<ProfileUploadForm onSubmit={handleSubmitUserProfile}>
+						{showImages}
+						<ProfileUploadInput
+							ref={fileInputRef}
+							type="file"
+							name="profileImage"
+							id="profileImage"
+							hidden
+							onChange={uploadProfileImage}
+						></ProfileUploadInput>
+						<ProfileUploadButton type="submit">프로필 변경</ProfileUploadButton>
+					</ProfileUploadForm>
 
-				<ProfileDescriptionContainer>
-					<h1>{data?.data.nickname}</h1>
-					<h2>{email}</h2>
-					<LogOutButton onClick={handleLogOut}>
-						<IoLogOutOutline />
-						LogOut
-					</LogOutButton>
-					<EditProfileDescription>
-						<ProfileDescriptionDiv>{data?.data.profileDescription}</ProfileDescriptionDiv>
-						<EditProfileDescriptionIcons>
-							<FiEdit />
-							<TbTriangleInverted />
-						</EditProfileDescriptionIcons>
-					</EditProfileDescription>
-					<CustomCollapse defaultActiveKey={["1"]}>
-						<Panel header="닉네임 변경" key="1">
-							<ProfileDescriptionUploadForm onSubmit={handleSubmitNickname}>
-								<ProfileDescriptionLabel>변경할 닉네임을 적어보세요</ProfileDescriptionLabel>
-								<ProfileDescriptionTextArea onChange={handleChangeNickname} />
-								<ChangeDescriptionButton type="submit">닉네임 변경</ChangeDescriptionButton>
-							</ProfileDescriptionUploadForm>
-						</Panel>
-						<Panel header="자기소개 변경" key="2">
-							<ProfileDescriptionUploadForm onSubmit={handleSubmitDesctiption}>
-								<ProfileDescriptionLabel>자기 소개를 적어보세요</ProfileDescriptionLabel>
-								<ProfileDescriptionTextArea onChange={handleChangeDescription} />
-								<ChangeDescriptionButton type="submit">자기소개 변경</ChangeDescriptionButton>
-							</ProfileDescriptionUploadForm>
-						</Panel>
-					</CustomCollapse>
-				</ProfileDescriptionContainer>
-				<ShowLikedContainer>
-					<ShowLiked></ShowLiked>
-				</ShowLikedContainer>
-			</ProfileContainer>
+					<ProfileDescriptionContainer>
+						<h1>{profileData?.nickname}</h1>
+						<h2>{email}</h2>
+						<LogOutButton onClick={handleLogOut}>
+							<IoLogOutOutline />
+							LogOut
+						</LogOutButton>
+						<EditProfileDescription>
+							<ProfileDescriptionDiv>{profileData?.profileDescription}</ProfileDescriptionDiv>
+							<EditProfileDescriptionIcons>
+								<FiEdit />
+								<TbTriangleInverted />
+							</EditProfileDescriptionIcons>
+						</EditProfileDescription>
+						<CustomCollapse defaultActiveKey={["1"]}>
+							<Panel header="닉네임 변경" key="1">
+								<ProfileDescriptionUploadForm onSubmit={handleSubmitNickname}>
+									<ProfileDescriptionLabel>변경할 닉네임을 적어보세요</ProfileDescriptionLabel>
+									<ProfileDescriptionTextArea onChange={handleChangeNickname} />
+									<ChangeDescriptionButton type="submit">닉네임 변경</ChangeDescriptionButton>
+								</ProfileDescriptionUploadForm>
+							</Panel>
+							<Panel header="자기소개 변경" key="2">
+								<ProfileDescriptionUploadForm onSubmit={handleSubmitDesctiption}>
+									<ProfileDescriptionLabel>자기 소개를 적어보세요</ProfileDescriptionLabel>
+									<ProfileDescriptionTextArea onChange={handleChangeDescription} />
+									<ChangeDescriptionButton type="submit">자기소개 변경</ChangeDescriptionButton>
+								</ProfileDescriptionUploadForm>
+							</Panel>
+						</CustomCollapse>
+					</ProfileDescriptionContainer>
+					<ShowLikedContainer>
+						<ShowLiked></ShowLiked>
+					</ShowLikedContainer>
+				</ProfileContainer>
+			)}
 		</>
 	);
 };
