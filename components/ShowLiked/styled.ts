@@ -23,11 +23,13 @@ export const LikedTitle = styled.div`
 	background-color: var(--color-deepgray);
 	width: 100%;
 	border-radius: 10px;
+	display: flex;
 	padding: 2%;
 	& > h1 {
 		color: white;
 		font-family: var(--font-crown);
 		font-size: 1.5rem;
+		margin-right: 10%;
 	}
 	margin-bottom: 2%;
 `;

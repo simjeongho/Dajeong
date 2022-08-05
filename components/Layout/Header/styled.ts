@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const LayoutHeader = styled.header`
 	width: 100%;
-	height: 8%;
+	height: 4%;
 	background-color: black;
 	border-radius: 10px;
 `;
@@ -15,10 +15,9 @@ export const LayoutTitlediv = styled.div`
 `;
 
 export const LayoutHeaderTitle = styled.h1`
-	height: 100%;
 	font-family: "dongle";
 	color: white;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	margin: 1rem;
 	cursor: pointer;
 `;
@@ -32,16 +31,16 @@ export const LayoutNavbar = styled.nav`
 export const LayoutNavLists = styled.ul`
 	display: flex;
 	justify-content: space-evenly;
-	width: 60vw;
+	width: 50%;
 	background-color: black;
 `;
 
 export const LayoutNavItem = styled.li`
 	position: relative;
-	top: 1rem;
+	top: 0.5rem;
 	margin-bottom: 2rem;
 	list-style: none;
-	font-size: 1rem;
+	font-size: 0.7rem;
 	color: white;
 	font-family: var(--font-lnkLi);
 	border: 2px solid transparent;

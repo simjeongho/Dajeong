@@ -6,6 +6,7 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import { dehydrate, QueryClient } from "react-query";
+import styled from "styled-components";
 
 interface IParams extends ParsedUrlQuery {
 	id: string;
@@ -22,6 +23,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	};
 };
 
+const MultiDetailPageContainer = styled.div`
+	background-color: black;
+	padding-left: 20%;
+	padding-right: 20%;
+	@media screen and (max-width: 768px) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+`;
+
 const MultiAlbumDetailPage = () => {
 	const router = useRouter();
 	const { id } = router.query;
@@ -29,18 +40,22 @@ const MultiAlbumDetailPage = () => {
 	return (
 		<>
 			{isLoading || !data ? (
-				<MultiAlbumDetailSkeleton></MultiAlbumDetailSkeleton>
+				<MultiDetailPageContainer>
+					<MultiAlbumDetailSkeleton></MultiAlbumDetailSkeleton>
+				</MultiDetailPageContainer>
 			) : (
 				<>
-					<MultiAlbumDetail
-						Images={data?.data.multiAlbumDetail.Images}
-						title={data?.data.multiAlbumDetail.title}
-						content={data?.data.multiAlbumDetail.content}
-						createdAt={data?.data.multiAlbumDetail.createdAt}
-						User={data?.data.multiAlbumDetail.User}
-						id={data?.data.multiAlbumDetail.id}
-						Likers={data?.data.multiAlbumDetail.Likers}
-					/>
+					<MultiDetailPageContainer>
+						<MultiAlbumDetail
+							Images={data?.data.multiAlbumDetail.Images}
+							title={data?.data.multiAlbumDetail.title}
+							content={data?.data.multiAlbumDetail.content}
+							createdAt={data?.data.multiAlbumDetail.createdAt}
+							User={data?.data.multiAlbumDetail.User}
+							id={data?.data.multiAlbumDetail.id}
+							Likers={data?.data.multiAlbumDetail.Likers}
+						/>
+					</MultiDetailPageContainer>
 				</>
 			)}
 			<Footer />

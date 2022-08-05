@@ -6,6 +6,7 @@ import {
 	MultiAlbumWritesButton,
 	ShowAllMultiAlbum,
 	ShowAllMultiAlbumButton,
+	ShowTitle,
 	SingleAlbumWritesButton,
 } from "./styled";
 import useGetSingleAlbumList from "hooks/useGetSingleAlbumList";
@@ -14,6 +15,7 @@ import { GetServerSideProps } from "next";
 import { dehydrate, QueryClient } from "react-query";
 import { BsArrowRightCircle } from "react-icons/bs";
 import Footer from "components/Layout/Footer";
+import { FcFilmReel } from "react-icons/fc";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const queryClient = new QueryClient();
@@ -44,7 +46,10 @@ const Albums = () => {
 				<MultiAlbumList />
 				<Link href="Album/AllAlbum">
 					<ShowAllMultiAlbum>
-						모든 앨범 조회
+						<ShowTitle>
+							모든 앨범 조회
+							<FcFilmReel />
+						</ShowTitle>
 						<ShowAllMultiAlbumButton>
 							<BsArrowRightCircle />
 						</ShowAllMultiAlbumButton>

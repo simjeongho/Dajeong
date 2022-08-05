@@ -10,7 +10,7 @@ export const MultiAlbumDetailContainer = styled.div`
 
 export const MultiAlbumImageArea = styled.div`
 	width: 100%;
-	background-color: var(--color-lightgray);
+	background-color: black;
 	display: flex;
 	justify-content: center;
 	align-items: center;

@@ -42,7 +42,7 @@ const ArrowButton = styled.button<{ pos?: "left" | "right" }>`
 	}
 `;
 const SliderContainer = styled.div`
-	padding: 1rem;
+	padding: 2rem;
 	background-color: var(--color-deepgray);
 	border-radius: 10px;
 	margin-bottom: 1rem;

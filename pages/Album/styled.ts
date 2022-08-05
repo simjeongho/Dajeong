@@ -37,7 +37,11 @@ export const ShowAllMultiAlbum = styled.div`
 	padding: 1%;
 	display: flex;
 	justify-content: space-between;
+	font-family: var(--font-crown);
 	@media screen and (max-width: 768px) {
 		width: 100%;
 	}
+`;
+export const ShowTitle = styled.div`
+	display: flex;
 `;
