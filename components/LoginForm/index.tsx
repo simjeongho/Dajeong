@@ -10,8 +10,7 @@ import { useDispatch } from "react-redux";
 import { userLogin, setUserData } from "store/slices/user-slice";
 import { useRouter } from "next/router";
 import AuthService from "apis/Auth/auth-service";
-import { LoginRequest, PostsData } from "apis/Auth/types";
-import { setPosts } from "store/slices/post-slice";
+import { LoginRequest } from "apis/Auth/types";
 
 const authService = new AuthService();
 

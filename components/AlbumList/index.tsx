@@ -6,7 +6,6 @@ import axios from "axios";
 import { multiAlbumImage } from "types/multiAlbum/index";
 import blankProfile from "public/assets/images/emptyProfile.png";
 import useIntersectionObserver from "hooks/useObserver";
-import { useRef } from "react";
 
 type GetAllAlbumUserType = {
 	nickname: string;

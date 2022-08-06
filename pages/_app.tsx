@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 					</LayoutContainer>
 				</Hydrate>
 
-				<ReactQueryDevtools initialIsOpen={false} />
+				{/* <ReactQueryDevtools initialIsOpen={false} /> */}
 			</QueryClientProvider>
 		</>
 	);

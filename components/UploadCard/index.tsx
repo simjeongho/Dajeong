@@ -1,5 +1,4 @@
-import { Deletebutton, UploadCardContainer, UploadImage } from "./styled";
-import { AiOutlineDelete } from "react-icons/ai";
+import { UploadCardContainer, UploadImage } from "./styled";
 type ImageInstance = {
 	src: string;
 	width: number;
