@@ -28,4 +28,5 @@ package-lock.json
 *.svg
 *.png
 .next/
+simbwatda.pem
 
