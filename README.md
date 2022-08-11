@@ -22,7 +22,10 @@
 - storage & deployment
   <img src="https://img.shields.io/badge/Amazon-232F3E?style=flat-square&logo=Amazon AWS&logoColor=white"/></a>
   <img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat-square&logo=Amazon S3&logoColor=white"/></a>
-  
+  <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=flat-square&logo=Amazon EC2&logoColor=white"/></a>
+  <img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=Ubuntu&logoColor=white"/></a>
+  <img src="https://img.shields.io/badge/PM2-2B037A?style=flat-square&logo=PM2&logoColor=white"/></a>
+
 ## 이슈 해결
 
 ### 2022-06-23
@@ -75,3 +78,13 @@
 ### 2022-07-22
 
 - 댓글 기능 라우터 구현 
+
+### 2022-07-28
+
+- 모든 앨범 조회 페이지 무한 스크롤 구현
+- useMutation 이용하여 댓글 작성, 삭제 시 페이지 reload없이 변경사항 반영
+
+### 2022-08-01
+
+- AWS EC2인스턴스를 이용한 배포 
+- 가비아에서 simbwatda.com 도메인 구매 및 EC2인스턴스와 연결 
